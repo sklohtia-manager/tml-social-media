@@ -1,5 +1,7 @@
 # Legal pages for the Google OAuth consent screen (TML Publisher)
 
+> **Superseded (27 Nov 2026):** the current drafts are the server-rendered pages in website draft PR #47 (`web/public/legal/`), checked against Google's official rules. Keep this folder only as history.
+
 ## Live check (27 Nov 2026, 04:22 AEDT)
 - https://twomarketledger.com/ returns 200, but it serves only the old minimal app shell.
 - `/legal/privacy`, `/legal/terms`, `/privacy` and `/terms` all return **404**.
