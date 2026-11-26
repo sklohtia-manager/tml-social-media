@@ -7,7 +7,7 @@ Never: post to LinkedIn or any channel other than the three in `ops/config.json`
 ## 0. Time and mode
 - Run `mcp__Buffer__get_account` and take `currentTime` (Melbourne, with offset). Today = that date.
 - **No catch-up:** if the current time is after the series' `lastCatchUp`, create today's edition as Buffer **drafts only** (never scheduled, never published), log it as "missed — draft only (no catch-up)", and notify the founder once. Never publish another day's content, and never publish a missed edition the next day.
-- **DRY RUN:** if the task message contains "MODE: DRY RUN", nothing is scheduled or published. Every post is created with `saveToDraft: true` and its text starts with `TEST DRAFT — DO NOT PUBLISH —`. Project logs get a row marked DRY RUN. The founder is not notified; report in the final response only.
+- **DRY RUN:** if the task message contains "MODE: DRY RUN", nothing is scheduled or published. Every post is created with `saveToDraft: true` and its text starts with `TEST DRAFT — DO NOT PUBLISH —`. Project logs get a row marked DRY RUN. The founder is not notified; report in the final response only. In DRY RUN, run the duplicate check and report its result, then still create the TEST DRAFTs so the content can be reviewed. The ready series also sends its WhatsApp image, captioned "TEST".
 
 ## 1. Preflight (mandatory; nothing is created until it passes)
 1. `git clone --depth 1 https://github.com/sklohtia-manager/tml-social-media /home/claude/tml` (on failure retry twice, 20 s apart).
