@@ -76,57 +76,62 @@ def paste_logo(canvas, box_w, y, band_h):
     canvas.paste(logo, ((canvas.width - width) // 2, y + (band_h - height) // 2), logo)
 
 
+THEMES = {"forest": (FOREST, "#FFFFFF", WARM, GOLD), "charcoal": (CHARCOAL, "#FFFFFF", WARM, GOLD),
+          "warm": (WARM, FOREST, CHARCOAL, "#8C7335")}
+
+
 def render(spec, size, kind, shift=0):
     W, H = size
-    img = Image.new("RGB", size, FOREST)
+    bg, ink, soft, accent = THEMES[spec.get("theme", "forest")]
+    img = Image.new("RGB", size, bg)
     d = ImageDraw.Draw(img)
     pad = 70 if W < 1500 else 90
     band_h = 230 if kind != "x" else 200
     # Warm-white logo band at the bottom (logo never on dark backgrounds).
-    d.rectangle([0, H - band_h, W, H], fill=WARM)
+    d.rectangle([0, H - band_h, W, H], fill="#FFFFFF" if bg == WARM else WARM)
     d.rectangle([0, H - band_h - 6, W, H - band_h], fill=GOLD)
     paste_logo(img, 420 if kind != "x" else 380, H - band_h, band_h)
     top = (90 if kind != "story" else 290) + shift  # story keeps key text clear of the top 250 px
     bottom_limit = H - band_h - (60 if kind != "story" else 330 - band_h if band_h < 330 else 40)
     text_w = W - 2 * pad
     # Series label
-    d.text((pad, top), LABELS[spec["edition"]], font=font("Inter-SemiBold.otf", 30 if kind != "x" else 28), fill=GOLD)
-    d.text((pad, top + 46), spec.get("dateLabel", spec["date"]), font=font("Inter-Regular.otf", 26), fill=WARM)
+    d.text((pad, top), LABELS[spec["edition"]], font=font("Inter-SemiBold.otf", 30 if kind != "x" else 28), fill=accent)
+    d.text((pad, top + 46), spec.get("dateLabel", spec["date"]), font=font("Inter-Regular.otf", 26), fill=soft)
     y = top + 120
     d.rectangle([pad, y - 20, pad + 120, y - 14], fill=GOLD)
     head_font, head_lines = fit(d, spec["headline"], "InterDisplay-Bold.otf", 74 if kind != "x" else 64, 40, text_w,
                                 4 if kind != "x" else 3)
     for line in head_lines:
-        d.text((pad, y), line, font=head_font, fill="#FFFFFF")
+        d.text((pad, y), line, font=head_font, fill=ink)
         y += int(head_font.size * 1.18)
     y += 30
     fig = spec.get("figure")
     if fig and kind != "x" or (fig and not spec.get("points")):
         if fig:
-            d.text((pad, y), fig["value"], font=font("InterDisplay-Bold.otf", 150 if kind != "x" else 120), fill=GOLD)
+            d.text((pad, y), fig["value"], font=font("InterDisplay-Bold.otf", 150 if kind != "x" else 120), fill=accent)
             y += 170 if kind != "x" else 135
             lab_font, lab_lines = fit(d, fig["label"], "Inter-Regular.otf", 32, 22, text_w, 2)
             for line in lab_lines:
-                d.text((pad, y), line, font=lab_font, fill=WARM)
+                d.text((pad, y), line, font=lab_font, fill=soft)
                 y += int(lab_font.size * 1.3)
             y += 25
     for i, point in enumerate(spec.get("points", [])[:4], 1):
         p_font, p_lines = fit(d, point, "Inter-Regular.otf", 34 if kind != "x" else 30, 22, text_w - 60, 3)
-        d.text((pad, y), f"{i}", font=font("Inter-Bold.otf", 36), fill=GOLD)
+        d.text((pad, y), f"{i}", font=font("Inter-Bold.otf", 36), fill=accent)
         for line in p_lines:
-            d.text((pad + 60, y), line, font=p_font, fill="#FFFFFF")
+            d.text((pad + 60, y), line, font=p_font, fill=ink)
             y += int(p_font.size * 1.3)
         y += 14
     if spec.get("context") and kind != "x":
         c_font, c_lines = fit(d, spec["context"], "Inter-Regular.otf", 32, 22, text_w, 3)
         for line in c_lines:
-            d.text((pad, y), line, font=c_font, fill=WARM)
+            d.text((pad, y), line, font=c_font, fill=soft)
             y += int(c_font.size * 1.3)
         y += 20
     if spec.get("question"):
         q_font = font("Inter-SemiBold.otf", 38 if kind != "x" else 32)
         for line in wrap(d, SIGNATURE, q_font, text_w):
-            d.text((pad, y), line, font=q_font, fill=GOLD)
+            d.text((pad, y), line, font=q_font, fill=accent)
             y += int(q_font.size * 1.3)
     # Source and disclosure just above the band
     s_font, s_lines = fit(d, spec["source"], "Inter-Regular.otf", 24, 16, text_w, 2)
@@ -135,9 +140,9 @@ def render(spec, size, kind, shift=0):
     if y > sy - 10:
         raise ValueError(f"{kind}: content overflows into the source line; shorten the text.")
     for line in s_lines:
-        d.text((pad, sy), line, font=s_font, fill=WARM)
+        d.text((pad, sy), line, font=s_font, fill=soft)
         sy += 30
-    d.text((pad, sy + 4), DISCLOSURE, font=small, fill=WARM)
+    d.text((pad, sy + 4), DISCLOSURE, font=small, fill=soft)
     img.content_end = y
     img.source_top = H - band_h - 30 - 22 - len(s_lines) * 30 - (300 - band_h if kind == "story" else 0)
     return img
@@ -154,7 +159,7 @@ def main(spec_path, outdir):
             raise SystemExit(f"Missing {key}")
     out = Path(outdir)
     out.mkdir(parents=True, exist_ok=True)
-    base = f"{spec['date']}-{spec['edition']}-{spec['slug']}"
+    base = f"{spec['date']}-{spec['edition']}-{spec['slug']}" + (f"-{spec['variant']}" if spec.get("variant") else "")
     sizes = [("feed", (1080, 1350)), ("x", (1600, 900))] + ([("story", (1080, 1920))] if spec["edition"] == "ready" else [])
     written = []
     for kind, size in sizes:

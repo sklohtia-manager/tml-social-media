@@ -7,7 +7,7 @@ Never: post to LinkedIn or any channel other than the three in `ops/config.json`
 ## 0. Time and mode
 - Run `mcp__Buffer__get_account` and take `currentTime` (Melbourne, with offset). Today = that date.
 - **No catch-up:** if the current time is after the series' `lastCatchUp`, create today's edition as Buffer **drafts only** (never scheduled, never published), log it as "missed — draft only (no catch-up)", and notify the founder once. Never publish another day's content, and never publish a missed edition the next day.
-- **DRY RUN:** if the task message says DRY RUN, nothing is scheduled or published. Every post is created with `saveToDraft: true` and its text starts with `TEST DRAFT — DO NOT PUBLISH —`. Project logs get a row marked DRY RUN. The founder is not notified; report in the final response only.
+- **DRY RUN:** if the task message contains "MODE: DRY RUN", nothing is scheduled or published. Every post is created with `saveToDraft: true` and its text starts with `TEST DRAFT — DO NOT PUBLISH —`. Project logs get a row marked DRY RUN. The founder is not notified; report in the final response only.
 
 ## 1. Preflight (mandatory; nothing is created until it passes)
 1. `git clone --depth 1 https://github.com/sklohtia-manager/tml-social-media /home/claude/tml` (on failure retry twice, 20 s apart).
@@ -15,7 +15,7 @@ Never: post to LinkedIn or any channel other than the three in `ops/config.json`
 3. Read `policy/FINANCIAL_CONTENT_RULES.md`, `policy/FOUNDING_PRINCIPLES.md`, `policy/AUTHORISATIONS.md`, `policy/EDITORIAL_POLICY.md`, `brand/LOGO_USAGE.md` and `ops/config.json` from the clone.
 4. **Series log** (Projects tool): `project_read` the series log in `ops/config.json`. If it does not exist, create it with `project_write` (header row only). If it cannot be read or written, continue, but record the failure in the final report and notification.
 5. **Buffer:** `list_channels` for the organisation. Instagram, Facebook and X must be present, `isDisconnected: false` and `isLocked: false`. On an API error, wait 60 s and retry once. A channel that is still disconnected or locked is skipped, and the founder is notified ("authentication lost: <channel>"). The other channels continue.
-6. **Duplicates:** `list_posts` for the three channels created since 00:00 today (sent, scheduled, sending, draft, needs_approval). If a post of this series already exists today on a channel (its label or hashtag from `ops/config.json` in the text), create nothing on that channel. Today's earlier series' stories must not be repeated.
+6. **Duplicates:** `list_posts` for the three channels created since 00:00 today (sent, scheduled, sending, draft, needs_approval). If a post of this series already exists today on a channel (its label or hashtag from `ops/config.json` in the text), create nothing on that channel. **Ignore drafts whose text starts with `TEST DRAFT`**: they are dry-run artefacts and never block a real edition. Today's earlier series' stories must not be repeated.
 7. **Research sources:** confirm official sources can be read in this run. Use the Agent tool with `subagent_type: "web-fetch"` on one relevant primary page, for example the ABS or RBA release you intend to cite. If no primary source can be retrieved, the edition **cannot meet FE-01 (a)**: HOLD (drafts only) and notify "primary sources unreachable".
 
 ## 2. Research and verification
@@ -45,8 +45,10 @@ Never: post to LinkedIn or any channel other than the three in `ops/config.json`
 - **ALLOW** only if every check, every FE-01 condition (or the 3:15 PM authorisation) and every founding principle passes.
 
 ## 4. Images (approved method: hosted branded topic cards)
-- Choose the topic key in `ops/topic-cards.json` that matches the story ("explainer" if none fits). The image URLs are:
-  - feed (Instagram and Facebook): `https://raw.githubusercontent.com/sklohtia-manager/tml-social-media/main/images/cards/card-<edition>-<topic>-feed.jpg`;
+- Choose the topic key in `ops/topic-cards.json` that matches the story ("explainer" if none fits).
+- Each topic has three design variants: `""` (forest), `-v2` (charcoal) and `-v3` (warm white). **No repeats:** read the series log and use the variant of this topic that has not been used for the longest time. Never use the same topic and variant combination twice within 7 days in any series. If all three variants of the best topic were used in the last 7 days, choose the closest other topic that fits.
+- The image URLs are:
+  - feed (Instagram and Facebook): `https://raw.githubusercontent.com/sklohtia-manager/tml-social-media/main/images/cards/card-<edition>-<topic><variant>-feed.jpg`;
   - X: `…-x.jpg`.
 - Confirm both files exist in the clone. If they don't, it is a mandatory failure: drafts only, and notify.
 - altText: "Two Market Ledger <series label> card: <topic title>. General education only."
@@ -83,11 +85,13 @@ Never: post to LinkedIn or any channel other than the three in `ops/config.json`
 `project_read`, then `project_write` the full series log: one table row per date and edition (update the row rather than duplicating it). Columns:
 1. date;
 2. edition;
-3. headline;
-4. topic card;
-5. source URLs with release dates;
-6. classification;
-7. Instagram, Facebook and X post IDs with statuses;
-8. notes.
+3. outcome (PUBLISHED, SCHEDULED, HOLD-DRAFT, MISSED-DRAFT, DRY-RUN, FAILED or SKIPPED-DUPLICATE);
+4. headline;
+5. theme (ready series) or topic;
+6. card (topic and variant, e.g. `inflation-v2`);
+7. source URLs with publisher and release dates;
+8. classification;
+9. Instagram, Facebook and X post IDs with statuses;
+10. failures or notes.
 
-Keep the latest 60 rows.
+Keep the latest 120 rows. Write a row even when the run fails or skips (FAILED or SKIPPED, with the reason). This log is the persistent memory between runs; Buffer's post history is the second record.
