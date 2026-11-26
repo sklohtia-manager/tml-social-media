@@ -21,7 +21,7 @@ def main(argv=None):
         with store.connect() as db:
             for r in db.execute("SELECT key,state,local_time,attempts,last_error FROM items ORDER BY local_time"):
                 print(dict(r))
-        print(json.dumps({"dryRun": config.DRY_RUN, "livePlatforms": sorted(config.ENABLED_PLATFORMS),
+        print(json.dumps({"dryRun": config.DRY_RUN, "privateOnly": config.PRIVATE_ONLY, "livePlatforms": sorted(config.ENABLED_PLATFORMS),
                           "paused": config.pause_file().exists()}))
     elif cmd in ("pause", "resume"):
         path = config.pause_file(args[1] if len(args) > 1 else None)

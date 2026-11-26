@@ -6,6 +6,8 @@ STATE = Path(os.environ.get("TMLPUB_DIR", "/var/lib/tml-social"))
 SECRETS = Path(os.environ.get("TMLPUB_SECRETS", "/etc/tml-social"))
 REPO = Path(os.environ.get("TMLPUB_REPO", "/var/lib/tml-social/repo"))
 DRY_RUN = os.environ.get("TMLPUB_DRY_RUN", "1") != "0"          # dry run unless explicitly disabled
+# Owner gate (27 Nov 2026): until the owner approves the private upload test, only private test items may go live.
+PRIVATE_ONLY = os.environ.get("TMLPUB_PRIVATE_ONLY", "1") != "0"
 ENABLED_PLATFORMS = set(filter(None, os.environ.get("TMLPUB_PLATFORMS", "").split(",")))  # empty = none live
 ALERT_COMMAND = os.environ.get("TMLPUB_ALERT_COMMAND", "")       # e.g. an approved mail script; receives text on stdin
 TIMEZONE = "Australia/Melbourne"

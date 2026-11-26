@@ -92,7 +92,8 @@ def process(db, item, adapters, now):
     key, p = item["key"], item["platform"]
     if config.pause_file(p).exists():
         return "paused"
-    live = not config.DRY_RUN and p in config.ENABLED_PLATFORMS
+    private_test = json.loads(item["manifest"] or "{}").get("visibility") == "private"
+    live = not config.DRY_RUN and p in config.ENABLED_PLATFORMS and (private_test or not config.PRIVATE_ONLY)
     when = datetime.fromisoformat(item["scheduled_utc"]) if item["scheduled_utc"] else now
     state = item["state"]
     if state in ("approved", "retry_wait"):
@@ -155,6 +156,16 @@ def process(db, item, adapters, now):
             store.update(db, key, state="failed", last_error="platform rejected the media")
             alert(f"TML publisher: {p} rejected {key}.")
             return "failed"
+        if private_test:
+            if v.get("private_processed"):
+                store.update(db, key, state="private_verified", permalink=v.get("permalink") or item["permalink"], published_at=now.isoformat())
+                alert(f"TML publisher: private upload test {key} succeeded (video {item['remote_id']}, private). Owner review needed.")
+                return "private_verified"
+            if v.get("public") or v.get("privacy") not in (None, "private"):
+                store.update(db, key, state="needs_review", last_error=f"private test is not private (privacy={v.get('privacy')})")
+                alert(f"TML publisher: private test {key} is NOT private (privacy={v.get('privacy')}). Check YouTube Studio now.")
+                return "needs_review"
+            return "verify_pending"
         if v.get("public"):
             store.update(db, key, state="published_verified", permalink=v.get("permalink") or item["permalink"],
                          published_at=now.isoformat())

@@ -7,8 +7,8 @@ from contextlib import contextmanager
 from . import config
 
 STATES = {"draft", "needs_review", "approved", "queued", "uploading", "scheduled_remote", "published_verified",
-          "retry_wait", "blocked", "failed", "manual_pending", "manual_published", "expired"}
-FINAL = {"published_verified", "manual_published", "failed", "expired"}
+          "retry_wait", "blocked", "failed", "manual_pending", "manual_published", "expired", "private_verified"}
+FINAL = {"published_verified", "manual_published", "failed", "expired", "private_verified"}
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS items (

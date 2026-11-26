@@ -61,8 +61,9 @@ class YouTube:
         title = (item["title"] or "")[:100]
         description = (item["caption"] or "") + f"\n\nRef: {item['key']}"
         status = {"privacyStatus": "private", "selfDeclaredMadeForKids": False}
-        if item["scheduled_utc"]:
-            status["publishAt"] = item["scheduled_utc"]
+        private_test = json.loads(item["manifest"] or "{}").get("visibility") == "private"
+        if item["scheduled_utc"] and not private_test:
+            status["publishAt"] = item["scheduled_utc"]  # private test: stays private, never scheduled to go public
         meta = {"snippet": {"title": title, "description": description[:5000], "categoryId": "27"}, "status": status}
         try:
             _, headers = self.http.call("POST", UPLOAD_URL + "?uploadType=resumable&part=snippet,status",
@@ -93,5 +94,6 @@ class YouTube:
             return {"exists": False}
         st = items[0]["status"]
         return {"exists": True, "privacy": st.get("privacyStatus"), "upload": st.get("uploadStatus"),
+                "private_processed": st.get("privacyStatus") == "private" and st.get("uploadStatus") == "processed",
                 "public": st.get("privacyStatus") == "public" and st.get("uploadStatus") == "processed",
                 "scheduled": bool(st.get("publishAt")), "rejected": st.get("uploadStatus") in ("rejected", "failed")}

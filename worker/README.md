@@ -36,3 +36,9 @@ After each publishing deadline (+10 minutes, within 40 minutes) `run` checks the
 
 ## Dry-run install on the VPS
 See `ops/VPS_DRY_RUN_INSTALL.md`.
+
+## Private-only gate and the private upload test (27 Nov 2026)
+`TMLPUB_PRIVATE_ONLY=1` (the default) means that even with `TMLPUB_DRY_RUN=0`, only manifests marked `"visibility": "private"` (with a `TML-TEST-` content ID, YouTube only) are uploaded. They are uploaded as private, with no `publishAt`, and end in `private_verified`. Public automated publishing additionally needs `TMLPUB_PRIVATE_ONLY=0`, which is only set after the owner approves the private test. See `ops/PRIVATE_UPLOAD_TEST.md`.
+
+## Token revocation procedure (privacy policy commitment)
+The daily `health` run detects a revoked or failing YouTube token and raises an alert. Within 7 days, run `sudo shred -u /etc/tml-social/youtube.json` and `tmlpub.cli pause youtube`. Do the same when the tool is retired or on request. Stored YouTube video data is refreshed or deleted within 30 days automatically (`refresh_youtube_data`).

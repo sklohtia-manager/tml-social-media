@@ -12,7 +12,7 @@ rm -rf /opt/tml-social/worker.new && cp -r "$SRC" /opt/tml-social/worker.new && 
 if [ ! -d /var/lib/tml-social/repo/.git ]; then
   sudo -u tmlsocial git clone --depth 1 https://github.com/sklohtia-manager/tml-social-media /var/lib/tml-social/repo
 fi
-[ -f /etc/tml-social/worker.env ] || printf 'TMLPUB_DRY_RUN=1\nTMLPUB_PLATFORMS=\nTMLPUB_ALERT_COMMAND=\n' > /etc/tml-social/worker.env
+[ -f /etc/tml-social/worker.env ] || printf 'TMLPUB_DRY_RUN=1\nTMLPUB_PRIVATE_ONLY=1\nTMLPUB_PLATFORMS=\nTMLPUB_ALERT_COMMAND=\n' > /etc/tml-social/worker.env
 chown root:tmlsocial /etc/tml-social/worker.env && chmod 640 /etc/tml-social/worker.env
 cp "$SRC"/systemd/tml-social*.service "$SRC"/systemd/tml-social*.timer /etc/systemd/system/
 systemctl daemon-reload

@@ -59,7 +59,8 @@ class WorkerTests(unittest.TestCase):
         (self.repo / "videos").mkdir()
         self.video = self.repo / "videos" / "ep02.mp4"
         self.video.write_bytes(b"fake mp4 bytes")
-        self.orig = (config.STATE, config.DRY_RUN, config.ENABLED_PLATFORMS, config.ALERT_COMMAND)
+        self.orig = (config.STATE, config.DRY_RUN, config.ENABLED_PLATFORMS, config.ALERT_COMMAND, config.PRIVATE_ONLY)
+        config.PRIVATE_ONLY = False
         config.STATE = root / "state"
         config.DRY_RUN = False
         config.ENABLED_PLATFORMS = {"youtube", "youtube_shorts", "instagram_reels", "facebook_reels"}
@@ -67,7 +68,7 @@ class WorkerTests(unittest.TestCase):
         worker.alert.__defaults__[0].clear()
 
     def tearDown(self):
-        config.STATE, config.DRY_RUN, config.ENABLED_PLATFORMS, config.ALERT_COMMAND = self.orig
+        config.STATE, config.DRY_RUN, config.ENABLED_PLATFORMS, config.ALERT_COMMAND, config.PRIVATE_ONLY = self.orig
         self.tmp.cleanup()
 
     def manifest(self, cid="TML-YT-003", publish=NOW, targets=("youtube",), approval=True, caption="Inflation explained.", **extra):
@@ -202,6 +203,42 @@ class WorkerTests(unittest.TestCase):
         fake2 = Fake()
         worker.run_once(self.repo, adapters=self.adapters(fake2), now=NOW + timedelta(minutes=5))
         self.assertFalse([u for m, u in fake2.calls if "upload/youtube" in u])
+
+    def test_private_only_gate_blocks_public_items_but_runs_private_test(self):
+        config.PRIVATE_ONLY = True
+        self.manifest()  # an ordinary (public) approved video
+        self.manifest(cid="TML-TEST-PRIVATE-001", targets=("youtube_shorts",), visibility="private")
+        fake = Fake()
+        fake.public = False
+        out = worker.run_once(self.repo, adapters=self.adapters(fake), now=NOW)
+        self.assertEqual(out["results"]["TML-YT-003|youtube|default"], "dry_run", "public publishing stays off")
+        uploads = [c for c in fake.calls if "upload/youtube" in c[1] and c[0] == "POST"]
+        self.assertEqual(len(uploads), 1, "only the private test is uploaded")
+        item = self.state("TML-TEST-PRIVATE-001|youtube_shorts|default")
+        self.assertEqual(item["state"], "private_verified")
+        self.assertIn("private upload test", (config.STATE / "alerts.log").read_text())
+
+    def test_private_test_never_sets_publish_time_and_flags_non_private(self):
+        config.PRIVATE_ONLY = True
+        self.manifest(cid="TML-TEST-PRIVATE-002", targets=("youtube",), visibility="private")
+        fake = Fake()  # this fake reports the video as public
+        bodies = []
+        orig = fake.__call__
+        def spy(method, url, headers, body):
+            if "upload/youtube" in url and method == "POST":
+                bodies.append(body)
+            return orig(method, url, headers, body)
+        out = worker.run_once(self.repo, adapters=self.adapters(spy), now=NOW)
+        self.assertNotIn(b"publishAt", bodies[0])
+        self.assertIn(b'"privacyStatus": "private"', bodies[0])
+        self.assertEqual(self.state("TML-TEST-PRIVATE-002|youtube|default")["state"], "needs_review")
+
+    def test_private_test_rules(self):
+        self.manifest(cid="TML-YT-009", visibility="private")
+        self.manifest(cid="TML-TEST-PRIVATE-003", targets=("instagram_reels",), visibility="private")
+        out = worker.run_once(self.repo, adapters=self.adapters(Fake()), now=NOW)
+        self.assertTrue(any("TML-TEST- content ID" in p for p in out["problems"]))
+        self.assertTrue(any("YouTube only" in p for p in out["problems"]))
 
     def test_missed_window_is_not_published_late(self):
         self.manifest(publish=NOW - timedelta(hours=5))

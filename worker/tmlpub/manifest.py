@@ -35,6 +35,15 @@ def validate(doc, repo):
                              title=doc.get("title"), remote_id=target.get("remoteId"), permalink=target.get("permalink"),
                              published_at=target.get("publishedAt"), manifest=json.dumps(doc)))
         return rows, errors
+    private_test = doc.get("visibility") == "private"
+    if private_test:
+        # A private upload test: own content ID (so the real video's later publication is never blocked), YouTube only.
+        if not cid.startswith("TML-TEST-"):
+            return [], [f"{cid}: a private test must use a TML-TEST- content ID"]
+        if {t.get("platform") for t in doc.get("targets", [])} - {"youtube", "youtube_shorts"}:
+            return [], [f"{cid}: a private test may target YouTube only"]
+    elif doc.get("visibility") not in (None, "public"):
+        return [], [f"{cid}: unknown visibility {doc.get('visibility')!r}"]
     approval = doc.get("approval") or {}
     if approval.get("owner") is not True or not approval.get("approvedAt") or not approval.get("approvedBy"):
         return [], [f"{cid}: no owner approval recorded"]
