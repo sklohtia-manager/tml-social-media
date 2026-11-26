@@ -50,12 +50,12 @@ def default_adapters(http=None):
 def sync(db, repo):
     created, problems = 0, []
     # Manual (already-posted) records load first, so they always block duplicates of the same content.
-    for path, doc in sorted(manifest.load_all(repo), key=lambda pd: not pd[1].get("manual")):
+    for path, doc, base in sorted(manifest.load_all(repo), key=lambda pd: not pd[1].get("manual")):
         if "_error" in doc:
             problems.append(f"{path.name}: invalid JSON")
             continue
         try:
-            rows, errors = manifest.validate(doc, repo)
+            rows, errors = manifest.validate(doc, base)
         except Exception as e:  # one malformed manifest must never stop the queue; it is reported and skipped
             rows, errors = [], [f"malformed manifest ({type(e).__name__}: {e})"]
         problems += [f"{path.name}: {e}" for e in errors]

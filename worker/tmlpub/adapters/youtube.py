@@ -64,7 +64,9 @@ class YouTube:
         private_test = json.loads(item["manifest"] or "{}").get("visibility") == "private"
         if item["scheduled_utc"] and not private_test:
             status["publishAt"] = item["scheduled_utc"]  # private test: stays private, never scheduled to go public
-        meta = {"snippet": {"title": title, "description": description[:5000], "categoryId": "27"}, "status": status}
+        language = json.loads(item["manifest"] or "{}").get("language", "en")
+        meta = {"snippet": {"title": title, "description": description[:5000], "categoryId": "27",
+                            "defaultLanguage": language, "defaultAudioLanguage": language}, "status": status}
         try:
             _, headers = self.http.call("POST", UPLOAD_URL + "?uploadType=resumable&part=snippet,status",
                                         {**self._auth(), "X-Upload-Content-Length": str(size), "X-Upload-Content-Type": "video/mp4"},

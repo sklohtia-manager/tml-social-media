@@ -5,8 +5,11 @@
 ## Cadence (owner policy)
 Initially 2–3 Shorts or Reels a week, plus one longer educational video when ready. Reviewed after two weeks of real engagement data.
 
+## Languages
+English and Hindi. Owner production target: at least one Hindi video a day, subject to quality and approval. A suggested Hindi Shorts slot is 6:30 PM Melbourne (1:00 PM IST); this needs owner approval. The three daily image editions are unchanged.
+
 ## Per video
-1. **Media Studio (Codex)** exports a finished video to the specification (`ops/MEDIA_STUDIO_HANDOFF.md`).
+1. **Media Studio (Codex)** exports a finished video to the specification (`ops/MEDIA_STUDIO_HANDOFF.md`) on the Mac. It is never committed to Git. After approval it is staged privately on the VPS with `worker/tools/stage_video.sh`.
 2. **Claude** runs the policy and compliance checks (no advice, trading or fast-money framing; sources for any figure), the format check, the duplicate check against the manual ledger, and proposes a publishing time and captions.
 3. **Owner** watches the exact file and replies "approve <contentId> for <date/time>". Claude records the approval. Any edit invalidates it.
 4. **YouTube and Shorts (VPS worker, official API):**

@@ -5,6 +5,11 @@ from pathlib import Path
 STATE = Path(os.environ.get("TMLPUB_DIR", "/var/lib/tml-social"))
 SECRETS = Path(os.environ.get("TMLPUB_SECRETS", "/etc/tml-social"))
 REPO = Path(os.environ.get("TMLPUB_REPO", "/var/lib/tml-social/repo"))
+# Unpublished videos never go in the public repository. Media Studio exports are copied securely into this private
+# staging directory on the VPS: <STAGING>/<contentId>/{video.mp4, manifest.json, captions.srt, thumbnail.jpg}.
+STAGING = Path(os.environ.get("TMLPUB_STAGING", str(STATE / "incoming")))
+ALLOW_REPO_MEDIA = os.environ.get("TMLPUB_ALLOW_REPO_MEDIA") == "1"   # tests only; production refuses repo media
+LANGUAGES = {"en", "hi"}
 DRY_RUN = os.environ.get("TMLPUB_DRY_RUN", "1") != "0"          # dry run unless explicitly disabled
 # Owner gate (27 Nov 2026): until the owner approves the private upload test, only private test items may go live.
 PRIVATE_ONLY = os.environ.get("TMLPUB_PRIVATE_ONLY", "1") != "0"

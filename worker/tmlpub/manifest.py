@@ -44,6 +44,12 @@ def validate(doc, repo):
             return [], [f"{cid}: a private test may target YouTube only"]
     elif doc.get("visibility") not in (None, "public"):
         return [], [f"{cid}: unknown visibility {doc.get('visibility')!r}"]
+    if doc.get("_source") == "repo" and not config.ALLOW_REPO_MEDIA:
+        return [], [f"{cid}: unpublished media must be staged privately on the server, not committed to the public repository"]
+    if doc.get("_source") == "staging" and doc.get("_folder") != cid:
+        return [], [f"{cid}: staging folder name must equal the contentId"]
+    if doc.get("language", "en") not in config.LANGUAGES:
+        return [], [f"{cid}: language must be one of {sorted(config.LANGUAGES)}"]
     approval = doc.get("approval") or {}
     if approval.get("owner") is not True or not approval.get("approvedAt") or not approval.get("approvedBy"):
         return [], [f"{cid}: no owner approval recorded"]
@@ -53,8 +59,10 @@ def validate(doc, repo):
     text = " ".join(str(doc.get(k, "")) for k in ("title", "caption", "description"))
     if HOLD.search(text):
         errors.append(f"{cid}: held wording ({HOLD.search(text).group(0)})")
-    asset = repo / doc.get("asset", "")
-    if not doc.get("asset") or not asset.is_file():
+    asset = (repo / doc.get("asset", "")).resolve()
+    if doc.get("asset") and repo.resolve() not in asset.parents:
+        errors.append(f"{cid}: asset path leaves its folder")
+    elif not doc.get("asset") or not asset.is_file():
         errors.append(f"{cid}: asset missing")
     elif sha256(asset) != doc.get("assetSha256"):
         errors.append(f"{cid}: asset checksum does not match the approved file")
@@ -84,11 +92,24 @@ def validate(doc, repo):
     return rows, errors
 
 
-def load_all(repo):
+def load_all(repo, staging=None):
+    """(path, doc, base) for public-repo records (queue/**) and private staged exports (<staging>/<id>/manifest.json)."""
     docs = []
     for path in sorted((repo / "queue").rglob("*.json")):
         try:
-            docs.append((path, json.loads(path.read_text())))
+            doc = json.loads(path.read_text())
+            doc["_source"] = "repo"
         except ValueError as e:
-            docs.append((path, {"_error": str(e)}))
+            doc = {"_error": str(e)}
+        docs.append((path, doc, repo))
+    staging = staging if staging is not None else config.STAGING
+    if staging.is_dir():
+        for path in sorted(staging.glob("*/manifest.json")):
+            try:
+                doc = json.loads(path.read_text())
+                doc["_source"] = "staging"
+                doc["_folder"] = path.parent.name
+            except ValueError as e:
+                doc = {"_error": str(e)}
+            docs.append((path, doc, path.parent))
     return docs

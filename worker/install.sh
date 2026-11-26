@@ -6,6 +6,7 @@ set -euo pipefail
 SRC="$(cd "$(dirname "$0")" && pwd)"
 id tmlsocial >/dev/null 2>&1 || useradd --system --home /var/lib/tml-social --shell /usr/sbin/nologin tmlsocial
 install -d -o tmlsocial -g tmlsocial -m 750 /var/lib/tml-social
+install -d -o tmlsocial -g tmlsocial -m 750 /var/lib/tml-social/incoming   # private video staging (never in Git)
 install -d -o root -g tmlsocial -m 750 /etc/tml-social
 install -d -o root -g root -m 755 /opt/tml-social
 rm -rf /opt/tml-social/worker.new && cp -r "$SRC" /opt/tml-social/worker.new && rm -rf /opt/tml-social/worker && mv /opt/tml-social/worker.new /opt/tml-social/worker

@@ -105,3 +105,15 @@ Audit existing social media jobs and today's failures, reconcile manual posts, i
    - credentials are never in Git or chat.
 4. **Weekly report** adds a website and search section: Search Console impressions, clicks, CTR, position, queries, indexed pages and sitemap; social → website referrals; and legal/SEO page availability. Each metric shows its source or "unavailable (reason)". Never estimate. Pre-launch noindex means zero search traffic is expected. See `ops/SEARCH_AND_SEO_REPORTING.md`.
 5. **Indexing:** beta, private dashboards, founder information and private financial data are never indexable. Public indexing is switched on only after an approved public launch.
+
+
+## Owner decisions: final YouTube and Google configuration (27 November 2026)
+1. **Policy contact:** contact@twomarketledger.com. It is not published until the owner confirms the mailbox works.
+2. **Legal pages:** Option B only (three static legal pages on production). Production is modified only after final owner approval, with Claude Code's verified server location, log retention and security facts.
+3. **Media Studio** (`~/Documents/Projects/TML-Media-Studio`, owned by Codex) produces English and Hindi videos. Do not recreate or duplicate it.
+   - Export contract: `ops/MEDIA_STUDIO_HANDOFF.md`.
+   - Unique IDs: `TML-<EN|HI>-<YYYYMMDD>-<NN>`.
+   - Sources, language, captions (burned in), thumbnail and status in the manifest.
+4. **Unpublished videos never go into the public repository.** They are staged privately on the VPS over SSH, and the worker refuses videos committed to the repository.
+5. **Public automated YouTube publishing stays off** (`TMLPUB_PRIVATE_ONLY=1`) until one private upload test passes and the owner approves activation.
+6. **Hindi target:** at least one Hindi video a day, subject to quality and approval. The three daily image schedules (9:30, 3:15, 7:30) are unchanged.

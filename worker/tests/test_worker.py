@@ -61,6 +61,9 @@ class WorkerTests(unittest.TestCase):
         self.video.write_bytes(b"fake mp4 bytes")
         self.orig = (config.STATE, config.DRY_RUN, config.ENABLED_PLATFORMS, config.ALERT_COMMAND, config.PRIVATE_ONLY)
         config.PRIVATE_ONLY = False
+        self.orig_media = (config.ALLOW_REPO_MEDIA, config.STAGING)
+        config.ALLOW_REPO_MEDIA = True
+        config.STAGING = root / "incoming"
         config.STATE = root / "state"
         config.DRY_RUN = False
         config.ENABLED_PLATFORMS = {"youtube", "youtube_shorts", "instagram_reels", "facebook_reels"}
@@ -69,6 +72,7 @@ class WorkerTests(unittest.TestCase):
 
     def tearDown(self):
         config.STATE, config.DRY_RUN, config.ENABLED_PLATFORMS, config.ALERT_COMMAND, config.PRIVATE_ONLY = self.orig
+        config.ALLOW_REPO_MEDIA, config.STAGING = self.orig_media
         self.tmp.cleanup()
 
     def manifest(self, cid="TML-YT-003", publish=NOW, targets=("youtube",), approval=True, caption="Inflation explained.", **extra):
@@ -239,6 +243,49 @@ class WorkerTests(unittest.TestCase):
         out = worker.run_once(self.repo, adapters=self.adapters(Fake()), now=NOW)
         self.assertTrue(any("TML-TEST- content ID" in p for p in out["problems"]))
         self.assertTrue(any("YouTube only" in p for p in out["problems"]))
+
+    def stage(self, cid, folder=None, **extra):
+        d = config.STAGING / (folder or cid)
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "video.mp4").write_bytes(b"staged private bytes")
+        doc = {"contentId": cid, "title": "Hindi explainer", "caption": "Education only.", "asset": "video.mp4",
+               "assetSha256": hashlib.sha256(b"staged private bytes").hexdigest(), "publishAt": NOW.isoformat(),
+               "targets": [{"platform": "youtube_shorts"}], "language": "hi",
+               "approval": {"owner": True, "approvedBy": "Founder", "approvedAt": "2026-11-30", "narrationApproved": True,
+                            "rightsVerified": True, "captionsChecked": True, "playbackChecked": True}}
+        doc.update(extra)
+        (d / "manifest.json").write_text(json.dumps(doc))
+
+    def test_production_refuses_media_from_the_public_repository(self):
+        config.ALLOW_REPO_MEDIA = False
+        self.manifest()
+        out = worker.run_once(self.repo, adapters=self.adapters(Fake()), now=NOW)
+        self.assertEqual(out["created"], 0)
+        self.assertTrue(any("staged privately" in p for p in out["problems"]), out["problems"])
+
+    def test_staged_private_export_uploads_with_language(self):
+        config.ALLOW_REPO_MEDIA = False
+        self.stage("TML-HI-001")
+        bodies = []
+        fake = Fake()
+        def spy(method, url, headers, body):
+            if "upload/youtube" in url and method == "POST":
+                bodies.append(json.loads(body))
+            return fake(method, url, headers, body)
+        out = worker.run_once(self.repo, adapters=self.adapters(spy), now=NOW)
+        self.assertEqual(self.state("TML-HI-001|youtube_shorts|default")["state"], "published_verified", out)
+        self.assertEqual(bodies[0]["snippet"]["defaultAudioLanguage"], "hi")
+
+    def test_staging_rules(self):
+        config.ALLOW_REPO_MEDIA = False
+        self.stage("TML-HI-002", folder="wrong-folder")
+        self.stage("TML-HI-003", asset="../TML-HI-002/video.mp4")
+        self.stage("TML-HI-004", language="fr")
+        out = worker.run_once(self.repo, adapters=self.adapters(Fake()), now=NOW)
+        text = " ".join(out["problems"])
+        for needle in ("folder name must equal", "leaves its folder", "language must be"):
+            self.assertIn(needle, text)
+        self.assertEqual(out["created"], 0)
 
     def test_missed_window_is_not_published_late(self):
         self.manifest(publish=NOW - timedelta(hours=5))
