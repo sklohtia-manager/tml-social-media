@@ -34,3 +34,23 @@ For each development, say what happened and its potential impact on households, 
 - tomorrow's schedule.
 
 A draft or a successful API call is not reported as published: only status "sent" with no error counts.
+
+## Audience-growth standards (owner priority, 27 Nov 2026)
+- **Hook first:** start every caption with one factual, specific line that says why it matters to a household, such as "Your $100 now buys about $95 of last year's shopping." No clickbait, questions that mislead, or ALL CAPS.
+- **Headline on the card or graphic:** short (≤ 8 words where possible), concrete, and with the number and its period when there is one.
+- **Platform fit:**
+  - Instagram: hook, 3–5 short paragraphs or numbered points, and a save-worthy takeaway line;
+  - Facebook: a slightly longer plain-language explainer with the source link;
+  - X: one fact, one line of context and the source link.
+- **Hashtags:** 5–8 relevant ones on Instagram, mixing broad (#FinancialLiteracy) and specific (#AustralianEconomy, #RBA, #Inflation); 3–5 on Facebook; at most 2 on X. Never trending-bait.
+- **Close** with the educational line "Learn. Understand. Stay Informed." and the disclosure.
+- **Consistency:** publish at the approved times every day. A late post is never better than a held one.
+- **Referrals:** once the public website is live and approved, add the relevant website page link on Facebook and X.
+
+## Weekly performance report (every Sunday Evening run)
+After the daily summary on Sundays, send one weekly report covering Monday to Sunday:
+- `get_aggregated_post_metrics` for Instagram, Facebook and X, with impressions, reach, engagements, reactions, comments, shares, saves, link clicks and follower change wherever Buffer returns them;
+- the top 3 posts by engagement rate;
+- what to try next week: hooks and formats only, without changing the schedule.
+
+Mark any metric that isn't returned as "unavailable", and never estimate. Add YouTube views and watch time from the VPS worker report when the worker is live.

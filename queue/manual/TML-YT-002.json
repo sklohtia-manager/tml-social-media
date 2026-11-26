@@ -1,0 +1,15 @@
+{
+ "contentId": "TML-YT-002",
+ "manual": true,
+ "title": "Same money. Less buying power. (Financial Education, Episode 01)",
+ "note": "Published manually by the owner on 26–27 Nov 2026 (Melbourne). Never repost. Platforms without a link are recorded as manual_pending until the owner supplies the link.",
+ "targets": [
+  {"platform": "facebook_reels", "remoteId": "buffer:6b08546c9a03edd6268d4625", "publishedAt": "2026-11-26T15:45:29Z"},
+  {"platform": "x", "remoteId": "buffer:6b085548d29aee15ba0c9b39", "publishedAt": "2026-11-26T15:50:22Z"},
+  {"platform": "instagram_reels"},
+  {"platform": "youtube_shorts"},
+  {"platform": "youtube"},
+  {"platform": "tiktok_manual"},
+  {"platform": "whatsapp_manual"}
+ ]
+}

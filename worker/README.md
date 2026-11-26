@@ -1,0 +1,32 @@
+# TML publishing worker (VPS)
+
+An isolated service for **owner-approved video uploads**:
+- YouTube and Shorts;
+- Instagram Reels and Facebook Reels.
+
+It runs independently of the Mac, Claude Desktop, Chrome and Claude plan limits.
+
+The Buffer cloud routines keep the daily image editions and X. The worker never touches them.
+
+- **Queue:** JSON manifests in `queue/`, committed to this repository.
+  - A manifest is eligible only with the owner's approval and all four release-gate confirmations: narration, rights, captions and playback.
+  - The asset's SHA-256 must match the approved file.
+  - Manual or already-posted records (`"manual": true`) permanently block re-posting the same content on that platform.
+- **Durable state:** SQLite at `/var/lib/tml-social/queue.sqlite3`. The idempotency key is content|platform|account. The states follow the owner policy.
+- **Safety:**
+  - dry run by default, and live only for platforms listed in `TMLPUB_PLATFORMS`;
+  - global `PAUSE` and per-platform `PAUSE.<platform>` files (`tmlpub.cli pause youtube`);
+  - lock file;
+  - bounded retries with backoff, jitter and Retry-After;
+  - an uncertain outcome blocks for review instead of retrying;
+  - nothing is ever published more than 2 hours late;
+  - no deletion.
+- **Verification:** an item counts as `published_verified` only when the platform reports it public (YouTube: public and processed; Instagram: permalink; Facebook: video ready with permalink). An upload alone is not publication.
+- **Monitoring:**
+  - `tmlpub.cli health` checks tokens and permissions daily, with an alert on failure;
+  - `tmlpub.cli report --send` sends the daily report;
+  - alerts go through `TMLPUB_ALERT_COMMAND` (for example the approved exception-email script) and `alerts.log`.
+- **Secrets:** `/etc/tml-social/youtube.json` (client_id, client_secret, refresh_token) and `/etc/tml-social/meta.json` (page_id, ig_user_id, page_token). Owner root:tmlsocial, mode 640. They never go in Git, chat or logs.
+- **Tests:** `cd worker && python3 -B -m unittest discover -s tests` (fake platform API, no network).
+
+Owner setup guide: `ops/VIDEO_PLATFORM_SETUP.md`. Installation needs owner approval: `sudo bash worker/install.sh`. It stays disabled and in dry run.

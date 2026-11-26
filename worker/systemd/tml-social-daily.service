@@ -1,0 +1,18 @@
+[Unit]
+Description=TML publishing worker: token/health check and daily report
+
+[Service]
+Type=oneshot
+User=tmlsocial
+Group=tmlsocial
+Environment=TMLPUB_DIR=/var/lib/tml-social
+Environment=TMLPUB_SECRETS=/etc/tml-social
+EnvironmentFile=-/etc/tml-social/worker.env
+WorkingDirectory=/opt/tml-social/worker
+ExecStart=/usr/bin/python3 -B -m tmlpub.cli health
+ExecStart=/usr/bin/python3 -B -m tmlpub.cli report --send
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/lib/tml-social
+ReadOnlyPaths=/etc/tml-social

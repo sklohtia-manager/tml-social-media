@@ -1,0 +1,9 @@
+[Unit]
+Description=Daily TML publishing health check and report (20:30 Melbourne)
+
+[Timer]
+OnCalendar=*-*-* 20:30:00 Australia/Melbourne
+Persistent=true
+
+[Install]
+WantedBy=timers.target

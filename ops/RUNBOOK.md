@@ -19,6 +19,14 @@ Never: post to LinkedIn or any channel other than the three in `ops/config.json`
 7. **Duplicates:** `list_posts` for the three channels created since 00:00 today (sent, scheduled, sending, draft, needs_approval). If a post of this series already exists today on a channel (its label or hashtag from `ops/config.json` in the text), create nothing on that channel. **Ignore drafts whose text starts with `TEST DRAFT`**: they are dry-run artefacts and never block a real edition. Today's earlier series' stories must not be repeated.
 8. **Research sources:** confirm official sources can be read in this run. Use the Agent tool with `subagent_type: "web-fetch"` on one relevant primary page, for example the ABS or RBA release you intend to cite. If no primary source can be retrieved, the edition **cannot meet FE-01 (a)**: HOLD (drafts only) and notify "primary sources unreachable".
 
+## 1A. Videos (manual ledger)
+- Read `queue/manual/*.json` and `queue/*.json`. Never post any video yourself.
+- Never post a video or clip of a contentId listed there.
+- Image editions are the routines' job; videos are the VPS worker's job (`worker/`), so nothing can be published twice.
+- **Approved videos for X:** if a non-manual manifest in `queue/` lists target `x`, carries owner approval and its `publishAt` falls inside this run's publish window:
+  1. schedule it once in Buffer (X channel) as a video asset from its raw GitHub URL, with "Ref: <contentId>" in the text;
+  2. before creating it, check `list_posts` for that Ref, and never create a second one.
+
 ## 2. Research and verification
 - Use WebSearch for discovery only. Every figure, date and claim must be confirmed on the **primary official page**, fetched in this run with the web-fetch subagent: RBA, ABS, Treasury, ATO, ASIC, APRA; RBI, MoSPI, Ministry of Finance, PIB, SEBI; Federal Reserve, BLS, BEA; OECD, IMF, World Bank, IEA; official government announcements; or company releases and filings.
 - For each fact, record the publisher, URL, period, release date and retrieval time.

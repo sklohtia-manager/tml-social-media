@@ -45,3 +45,15 @@ A daily financial-education, brand-awareness and preparedness series. Each post 
 - Inspect the image.
 - SendUserFile it (status proactive) with the caption "3:15 PM: <headline>" plus a 1–2 line WhatsApp caption ending with the signature question.
 - Send it every day the content is ALLOW, including a missed edition saved as drafts (then add "(today's posts are drafts, not published)" to the caption). If the edition is HOLD, send nothing; the notification covers it.
+
+## Audience-growth standards (owner priority, 27 Nov 2026)
+- **Hook first:** start every caption with one factual, specific line that says why it matters to a household, such as "Your $100 now buys about $95 of last year's shopping." No clickbait, questions that mislead, or ALL CAPS.
+- **Headline on the card or graphic:** short (≤ 8 words where possible), concrete, and with the number and its period when there is one.
+- **Platform fit:**
+  - Instagram: hook, 3–5 short paragraphs or numbered points, and a save-worthy takeaway line;
+  - Facebook: a slightly longer plain-language explainer with the source link;
+  - X: one fact, one line of context and the source link.
+- **Hashtags:** 5–8 relevant ones on Instagram, mixing broad (#FinancialLiteracy) and specific (#AustralianEconomy, #RBA, #Inflation); 3–5 on Facebook; at most 2 on X. Never trending-bait.
+- **Close** with the educational line "Learn. Understand. Stay Informed." and the disclosure.
+- **Consistency:** publish at the approved times every day. A late post is never better than a held one.
+- **Referrals:** once the public website is live and approved, add the relevant website page link on Facebook and X.

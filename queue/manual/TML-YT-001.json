@@ -1,0 +1,9 @@
+{
+ "contentId": "TML-YT-001",
+ "manual": true,
+ "title": "Two Market Ledger channel introduction",
+ "note": "Existing owner video. Never repost. Links to be supplied by the owner.",
+ "targets": [
+  {"platform": "youtube"}, {"platform": "youtube_shorts"}, {"platform": "instagram_reels"}, {"platform": "facebook_reels"}, {"platform": "x"}, {"platform": "tiktok_manual"}
+ ]
+}

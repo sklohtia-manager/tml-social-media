@@ -54,3 +54,27 @@ Daily summary: due, published verified with links, failed, blocked, manual pendi
 
 ## First action when loaded
 Audit existing social media jobs and today's failures, reconcile manual posts, identify blockers and propose changes. Install this skill at .claude/skills/tml-social-media/SKILL.md and add a short mandatory reference to existing CLAUDE.md without overwriting other rules. Ensure scheduled jobs explicitly load the policy. Deliver incident report, platform readiness matrix, deployment plan and owner approval checklist before enabling new public automation.
+
+## Owner decisions (27 November 2026; permanent until the owner changes them)
+1. **Schedule retained (Melbourne local time, IANA Australia/Melbourne):**
+   - 9:30 AM Morning Market Brief (The Ledger Morning);
+   - 3:15 PM Ready for Tomorrow;
+   - 7:30 PM Evening Market Recap.
+
+   Preparation runs stay at 9:00 AM, 2:30 PM and 7:00 PM in the existing Claude cloud routines. The 07:30/12:30/19:00 proposal above is **not** adopted.
+2. **Channels:** Facebook, Instagram and X through Buffer, which stays for image posts and X. LinkedIn deferred. WhatsApp Status manual: the daily 3:15 PM vertical image is sent to the owner.
+3. **VPS publishing service approved for development** (`worker/`).
+   - Owner-approved video uploads to YouTube, YouTube Shorts, Instagram Reels and Facebook Reels through official APIs.
+   - Durable queue, idempotency, bounded retries, verification, alerts, token monitoring, pause switches and a dry-run default.
+   - **Not live until integration tests pass and the owner approves.**
+   - It never posts what the routines post (image editions, X), and the routines never post videos through the worker.
+4. **Videos:**
+   - Every video needs owner approval before scheduled publication (the release gate in the manifest).
+   - Never repost TML-YT-001 or TML-YT-002; manual records are in `queue/manual/`.
+   - TikTok stays manual until a compliant audited integration exists.
+5. **Growth is a high priority:** strong factual hooks, branded mobile-readable graphics, short animated education videos (owner-approved), platform-specific captions, relevant hashtags, consistent times and website referrals once the public site is live. Neutral and factual only: no misleading claims, recommendations or unverified forecasts.
+6. **Reporting:**
+   - a daily publication summary (Evening run);
+   - a weekly performance report every Sunday (Evening run), using real Buffer and platform analytics only;
+   - metrics that aren't available are reported as unavailable and never estimated.
+7. **No paid APIs or subscriptions, no new expenditure.** No changes to the production website, the private investment dashboard or founder credentials.

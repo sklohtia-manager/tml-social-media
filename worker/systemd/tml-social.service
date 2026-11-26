@@ -1,0 +1,25 @@
+[Unit]
+Description=Two Market Ledger publishing worker (one cycle)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=tmlsocial
+Group=tmlsocial
+Environment=TMLPUB_DIR=/var/lib/tml-social
+Environment=TMLPUB_SECRETS=/etc/tml-social
+Environment=TMLPUB_REPO=/var/lib/tml-social/repo
+# Live publishing stays off until the owner approves: set TMLPUB_DRY_RUN=0 and list platforms in TMLPUB_PLATFORMS.
+EnvironmentFile=-/etc/tml-social/worker.env
+WorkingDirectory=/opt/tml-social/worker
+ExecStartPre=/usr/bin/git -C /var/lib/tml-social/repo pull --ff-only --quiet
+ExecStart=/usr/bin/python3 -B -m tmlpub.cli run
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ReadWritePaths=/var/lib/tml-social
+ReadOnlyPaths=/etc/tml-social
+MemoryMax=512M
+TimeoutStartSec=45min
