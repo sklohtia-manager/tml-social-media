@@ -6,7 +6,7 @@ Never: post to LinkedIn or any channel other than the three in `ops/config.json`
 
 ## 0. Time and mode
 - Run `mcp__Buffer__get_account` and take `currentTime` (Melbourne, with offset). Today = that date.
-- **No catch-up:** if the current time is after the series' `lastCatchUp`, create drafts only and notify. Never publish another day's content.
+- **No catch-up:** if the current time is after the series' `lastCatchUp`, create today's edition as Buffer **drafts only** (never scheduled, never published), log it as "missed — draft only (no catch-up)", and notify the founder once. Never publish another day's content, and never publish a missed edition the next day.
 - **DRY RUN:** if the task message says DRY RUN, nothing is scheduled or published. Every post is created with `saveToDraft: true` and its text starts with `TEST DRAFT — DO NOT PUBLISH —`. Project logs get a row marked DRY RUN. The founder is not notified; report in the final response only.
 
 ## 1. Preflight (mandatory; nothing is created until it passes)
@@ -66,6 +66,7 @@ Never: post to LinkedIn or any channel other than the three in `ops/config.json`
 
 ## 6. Verify and notify
 - `get_post` each post: expect "scheduled" (or "sent") with no error. If the run is still active after the publish time, re-check until "sent" (up to about 20 minutes).
+- **Duplicate self-check:** repeat step 1.6 and confirm each channel now has exactly one post of this series today. If there are two, delete nothing; notify the founder with both IDs.
 - **SendUserMessage only when intervention is needed:**
   - preflight failure;
   - publication or image failure;

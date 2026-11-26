@@ -44,4 +44,4 @@ A daily financial-education, brand-awareness and preparedness series. Each post 
 - Render a fresh 1080×1920 image of today's verified headline and figure: write a spec JSON with `edition: "ready"`, the headline, an optional figure (with its period), a short context line, the source line and `question: true`, then run `python3 tools/render.py spec.json /tmp/out`.
 - Inspect the image.
 - SendUserFile it (status proactive) with the caption "3:15 PM: <headline>" plus a 1–2 line WhatsApp caption ending with the signature question.
-- Send it every day the post is ALLOW. If the edition is HOLD, send nothing; the notification covers it.
+- Send it every day the content is ALLOW, including a missed edition saved as drafts (then add "(today's posts are drafts, not published)" to the caption). If the edition is HOLD, send nothing; the notification covers it.
