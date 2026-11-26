@@ -7,23 +7,19 @@ Everything here is free. **Never paste passwords, secrets or tokens into a chat,
 2. In the top bar choose **Select a project → New project**. Name it `tml-publisher`, then **Create**.
 3. Open **APIs & Services → Library**. Search for **YouTube Data API v3**, open it and click **Enable**.
 4. Open **Google Auth Platform → Branding** (older consoles call this "OAuth consent screen"):
-   - app name `Two Market Ledger Publisher`;
+   - app name `Two Market Ledger` (must match the website brand; see the website repository, `ops/google/GOOGLE_VERIFICATION_AND_SEO.md`);
    - user support email and developer contact: your email;
    - **Audience → External**;
-   - add your channel's Google account under **Test users**.
+   - (Test users are only needed while in Testing; the project is already "In production".)
 5. **Data access → Add or remove scopes.** Add `.../auth/youtube.upload` and `.../auth/youtube.readonly`, then save.
 6. **Audience → Publish app** (status "In production"). Leave it unverified; that's fine for your own channel. Important: in "Testing" status Google expires refresh tokens after 7 days, which would stop uploads weekly.
 7. **Clients (Credentials) → Create client → Application type: Desktop app**, named `tml-worker`. **Download JSON** and keep it on your Mac only.
-8. On the Mac, in the repository's `worker/tools` folder, run `python3 youtube_auth.py ~/Downloads/<downloaded-client-file>.json`.
-   - Sign in with the channel account.
-   - When Google warns that the app isn't verified, choose **Advanced → Go to Two Market Ledger Publisher**. It's your own app.
-   - The script writes `youtube.json`.
-9. Copy it to the VPS (Claude Code on the Mac can do this with your approval):
-   ```bash
-   scp youtube.json <admin>@76.13.191.217:/tmp/ && ssh <admin>@76.13.191.217 'sudo install -o root -g tmlsocial -m 640 /tmp/youtube.json /etc/tml-social/youtube.json && rm /tmp/youtube.json'
-   ```
-   Then delete `youtube.json` from the Mac.
-10. **API audit (important):** Google keeps videos uploaded by **unaudited** API projects **private**. Until the project passes the YouTube API Services audit, the worker uploads privately and you make each approved video public in YouTube Studio (one click), or we apply for the audit: <https://support.google.com/youtube/contact/yt_api_form>. Quota: 10,000 units a day; each upload costs about 1,600 units, so about 6 uploads a day.
+8. **Token generation on the Mac:** follow `ops/YOUTUBE_TOKEN_SETUP.md` step by step.
+9. **Upload limits (checked on Google's own pages, 27 Nov 2026):**
+   - the videos.insert documentation now says "Videos uploaded from unverified API projects are not restricted to private viewing mode";
+   - quota: "100 calls per day … 1 unit in the Video Uploads quota bucket";
+   - the worker still uploads **private first** (owner policy) and sets the approved publish time;
+   - the YouTube API compliance audit is only needed to request more quota.
 
 ## B. Meta: Instagram Reels and Facebook Reels (about 30 minutes)
 1. **Link Instagram to the Page:** in Facebook, open the **Two Market Ledger** Page, then **Settings → Linked accounts → Instagram**, and connect **@twomarketledger** (a professional account). In Instagram, check **Settings → Accounts Center → Sharing across profiles** and keep automatic sharing to Facebook **off**, so nothing is posted twice.

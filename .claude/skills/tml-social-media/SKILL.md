@@ -93,3 +93,15 @@ Audit existing social media jobs and today's failures, reconcile manual posts, i
 5. **Corrections:** company or market claims are verified from the company's own releases and regulatory filings, read directly, never from search snippets alone. Unsupported share-price claims are removed. Corrections of native posts are proposed to the owner and edited by the owner.
 6. **Reporting continues:** the daily publication summary and the Sunday performance report.
 7. **No new paid subscriptions, API charges or other expenditure.**
+
+
+## Owner decisions: Google, SEO and YouTube (27 November 2026)
+1. **Google verification:** Search Console ownership of twomarketledger.com is verified. The OAuth project `tml-publisher` is "In production" with the `youtube.upload` and `youtube.readonly` scopes. Brand and sensitive-scope verification is pending; it is optional for an app used by fewer than 100 people (Google: "When is verification not needed").
+2. **Public legal pages** for Google: `/legal/privacy`, `/legal/terms` and `/legal/publisher`, server-rendered, with full Google OAuth and YouTube API disclosures. Prepared in website draft PR #47 and coordinated on issue #17. Not live until the owner approves a production release or the interim nginx option. Keep the approved TML logo.
+3. **YouTube safety:**
+   - the worker uploads only to the channel ID the owner confirmed at sign-in, and blocks otherwise;
+   - stored YouTube data is refreshed or deleted within 30 days (YouTube Developer Policies III.E.4);
+   - live publishing stays off until testing and owner approval;
+   - credentials are never in Git or chat.
+4. **Weekly report** adds a website and search section: Search Console impressions, clicks, CTR, position, queries, indexed pages and sitemap; social → website referrals; and legal/SEO page availability. Each metric shows its source or "unavailable (reason)". Never estimate. Pre-launch noindex means zero search traffic is expected. See `ops/SEARCH_AND_SEO_REPORTING.md`.
+5. **Indexing:** beta, private dashboards, founder information and private financial data are never indexable. Public indexing is switched on only after an approved public launch.

@@ -19,7 +19,7 @@ NOW = datetime(2026, 12, 1, 8, 0, tzinfo=timezone.utc)
 class Fake:
     """Scripted platform API. Records every call."""
     def __init__(self, fail=None):
-        self.calls, self.fail, self.public = [], fail or {}, True
+        self.calls, self.fail, self.public, self.channel = [], fail or {}, True, "UCTML"
 
     def __call__(self, method, url, headers, body):
         self.calls.append((method, url))
@@ -32,6 +32,8 @@ class Fake:
             return 200, {"Location": "https://upload.example/session"}, b"{}"
         if "upload.example/session" in url:
             return 200, {}, b'{"id":"VID123"}'
+        if "youtube/v3/channels" in url:
+            return 200, {}, json.dumps({"items": [{"id": self.channel, "snippet": {"title": "Two Market Ledger"}}]}).encode()
         if "youtube/v3/videos" in url:
             status = "public" if self.public else "private"
             return 200, {}, json.dumps({"items": [{"status": {"privacyStatus": status, "uploadStatus": "processed"}}]}).encode()
@@ -80,7 +82,7 @@ class WorkerTests(unittest.TestCase):
 
     def adapters(self, fake):
         http = Http(fake)
-        return {"youtube": YouTube(http, {"client_id": "a", "client_secret": "b", "refresh_token": "c"}),
+        return {"youtube": YouTube(http, {"client_id": "a", "client_secret": "b", "refresh_token": "c", "channel_id": "UCTML"}),
                 "meta": Meta(http, {"page_id": "P", "ig_user_id": "IG", "page_token": "T"}, sleep=lambda s: None)}
 
     def state(self, key):
@@ -162,6 +164,44 @@ class WorkerTests(unittest.TestCase):
         worker.run_once(self.repo, adapters=self.adapters(Fake(fail={"oauth2": 400})), now=NOW)
         self.assertEqual(self.state("TML-YT-003|youtube|default")["state"], "blocked")
         self.assertIn("authentication", (config.STATE / "alerts.log").read_text())
+
+    def test_wrong_youtube_channel_blocks_before_any_upload(self):
+        self.manifest()
+        fake = Fake()
+        fake.channel = "UCSOMEONEELSE"
+        worker.run_once(self.repo, adapters=self.adapters(fake), now=NOW)
+        item = self.state("TML-YT-003|youtube|default")
+        self.assertEqual(item["state"], "blocked")
+        self.assertIn("not the confirmed TML channel", item["last_error"])
+        self.assertFalse([u for m, u in fake.calls if "upload/youtube" in u], "nothing is uploaded to another channel")
+
+    def test_unconfirmed_channel_id_blocks(self):
+        self.manifest()
+        http = Http(Fake())
+        adapters = {"youtube": YouTube(http, {"client_id": "a", "client_secret": "b", "refresh_token": "c"}), "meta": None}
+        worker.run_once(self.repo, adapters=adapters, now=NOW)
+        self.assertIn("no confirmed channel_id", self.state("TML-YT-003|youtube|default")["last_error"])
+
+    def test_stored_youtube_data_is_refreshed_or_deleted_within_30_days(self):
+        self.manifest()
+        fake = Fake()
+        worker.run_once(self.repo, adapters=self.adapters(fake), now=NOW)
+        key = "TML-YT-003|youtube|default"
+        with store.connect() as db:
+            db.execute("UPDATE items SET updated_at=updated_at-26*86400 WHERE key=?", (key,))
+        yt = self.adapters(fake)["youtube"]
+        self.assertEqual(worker.refresh_youtube_data(yt), {"refreshed": 1, "deleted": 0})
+        self.assertEqual(worker.refresh_youtube_data(yt), {"refreshed": 0, "deleted": 0}, "fresh again")
+        with store.connect() as db:
+            db.execute("UPDATE items SET updated_at=updated_at-26*86400 WHERE key=?", (key,))
+        self.assertEqual(worker.refresh_youtube_data(self.adapters(Fake(fail={"youtube/v3/videos": 404}))["youtube"]),
+                         {"refreshed": 0, "deleted": 1})
+        item = self.state(key)
+        self.assertEqual((item["remote_id"], item["permalink"], item["state"]), (None, None, "published_verified"))
+        self.manifest()  # the same content is still never uploaded again
+        fake2 = Fake()
+        worker.run_once(self.repo, adapters=self.adapters(fake2), now=NOW + timedelta(minutes=5))
+        self.assertFalse([u for m, u in fake2.calls if "upload/youtube" in u])
 
     def test_missed_window_is_not_published_late(self):
         self.manifest(publish=NOW - timedelta(hours=5))

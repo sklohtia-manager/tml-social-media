@@ -54,3 +54,9 @@ After the daily summary on Sundays, send one weekly report covering Monday to Su
 - what to try next week: hooks and formats only, without changing the schedule.
 
 Mark any metric that isn't returned as "unavailable", and never estimate. Add YouTube views and watch time from the VPS worker report when the worker is live.
+
+**Website and search section (owner instruction, 27 Nov 2026).** Add it to the weekly report after the social metrics, with each line marked with its source, or "unavailable (reason)":
+- **Social → website referrals:** link clicks on posts that link to twomarketledger.com, from `get_aggregated_post_metrics` (Facebook and X). Until the public website is launched, report "not applicable: website not yet public".
+- **Google Search Console:** organic impressions, clicks, average CTR and position, top 10 queries, top pages, indexed page count and sitemap status. **Currently unavailable**: no authorised Search Console data access exists in the routines. Report "unavailable: Search Console access not connected" until the owner approves one of the options in `ops/SEARCH_AND_SEO_REPORTING.md`. Never copy figures from memory or estimate them.
+- **SEO health:** whether these return 200 (homepage, /legal/privacy, /legal/terms), checked with the web-fetch subagent; and robots.txt and sitemap.xml status once the site is launched.
+- Before launch, the site is intentionally `noindex`, so zero search impressions is expected. Say so rather than reporting it as a decline.

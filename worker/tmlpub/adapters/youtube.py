@@ -13,8 +13,9 @@ API = "https://www.googleapis.com/youtube/v3"
 
 class YouTube:
     def __init__(self, http, creds):
-        self.http, self.creds = http, creds  # creds: client_id, client_secret, refresh_token
+        self.http, self.creds = http, creds  # creds: client_id, client_secret, refresh_token, channel_id (recorded at sign-in)
         self._token = None
+        self._channel_ok = False
 
     def token(self):
         if self._token:
@@ -31,12 +32,31 @@ class YouTube:
     def _auth(self):
         return {"Authorization": "Bearer " + self.token()}
 
-    def health(self):
+    def _channel(self):
         data, _ = self.http.call("GET", f"{API}/channels?part=id,snippet&mine=true", self._auth())
         items = data.get("items") or []
-        return {"ok": bool(items), "channel": items[0]["id"] if items else None}
+        return (items[0]["id"], items[0].get("snippet", {}).get("title")) if items else (None, None)
+
+    def check_channel(self):
+        """Fail closed unless the token belongs to the channel recorded (and confirmed by the owner) at sign-in."""
+        if self._channel_ok:
+            return
+        expected = self.creds.get("channel_id")
+        if not expected:
+            raise AuthProblem("youtube.json has no confirmed channel_id; re-run youtube_auth.py")
+        found, title = self._channel()
+        if found != expected:
+            raise AuthProblem(f"authorised YouTube channel {found} ({title}) is not the confirmed TML channel {expected}")
+        self._channel_ok = True
+
+    def health(self):
+        found, title = self._channel()
+        expected = self.creds.get("channel_id")
+        return {"ok": bool(found) and found == expected, "channel": found, "title": title,
+                "expected": expected, "match": found == expected}
 
     def upload(self, item, shorts=False):
+        self.check_channel()
         size = os.path.getsize(item["asset_path"])
         title = (item["title"] or "")[:100]
         description = (item["caption"] or "") + f"\n\nRef: {item['key']}"

@@ -203,9 +203,38 @@ def health(adapters=None):
             alert(f"TML publisher: {name} authentication check failed: {e}")
         except HttpError as e:
             out[name] = {"ok": False, "detail": f"HTTP {e.status}"}
+    if adapters.get("youtube") is not None:
+        out["youtubeStoredData"] = refresh_youtube_data(adapters["youtube"])
     with open(config.STATE / "health.json", "w") as f:
         json.dump({"at": now_utc().isoformat(), "platforms": out}, f)
     return out
+
+
+YOUTUBE_REFRESH_AFTER = 25 * 86400  # YouTube Developer Policies III.E.4: refresh or delete stored API data within 30 days
+
+
+def refresh_youtube_data(yt, now=None):
+    """Refresh stored YouTube video data (ID, status, permalink) older than 25 days, or delete it if it can't be refreshed.
+    The internal content|platform record and its state stay, so duplicate prevention is unaffected. Manual records are
+    owner-entered (not API data) and are left alone."""
+    cutoff = (now or time.time()) - YOUTUBE_REFRESH_AFTER
+    refreshed = cleared = 0
+    with store.connect() as db:
+        rows = db.execute("SELECT key, remote_id FROM items WHERE platform IN ('youtube','youtube_shorts') AND remote_id IS NOT NULL "
+                          "AND state NOT IN ('manual_published','manual_pending') AND updated_at < ?", (cutoff,)).fetchall()
+        for row in rows:
+            try:
+                status = yt.verify(row["remote_id"])
+            except (HttpError, AuthProblem):
+                status = {"exists": False}
+            if status.get("exists"):
+                store.update(db, row["key"], last_error=None)
+                refreshed += 1
+            else:
+                store.update(db, row["key"], remote_id=None, permalink=None,
+                             last_error="stored YouTube data deleted (could not be refreshed within 30 days)")
+                cleared += 1
+    return {"refreshed": refreshed, "deleted": cleared}
 
 
 def daily_report(now=None):
