@@ -12,7 +12,7 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-REQUIRED = ["policy/FINANCIAL_CONTENT_RULES.md", "policy/FOUNDING_PRINCIPLES.md", "policy/AUTHORISATIONS.md",
+REQUIRED = [".claude/skills/tml-social-media/SKILL.md", "CLAUDE.md", "policy/FINANCIAL_CONTENT_RULES.md", "policy/FOUNDING_PRINCIPLES.md", "policy/AUTHORISATIONS.md",
             "policy/EDITORIAL_POLICY.md", "brand/LOGO_USAGE.md", "brand/tml-logo-primary.png", "ops/RUNBOOK.md",
             "ops/config.json", "ops/topic-cards.json", "tools/render.py",
             "fonts/Inter-Regular.otf", "fonts/Inter-SemiBold.otf", "fonts/Inter-Bold.otf", "fonts/InterDisplay-Bold.otf"]

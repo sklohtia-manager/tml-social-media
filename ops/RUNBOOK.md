@@ -1,6 +1,6 @@
 # Scheduled run procedure: Two Market Ledger social editions
 
-This repository is the source of truth. Every scheduled run follows this file and `ops/series/<series>.md`. The founding principles (`policy/FOUNDING_PRINCIPLES.md`) override everything. **If uncertain, HOLD.**
+This repository is the source of truth. Every scheduled run first reads `.claude/skills/tml-social-media/SKILL.md` (the owner's permanent social media operating policy), then follows this file and `ops/series/<series>.md`. The skill's proposals that need owner approval (new schedule, new platforms, VPS worker, video release) do not change this procedure until they are approved. The founding principles (`policy/FOUNDING_PRINCIPLES.md`) override everything. **If uncertain, HOLD.**
 
 Never: post to LinkedIn or any channel other than the three in `ops/config.json`; post to personal profiles; purchase anything or change Buffer or channel settings; modify other scheduled tasks or any other repository; publish private family investment information or paid materials; use photos, third-party graphics, regulator logos or images of real people.
 
@@ -69,6 +69,7 @@ Never: post to LinkedIn or any channel other than the three in `ops/config.json`
 
 ## 6. Verify and notify
 - `get_post` each post: expect "scheduled" (or "sent") with no error. If the run is still active after the publish time, re-check until "sent" (up to about 20 minutes).
+- **Manual and native posts:** posts that the owner published directly on a platform appear in `list_posts` with `via: "network"`. Record them in the log as MANUAL. Never repost, copy or duplicate them. Treat their topic as already covered today.
 - **Duplicate self-check:** repeat step 1.7 and confirm each channel now has exactly one post of this series today. If there are two, delete nothing; notify the founder with both IDs.
 - **SendUserMessage only when intervention is needed:**
   - preflight failure;

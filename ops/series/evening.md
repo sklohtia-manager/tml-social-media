@@ -25,3 +25,12 @@ For each development, say what happened and its potential impact on households, 
 **Also**
 - Check today's 9:30 AM and 3:15 PM posts on every channel, and report any with error status or missing.
 - In the log notes, note any major overnight release (Fed, US CPI or jobs) for the morning edition.
+
+**Daily publication summary (owner policy, 27 Nov 2026):** after verifying its own posts, the Evening run sends the owner one concise SendUserMessage covering today:
+- the editions due;
+- those published and verified, with post IDs (and links where Buffer provides them);
+- failed, blocked or HOLD editions, and missed ones;
+- manual or native posts (`via: "network"`);
+- tomorrow's schedule.
+
+A draft or a successful API call is not reported as published: only status "sent" with no error counts.
