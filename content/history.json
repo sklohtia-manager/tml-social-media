@@ -1,0 +1,98 @@
+{
+ "_about": "Central content history (owner instruction, 27 Nov 2026). Read by every run before choosing a topic. Updated by Claude interactive or Mac sessions from Buffer post history, the worker database and approvals. Scheduled routines can't push to GitHub, so they also check the last 14 days of Buffer history. Subject keys are stable: reuse them.",
+ "rules": {
+  "introVideos": "Never repost or remake channel-introduction videos (TML-YT-001) or published episodes (TML-YT-002).",
+  "subjectRepeat": "Don't repeat an educational subject within 21 days unless new official data was released. News may revisit a subject when there is a new official release, stated with its date.",
+  "evergreen": "Each evergreen item at most once in 30 days."
+ },
+ "videos": [
+  {
+   "id": "TML-YT-001",
+   "title": "Channel introduction",
+   "language": "en",
+   "subject": "brand-introduction",
+   "status": "published manually (links pending from owner)",
+   "repost": false
+  },
+  {
+   "id": "TML-YT-002",
+   "title": "Same money. Less buying power. (Financial Education, Episode 01)",
+   "language": "en",
+   "subject": "inflation-purchasing-power",
+   "published": {
+    "facebook": "2026-11-26T15:45:29Z buffer:6b08546c9a03edd6268d4625",
+    "instagram": "2026-11-26T15:45:36Z buffer:6b085f120bfc1a302f46d75b",
+    "x": "2026-11-26T15:50:22Z buffer:6b085548d29aee15ba0c9b39",
+    "youtube": "pending owner link",
+    "tiktok": "pending owner link"
+   },
+   "repost": false
+  }
+ ],
+ "socialPosts": [
+  {
+   "dateMelbourne": "2026-11-25",
+   "series": "brand (native, owner)",
+   "subject": "brand-introduction",
+   "summary": "'The world has changed… Are we financially prepared for tomorrow?' intro posts (FB, IG) and image-only posts",
+   "ids": [
+    "6b06cebb19fe6bc3b4268592",
+    "6b06cc99f7c3ba43b7885043",
+    "6b06cebb19fe6bc3b426858e",
+    "6b06ccd8a10bb834ef3c1bbb",
+    "6b06cebb19fe6bc3b4268596",
+    "6b06cebb19fe6bc3b4268590"
+   ]
+  },
+  {
+   "dateMelbourne": "2026-11-25",
+   "series": "native (owner)",
+   "subject": "company-news-nvidia-leadership",
+   "summary": "Nvidia leadership post; correction proposed (unsupported price claims)",
+   "ids": [
+    "6b06cebb19fe6bc3b4268594",
+    "6b06cc99f7c3ba43b7885045"
+   ]
+  },
+  {
+   "dateMelbourne": "2026-11-26",
+   "series": "ready",
+   "subject": "inflation-purchasing-power",
+   "summary": "ABS CPI 4.9% in the year to Oct 2026; electricity +25.2%; $100 → ~$104.90",
+   "ids": [
+    "6b06e6aed71f91495672067e",
+    "6b06e6b29bfb1fde5bcb5f51",
+    "6b06ecdb99c096db943fd79f"
+   ],
+   "source": "https://www.abs.gov.au/media-centre/media-releases/cpi-rose-49-year-october-2026"
+  },
+  {
+   "dateMelbourne": "2026-11-26",
+   "series": "evening",
+   "subject": "au-labour-market-regional",
+   "summary": "ABS Regional Labour Force Oct 2026: SA4 unemployment 2.7–7.1%, SA3 2.5–15.6%",
+   "ids": [
+    "6b07e7ebf13f49a925a26a65",
+    "6b07e7ebaca86124808ed14d",
+    "6b07e7ecf13f49a925a26a9d"
+   ],
+   "source": "https://www.abs.gov.au/statistics/labour/employment-and-unemployment/regional-labour-force/oct-2026"
+  }
+ ],
+ "articles": {
+  "batch1": "8 explainers awaiting individual owner approval (website PR #37 content, now in main as BATCH_ONE; not published)",
+  "subjects": [
+   "inflation-purchasing-power",
+   "cost-of-living-vs-inflation",
+   "interest-rates-households",
+   "household-saving",
+   "economic-cycles",
+   "beyond-property",
+   "asset-classes-explained",
+   "children-education-preparedness"
+  ]
+ },
+ "evergreen": {
+  "ready": "E01–E07 awaiting individual owner approval; none used yet"
+ }
+}

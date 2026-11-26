@@ -117,3 +117,18 @@ Audit existing social media jobs and today's failures, reconcile manual posts, i
 4. **Unpublished videos never go into the public repository.** They are staged privately on the VPS over SSH, and the worker refuses videos committed to the repository.
 5. **Public automated YouTube publishing stays off** (`TMLPUB_PRIVATE_ONLY=1`) until one private upload test passes and the owner approves activation.
 6. **Hindi target:** at least one Hindi video a day, subject to quality and approval. The three daily image schedules (9:30, 3:15, 7:30) are unchanged.
+
+
+## Owner decisions: media operations (27 November 2026)
+1. **6:30 PM Melbourne Hindi educational Short** approved as a production target (at least one Hindi video a day, subject to quality and owner approval). Preferred voice: natural male Hindi. Produced by Codex in TML-Media-Studio. Never duplicate Media Studio.
+2. **Rolling seven-day editorial calendar** (`ops/EDITORIAL_CALENDAR.md`) covering:
+   - Australian, Indian, and US/global developments;
+   - inflation and purchasing power;
+   - household savings and preparedness;
+   - beyond property;
+   - children's education and retirement;
+   - historical events and their lessons.
+3. **Central content history** (`content/history.json`): no repeat of the introduction videos or episodes, and no repeat of an educational subject within 21 days unless there is new official data.
+4. **Daily operations checklist:** `ops/DAILY_OPERATIONS_CHECKLIST.md`.
+5. **Legal-page log retention wording:** must state the actual verified retention (possibly "up to six weeks"). No unnecessary server changes just to match a wording.
+6. Articles, evergreen posts and corrections each need individual owner approval.
