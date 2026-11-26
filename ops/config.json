@@ -1,14 +1,54 @@
 {
   "timezone": "Australia/Melbourne",
-  "buffer": {"organizationId": "6b06cc11e3495446d013e8dc",
-             "channels": {"instagram": "6b06cc968541f09ecb9be362", "facebook": "6b06ceb98541f09ecb9c07dd", "x": "6b06cea18541f09ecb9c05ed"},
-             "neverPost": ["linkedin", "6b06f5ee8541f09ecb9defaf"], "planScheduledPostLimit": 10},
+  "buffer": {
+    "organizationId": "6b06cc11e3495446d013e8dc",
+    "channels": {
+      "instagram": "6b06cc968541f09ecb9be362",
+      "facebook": "6b06ceb98541f09ecb9c07dd",
+      "x": "6b06cea18541f09ecb9c05ed"
+    },
+    "neverPost": [
+      "linkedin",
+      "6b06f5ee8541f09ecb9defaf"
+    ],
+    "planScheduledPostLimit": 10
+  },
   "series": {
-    "morning": {"run": "09:00", "publish": "09:30", "lastCatchUp": "10:15", "label": "THE LEDGER MORNING", "hashtag": "#TheLedgerMorning", "projectLog": "claude/ledger-daily/log.md", "authority": "FE-01"},
-    "ready":   {"run": "14:30", "publish": "15:15", "lastCatchUp": "16:00", "label": "ARE YOU FINANCIALLY READY FOR TOMORROW?", "hashtag": "#AreYouFinanciallyReady", "projectLog": "claude/ready-for-tomorrow/log.md", "authority": "Founder authorisation 26 Nov 2026 (policy/AUTHORISATIONS.md item 2)"},
-    "evening": {"run": "19:00", "publish": "19:30", "lastCatchUp": "20:15", "label": "THE LEDGER EVENING RECAP", "hashtag": "#TheLedgerEvening", "projectLog": "claude/ledger-daily/log.md", "authority": "FE-01"}
+    "morning": {
+      "run": "09:00",
+      "publish": "09:30",
+      "lastCatchUp": "10:15",
+      "label": "THE LEDGER MORNING",
+      "hashtag": "#TheLedgerMorning",
+      "projectLog": "claude/ledger-daily/log.md",
+      "authority": "FE-01"
+    },
+    "ready": {
+      "run": "14:30",
+      "publish": "15:15",
+      "lastCatchUp": "16:00",
+      "label": "ARE YOU FINANCIALLY READY FOR TOMORROW?",
+      "hashtag": "#AreYouFinanciallyReady",
+      "projectLog": "claude/ready-for-tomorrow/log.md",
+      "authority": "Founder authorisation 26 Nov 2026 (policy/AUTHORISATIONS.md item 2)"
+    },
+    "evening": {
+      "run": "19:00",
+      "publish": "19:30",
+      "lastCatchUp": "20:15",
+      "label": "THE LEDGER EVENING RECAP",
+      "hashtag": "#TheLedgerEvening",
+      "projectLog": "claude/ledger-daily/log.md",
+      "authority": "FE-01"
+    }
   },
   "imageBaseUrl": "https://raw.githubusercontent.com/sklohtia-manager/tml-social-media/main/",
   "imageMode": "topic-cards",
-  "imageModeNote": "Scheduled runs cannot push to GitHub, so hosted post images use the pre-rendered branded topic cards in images/cards/. Run-specific facts go in the post text. The 3:15 PM WhatsApp status image is rendered fresh each day and sent to the founder directly."
+  "imageModeNote": "Scheduled runs cannot push to GitHub, so hosted post images use the pre-rendered branded topic cards in images/cards/. Run-specific facts go in the post text. The 3:15 PM WhatsApp status image is rendered fresh each day and sent to the founder directly.",
+  "evergreenBank": {
+    "ready": "content/evergreen/ready",
+    "minimumApproved": 7,
+    "reuseDays": 30,
+    "newsSeriesFallback": "none (HOLD and notify)"
+  }
 }

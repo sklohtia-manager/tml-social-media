@@ -30,3 +30,9 @@ The Buffer cloud routines keep the daily image editions and X. The worker never 
 - **Tests:** `cd worker && python3 -B -m unittest discover -s tests` (fake platform API, no network).
 
 Owner setup guide: `ops/VIDEO_PLATFORM_SETUP.md`. Installation needs owner approval: `sudo bash worker/install.sh`. It stays disabled and in dry run.
+
+## Content availability check (Phase 2)
+After each publishing deadline (+10 minutes, within 40 minutes) `run` checks the Facebook Page and Instagram for that day's edition and records it in the `availability` table as published or missed (shown in the daily report). Missing → owner alert. Only series listed in `TMLPUB_FALLBACK_SERIES` (owner decision: at most `ready`) may publish an owner-approved evergreen item from `content/evergreen/ready/`, and only when not in dry run. This needs read access to the Meta page (`/etc/tml-social/meta.json`); without it the check reports "unchecked" and the routines' own cross-check (RUNBOOK §1, step 9) remains the record.
+
+## Dry-run install on the VPS
+See `ops/VPS_DRY_RUN_INSTALL.md`.

@@ -18,6 +18,7 @@ Never: post to LinkedIn or any channel other than the three in `ops/config.json`
 6. **Buffer:** `list_channels` for the organisation. Instagram, Facebook and X must be present, `isDisconnected: false` and `isLocked: false`. On an API error, wait 60 s and retry once. A channel that is still disconnected or locked is skipped, and the founder is notified ("authentication lost: <channel>"). The other channels continue.
 7. **Duplicates:** `list_posts` for the three channels created since 00:00 today (sent, scheduled, sending, draft, needs_approval). If a post of this series already exists today on a channel (its label or hashtag from `ops/config.json` in the text), create nothing on that channel. **Ignore drafts whose text starts with `TEST DRAFT`**: they are dry-run artefacts and never block a real edition. Today's earlier series' stories must not be repeated.
 8. **Research sources:** confirm official sources can be read in this run. Use the Agent tool with `subagent_type: "web-fetch"` on one relevant primary page, for example the ABS or RBA release you intend to cite. If no primary source can be retrieved, the edition **cannot meet FE-01 (a)**: HOLD (drafts only) and notify "primary sources unreachable".
+9. **Availability of earlier slots (cross-check, every run):** using the Buffer history, confirm the previous deadline's edition actually went out: the 9:00 run checks yesterday's 7:30 PM Evening; the 2:30 run checks today's 9:30 AM Morning; the 7:00 run checks today's 3:15 PM Ready. Classify it as PUBLISHED (sent within 15 minutes of the deadline), DELAYED (sent later), FAILED (created but errored or not sent) or MISSED (never created). For anything other than PUBLISHED, write or update that slot's log row and notify the founder once. Never re-post a missed news edition.
 
 ## 1A. Videos (manual ledger)
 - Read `queue/manual/*.json` and `queue/*.json`. Never post any video yourself.
@@ -27,9 +28,16 @@ Never: post to LinkedIn or any channel other than the three in `ops/config.json`
   1. schedule it once in Buffer (X channel) as a video asset from its raw GitHub URL, with "Ref: <contentId>" in the text;
   2. before creating it, check `list_posts` for that Ref, and never create a second one.
 
+## 1B. Content availability and educational fallback
+- **Deadline check:** before ending the run, confirm that this edition is scheduled for its deadline on every channel (or record why not). Each run ends at least 15 minutes before its deadline.
+- **Ready for Tomorrow only (3:15 PM):** if today's edition cannot be produced or verified (sources unreachable, verification incomplete or HOLD), use the next **owner-approved** evergreen item from `content/evergreen/ready/` (`approval.owner: true`) not used in the last 30 days (check the log and Buffer history for its title). Publish its captions and card exactly as approved, labelled "education edition", and notify the founder ("Ready fallback used: <id>, reason: …"). Log it as FALLBACK-EDUCATION. If no approved item is available, HOLD as usual.
+- **Morning and Evening (news):** never substitute evergreen content and never publish an older story as today's news. HOLD (drafts) and notify the founder.
+- A fallback is never used after `lastCatchUp`; the no-catch-up rule still applies.
+
 ## 2. Research and verification
 - Use WebSearch for discovery only. Every figure, date and claim must be confirmed on the **primary official page**, fetched in this run with the web-fetch subagent: RBA, ABS, Treasury, ATO, ASIC, APRA; RBI, MoSPI, Ministry of Finance, PIB, SEBI; Federal Reserve, BLS, BEA; OECD, IMF, World Bank, IEA; official government announcements; or company releases and filings.
 - For each fact, record the publisher, URL, period, release date and retrieval time.
+- **Freshness:** every news item states its release date. Only describe something as new, today's or latest if its primary release is from the last 24 hours (Morning: since the previous Evening edition). Older releases may be referred to only with their date and as background, never as current news. If the newest verified item is older than that, HOLD and notify.
 - Distinguish fact, forecast (attributed), historical evidence and opinion. Never invent news, numbers, quotes or causation. A claim that cannot be verified is dropped; if the story depends on it, HOLD.
 
 ## 3. Compliance gate (FINANCIAL_CONTENT_RULES.md, FOUNDING_PRINCIPLES.md, EDITORIAL_POLICY.md)
@@ -95,7 +103,7 @@ Never: post to LinkedIn or any channel other than the three in `ops/config.json`
 `project_read`, then `project_write` the full series log: one table row per date and edition (update the row rather than duplicating it). Columns:
 1. date;
 2. edition;
-3. outcome (PUBLISHED, SCHEDULED, HOLD-DRAFT, MISSED-DRAFT, DRY-RUN, FAILED or SKIPPED-DUPLICATE);
+3. outcome, recorded separately for each kind: PUBLISHED, SCHEDULED, DELAYED, FAILED, MISSED, MISSED-DRAFT, HOLD-DRAFT, FALLBACK-EDUCATION, DRY-RUN or SKIPPED-DUPLICATE (a slot found MISSED, DELAYED or FAILED by a later run's cross-check gets its row updated, with the checking run noted);
 4. headline;
 5. theme (ready series) or topic;
 6. card (topic and variant, e.g. `inflation-v2`);

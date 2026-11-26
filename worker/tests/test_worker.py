@@ -198,3 +198,90 @@ class WorkerTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class AvailabilityTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        root = Path(self.tmp.name)
+        self.repo = root / "repo"
+        (self.repo / "content" / "evergreen" / "ready").mkdir(parents=True)
+        (self.repo / "content" / "evergreen" / "ready" / "E01.json").write_text(json.dumps({
+            "id": "E01", "approval": {"owner": True}, "imageUrl": "https://raw.githubusercontent.com/x/card.jpg",
+            "captions": {"facebook": "FINANCIAL EDUCATION · ARE YOU FINANCIALLY READY? fb", "instagram": "ig #AreYouFinanciallyReady"}}))
+        self.orig = (config.STATE, config.DRY_RUN, config.ENABLED_PLATFORMS)
+        config.STATE = root / "state"
+        config.DRY_RUN = False
+        config.ENABLED_PLATFORMS = {"facebook_image", "instagram_image"}
+        from tmlpub import availability
+        self.av = availability
+        self.av.FALLBACK_SERIES = {"ready"}
+
+    def tearDown(self):
+        config.STATE, config.DRY_RUN, config.ENABLED_PLATFORMS = self.orig
+        self.av.FALLBACK_SERIES = set()
+        self.tmp.cleanup()
+
+    class FakeMeta:
+        def __init__(self, fb, ig):
+            self.caps, self.published = {"facebook": fb, "instagram": ig}, []
+        def recent_captions(self, since):
+            return self.caps
+        def publish_image(self, platform, url, caption):
+            self.published.append(platform)
+            return {"remote_id": "R-" + platform}
+
+    def at(self, hh, mm):
+        return datetime(2026, 12, 1, hh, mm, tzinfo=self.av.MEL)
+
+    def test_present_edition_recorded_published(self):
+        meta = self.FakeMeta(["THE LEDGER MORNING: ..."], ["... #TheLedgerMorning"])
+        alerts = []
+        with store.connect() as db:
+            out = self.av.check(db, self.repo, meta, now=self.at(9, 41), alert=alerts.append)
+        self.assertEqual(out, {"morning": "published"})
+        self.assertEqual(alerts, [])
+
+    def test_missing_news_edition_alerts_without_fallback(self):
+        meta = self.FakeMeta([], [])
+        alerts = []
+        with store.connect() as db:
+            out = self.av.check(db, self.repo, meta, now=self.at(19, 41), alert=alerts.append)
+            again = self.av.check(db, self.repo, meta, now=self.at(19, 46), alert=alerts.append)
+        self.assertEqual(out, {"evening": "missed"})
+        self.assertEqual(again, {}, "each slot is checked once")
+        self.assertEqual(meta.published, [], "news editions never get an automatic fallback unless enabled")
+        self.assertIn("not on facebook, instagram", alerts[0])
+
+    def test_missing_ready_edition_uses_approved_evergreen_once(self):
+        meta = self.FakeMeta([], [])
+        alerts = []
+        with store.connect() as db:
+            out = self.av.check(db, self.repo, meta, now=self.at(15, 26), alert=alerts.append)
+            self.assertEqual(out, {"ready": "fallback_published"})
+            self.assertEqual(sorted(meta.published), ["facebook", "instagram"])
+            self.assertIsNone(self.av.next_evergreen(db, self.repo, "ready", self.at(15, 26).date() + timedelta(days=1)),
+                              "the same evergreen item is not reused within 30 days")
+
+    def test_outside_window_no_check(self):
+        meta = self.FakeMeta([], [])
+        with store.connect() as db:
+            self.assertEqual(self.av.check(db, self.repo, meta, now=self.at(12, 0), alert=lambda m: None), {})
+
+
+class MalformedManifestTests(unittest.TestCase):
+    def test_malformed_manifest_is_reported_not_fatal(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp) / "repo"
+            (repo / "queue").mkdir(parents=True)
+            (repo / "queue" / "bad.json").write_text(json.dumps({"contentId": "TML-BAD-1", "approval": {"owner": True, "approvedAt": "x", "approvedBy": "y"},
+                                                                  "asset": {"path": "nope"}, "targets": "youtube"}))
+            orig = config.STATE
+            config.STATE = Path(tmp) / "state"
+            try:
+                with store.connect() as db:
+                    created, problems = worker.sync(db, repo)
+            finally:
+                config.STATE = orig
+            self.assertEqual(created, 0)
+            self.assertTrue(any("bad.json" in p for p in problems), problems)

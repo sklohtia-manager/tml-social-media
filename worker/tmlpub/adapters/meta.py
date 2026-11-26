@@ -93,3 +93,29 @@ class Meta:
         link = data.get("permalink_url")
         return {"exists": bool(data), "public": st == "ready" and bool(link), "permalink": ("https://www.facebook.com" + link) if link and link.startswith("/") else link,
                 "rejected": st == "error"}
+
+    # ---- content availability (read today's posts) and approved evergreen fallback (image posts) ----
+    def recent_captions(self, since_unix):
+        """Captions of Facebook Page and Instagram posts published since the given time."""
+        fb, _ = self._call("GET", f"{GRAPH}/{self.creds['page_id']}/posts?fields=message,created_time&since={int(since_unix)}&limit=50",
+                           headers=self._p())
+        ig, _ = self._call("GET", f"{GRAPH}/{self.creds['ig_user_id']}/media?fields=caption,timestamp&limit=50", headers=self._p())
+        return {"facebook": [p.get("message", "") for p in fb.get("data", [])],
+                "instagram": [m.get("caption", "") for m in ig.get("data", [])
+                              if m.get("timestamp", "")[:19] >= time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(since_unix))]}
+
+    def publish_image(self, platform, image_url, caption):
+        if platform == "facebook":
+            data, _ = self._call("POST", f"{GRAPH}/{self.creds['page_id']}/photos", headers=self._p(),
+                                 json_body={"url": image_url, "caption": caption, "published": True})
+            return {"remote_id": data.get("post_id") or data.get("id"), "permalink": None}
+        ig = self.creds["ig_user_id"]
+        created, _ = self._call("POST", f"{GRAPH}/{ig}/media", headers=self._p(), json_body={"image_url": image_url, "caption": caption})
+        for _ in range(30):
+            st, _ = self._call("GET", f"{GRAPH}/{created['id']}?fields=status_code", headers=self._p())
+            if st.get("status_code") == "FINISHED":
+                break
+            self.sleep(5)
+        pub, _ = self._call("POST", f"{GRAPH}/{ig}/media_publish", headers=self._p(), json_body={"creation_id": created["id"]})
+        info, _ = self._call("GET", f"{GRAPH}/{pub['id']}?fields=permalink", headers=self._p())
+        return {"remote_id": pub["id"], "permalink": info.get("permalink")}

@@ -1,0 +1,22 @@
+{
+  "id": "TML-EVG-READY-E02",
+  "series": "ready",
+  "type": "evergreen-education",
+  "title": "What inflation does to a fixed amount of money",
+  "topicCard": "inflation",
+  "imageUrl": "https://raw.githubusercontent.com/sklohtia-manager/tml-social-media/main/images/cards/card-ready-inflation-v2-feed.jpg",
+  "imageUrlX": "https://raw.githubusercontent.com/sklohtia-manager/tml-social-media/main/images/cards/card-ready-inflation-v2-x.jpg",
+  "label": "Clearly identified as an education edition, never as news.",
+  "facts": "No statistics; arithmetic illustrations only, with assumptions stated.",
+  "captions": {
+    "facebook": "FINANCIAL EDUCATION · ARE YOU FINANCIALLY READY FOR TOMORROW? (education edition)\n\nWhat inflation does to a fixed amount of money\n\nIllustration: if prices rise 3% a year, $100 buys about $97 of today's shopping after one year and about $74 after ten.\n\nThat 3% is an assumption for the arithmetic, not a forecast.\n\nMoney that sits still does not lose its number, but it can lose what it buys.\n\nUnderstanding this helps households read their pay rises, savings and price changes in real terms.\n\nAre you financially ready for tomorrow?\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #AreYouFinanciallyReady #FinancialLiteracy\n\nFor information and education only. Not financial advice.",
+    "instagram": "Illustration: if prices rise 3% a year, $100 buys about $97 of today's shopping after one year and about $74 after ten.\n\n1. That 3% is an assumption for the arithmetic, not a forecast.\n\n2. Money that sits still does not lose its number, but it can lose what it buys.\n\n3. Understanding this helps households read their pay rises, savings and price changes in real terms.\n\nSave this for later.\n\nAre you financially ready for tomorrow?\n\nLearn. Understand. Stay Informed.\n\nEducation only. Not financial advice.\n\n#TwoMarketLedger #AreYouFinanciallyReady #FinancialLiteracy #FinancialEducation #MoneyBasics #Australia #India",
+    "x": "Education edition: Illustration: if prices rise 3% a year, $100 buys about $97 of today's shopping after one year and about $74 after ten. Are you financially ready for tomorrow? Education only, not advice. #AreYouFinanciallyReady"
+  },
+  "approval": {
+    "owner": false,
+    "approvedBy": null,
+    "approvedAt": null,
+    "note": "Owner approval required before any use. Edit after approval invalidates it."
+  }
+}

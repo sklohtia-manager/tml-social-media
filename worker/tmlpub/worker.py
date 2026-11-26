@@ -5,6 +5,7 @@ import random
 import subprocess
 import time
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 
 from . import config, manifest, store
 from .adapters import AuthProblem, Uncertain
@@ -53,7 +54,10 @@ def sync(db, repo):
         if "_error" in doc:
             problems.append(f"{path.name}: invalid JSON")
             continue
-        rows, errors = manifest.validate(doc, repo)
+        try:
+            rows, errors = manifest.validate(doc, repo)
+        except Exception as e:  # one malformed manifest must never stop the queue; it is reported and skipped
+            rows, errors = [], [f"malformed manifest ({type(e).__name__}: {e})"]
         problems += [f"{path.name}: {e}" for e in errors]
         for row in rows:
             if row["state"] == "approved" and store.published_elsewhere(db, row["content_id"], row["platform"]):
@@ -180,7 +184,9 @@ def run_once(repo=None, adapters=None, now=None):
             adapters = adapters if adapters is not None else default_adapters()
             for item in db.execute("SELECT * FROM items WHERE state IN ('approved','retry_wait','uploading','scheduled_remote')").fetchall():
                 results[item["key"]] = process(db, item, adapters, now)
-        return {"created": created, "problems": problems, "results": results, "dryRun": config.DRY_RUN}
+            from . import availability
+            avail = availability.check(db, repo, adapters.get("meta"), now=now, alert=alert)
+        return {"created": created, "problems": problems, "results": results, "availability": avail, "dryRun": config.DRY_RUN}
 
 
 def health(adapters=None):
@@ -208,10 +214,15 @@ def daily_report(now=None):
     with store.connect() as db:
         rows = db.execute("SELECT key,state,permalink,remote_id,local_time,last_error FROM items WHERE updated_at>=? ORDER BY local_time",
                           (since,)).fetchall()
-        lines = [f"TML publisher daily report ({now.date()}). Dry run: {config.DRY_RUN}. Live platforms: {sorted(config.ENABLED_PLATFORMS) or 'none'}"]
+        lines = [f"TML publisher daily report ({now.astimezone(ZoneInfo(config.TIMEZONE)).date()} Melbourne). Dry run: {config.DRY_RUN}. Live platforms: {sorted(config.ENABLED_PLATFORMS) or 'none'}"]
         for r in rows:
             lines.append(f"- {r['key']}: {r['state']}" + (f" {r['permalink'] or r['remote_id']}" if r['state'] == 'published_verified' else "")
                          + (f" ({r['last_error']})" if r["last_error"] and r["state"] in ("blocked", "failed", "needs_review") else ""))
+        db.executescript("CREATE TABLE IF NOT EXISTS availability (date TEXT, series TEXT, outcome TEXT, detail TEXT, at REAL, PRIMARY KEY(date, series));")
+        lines.append("Daily editions (checked on Facebook and Instagram after each deadline):")
+        for r in db.execute("SELECT date,series,outcome,detail FROM availability WHERE date>=? ORDER BY date,series",
+                            ((now - timedelta(days=1)).date().isoformat(),)):
+            lines.append(f"  {r['date']} {r['series']}: {r['outcome'].upper()} {r['detail']}")
         upcoming = db.execute("SELECT key,local_time FROM items WHERE state IN ('approved','retry_wait','scheduled_remote') ORDER BY local_time LIMIT 10").fetchall()
         lines.append("Next: " + (", ".join(f"{r['key']} at {r['local_time']}" for r in upcoming) or "nothing queued"))
     text = "\n".join(lines)

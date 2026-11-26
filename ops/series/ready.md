@@ -57,3 +57,6 @@ A daily financial-education, brand-awareness and preparedness series. Each post 
 - **Close** with the educational line "Learn. Understand. Stay Informed." and the disclosure.
 - **Consistency:** publish at the approved times every day. A late post is never better than a held one.
 - **Referrals:** once the public website is live and approved, add the relevant website page link on Facebook and X.
+
+## Educational fallback (owner instruction, 27 Nov 2026)
+If today's edition cannot be produced or verified, follow RUNBOOK §1B: use the next owner-approved item from `content/evergreen/ready/` (see `ops/EVERGREEN_BANK.md`), labelled "education edition", and notify the founder. Never present it as news. The WhatsApp image for a fallback day uses the item's title as the headline, with no figure.

@@ -78,3 +78,18 @@ Audit existing social media jobs and today's failures, reconcile manual posts, i
    - a weekly performance report every Sunday (Evening run), using real Buffer and platform analytics only;
    - metrics that aren't available are reported as unavailable and never estimated.
 7. **No paid APIs or subscriptions, no new expenditure.** No changes to the production website, the private investment dashboard or founder credentials.
+
+
+## Owner decisions, Phase 2 (27 November 2026)
+1. **VPS worker installation approved in dry-run mode** as an isolated service on the existing Hostinger VPS (own user, own directories, systemd timers that start automatically after a restart). Live publishing stays disabled until each platform integration is tested and the owner approves it. Verify scheduling, the durable queue, duplicate prevention, failure alerts, retries and the pause controls. No changes to the production website, the beta website, the private dashboard or the financial database.
+2. **Buffer stays** for the daily schedule (9:30 / 3:15 / 7:30) on Facebook, Instagram and X. Never repost the videos already published manually (TML-YT-001, TML-YT-002).
+3. **Content availability:**
+   - keep at least **seven owner-approved evergreen education posts** with graphics for Ready for Tomorrow (`content/evergreen/ready/`, `ops/EVERGREEN_BANK.md`), prepared in advance;
+   - verify time-sensitive news against current authoritative primary sources before publication, and **never publish outdated news as current**;
+   - if a scheduled news edition cannot be produced, notify the owner; an approved, clearly identified education fallback is used **only for Ready for Tomorrow**, never in place of news;
+   - check scheduled content is in place before every deadline, and have each run confirm the previous deadline's edition went out;
+   - record PUBLISHED, DELAYED, FAILED and MISSED posts separately (RUNBOOK §7).
+4. **Video:** Buffer can schedule Instagram Reels, Facebook Reels and X video on the current free plan (`ops/BUFFER_VIDEO_SCHEDULING.md`), which avoids the Meta API. YouTube needs the Google Cloud YouTube Data API through the VPS worker; set it up with the owner one screen at a time. TikTok and WhatsApp stay manual.
+5. **Corrections:** company or market claims are verified from the company's own releases and regulatory filings, read directly, never from search snippets alone. Unsupported share-price claims are removed. Corrections of native posts are proposed to the owner and edited by the owner.
+6. **Reporting continues:** the daily publication summary and the Sunday performance report.
+7. **No new paid subscriptions, API charges or other expenditure.**

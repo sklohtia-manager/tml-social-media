@@ -13,7 +13,8 @@ Environment=TMLPUB_REPO=/var/lib/tml-social/repo
 # Live publishing stays off until the owner approves: set TMLPUB_DRY_RUN=0 and list platforms in TMLPUB_PLATFORMS.
 EnvironmentFile=-/etc/tml-social/worker.env
 WorkingDirectory=/opt/tml-social/worker
-ExecStartPre=/usr/bin/git -C /var/lib/tml-social/repo pull --ff-only --quiet
+# A failed pull (network blip) must not stop the cycle; the last reviewed queue is used.
+ExecStartPre=-/usr/bin/git -C /var/lib/tml-social/repo pull --ff-only --quiet
 ExecStart=/usr/bin/python3 -B -m tmlpub.cli run
 NoNewPrivileges=yes
 ProtectSystem=strict
