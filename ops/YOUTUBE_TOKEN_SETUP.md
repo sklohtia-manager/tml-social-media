@@ -9,11 +9,22 @@ You do this once. Nothing secret is shown on screen or sent to Claude. Expect 10
 ## Step 1: download the Desktop client file
 Google Cloud console → project **tml-publisher** → **Google Auth Platform → Clients** → your **Desktop** client → **Download JSON**. It saves as `client_secret_….json` in Downloads.
 
-## Step 2: get the helper into a private folder (not a Git folder)
-Open **Terminal** and paste:
+## Step 2: get the reviewed helper from a fixed, verified commit (into a private folder, not a Git folder)
+Open **Terminal** and paste these lines **one at a time**:
 ```bash
-mkdir -p ~/tml-private && cd ~/tml-private && curl -fsSLO https://raw.githubusercontent.com/sklohtia-manager/tml-social-media/main/worker/tools/youtube_auth.py
+mkdir -p ~/tml-private && cd ~/tml-private
 ```
+```bash
+curl -fsSL -o youtube_auth.py https://raw.githubusercontent.com/sklohtia-manager/tml-social-media/eaa81b7d48ccaa4dab2c43e20100820a0ffe2d84/worker/tools/youtube_auth.py
+```
+```bash
+shasum -a 256 youtube_auth.py
+```
+The last command must print exactly:
+`93c02792dbed1083cd7e2af70a3eb02fb87d3c80301a912c9c544875265edd30  youtube_auth.py`
+If it doesn't match, stop and tell Claude.
+
+The URL is pinned to reviewed commit `eaa81b7`, so later changes to the repository can't alter what you run. The helper uses only Python's standard library, talks only to Google, and prints no secrets.
 
 ## Step 3: run it
 ```bash
