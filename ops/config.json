@@ -50,5 +50,6 @@
     "minimumApproved": 7,
     "reuseDays": 30,
     "newsSeriesFallback": "none (HOLD and notify)"
-  }
+  },
+  "officialContact": "contact@twomarketledger.com"
 }

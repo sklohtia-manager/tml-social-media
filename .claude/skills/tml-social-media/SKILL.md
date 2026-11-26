@@ -147,3 +147,7 @@ Audit existing social media jobs and today's failures, reconcile manual posts, i
 - **Daily operations only:** the three existing schedules (no new or duplicate tasks); verified primary-source research (Australia, India, the US and other major economies); Hindi 6:30 PM production with Codex; and monitoring issue #17 for Claude Code's YouTube work.
 - **Daily operational report** (Evening run): successful posts, failed posts, pending videos, website health and genuine owner actions. See `ops/series/evening.md`.
 - **Central record:** `content/history.json` lists every published article, post and video, and is checked before anything is published.
+
+
+## Official contact (27 November 2026)
+**contact@twomarketledger.com** (Hostinger business email, tested both ways on 27 Nov) is the official public contact for general enquiries, privacy requests, complaints and support. Use it in public pages, bios and policy text where a contact is needed. Never use the founder's personal or Gmail address publicly.
