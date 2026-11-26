@@ -99,6 +99,7 @@
   "youtubeOAuth": "Completed by the owner on the Mac on 27 Nov 2026; Two Market Ledger channel confirmed; token 0600 on the Mac. Do not ask the owner to repeat it.",
   "vpsWorker": "Installed in dry run on 27 Nov 2026 by Claude Code (pinned d118b4b; TMLPUB_DRY_RUN=1, TMLPUB_PRIVATE_ONLY=1).",
   "mediaStudio": "~/Documents/Projects/TML-Media-Studio (Codex), 9 videos in output/ at 1a74a91; none is in the publishing queue yet.",
-  "businessEmail": "contact@twomarketledger.com created on Hostinger business email; tested inbound and outbound on 27 Nov 2026."
+  "businessEmail": "contact@twomarketledger.com created on Hostinger business email; tested inbound and outbound on 27 Nov 2026.",
+  "youtubeToken": "Transferred to the VPS by Claude Code on 27 Nov 2026 (SHA-256 match, root:tmlsocial 0640). Health: ok, channel match, title \"Two Market Ledger\". Worker still DRY_RUN=1, PRIVATE_ONLY=1."
  }
 }

@@ -23,7 +23,12 @@ PY
 if command -v ffprobe >/dev/null; then
   ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,pix_fmt -show_entries format=duration -of default=nw=1 "$DIR/video.mp4"
 else
-  echo "ffprobe not installed: format not checked (brew install ffmpeg to enable)"
+  FF="${TML_FFMPEG:-$(command -v ffmpeg || true)}"
+  if [ -n "$FF" ]; then
+    "$FF" -hide_banner -i "$DIR/video.mp4" 2>&1 | grep -E "Duration|Stream" || true   # ffmpeg exits 1 without an output file
+  else
+    echo "Neither ffprobe nor ffmpeg found: format not checked. Set TML_FFMPEG to Media Studio's bundled ffmpeg."
+  fi
 fi
 read -r -p "Stage $ID on $TARGET? Type YES: " ok; [ "$ok" = "YES" ] || exit 1
 ssh "$TARGET" "test ! -e /var/lib/tml-social/incoming/$ID && install -d -o tmlsocial -g tmlsocial -m 750 /var/lib/tml-social/incoming/$ID"

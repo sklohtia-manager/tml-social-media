@@ -9,7 +9,7 @@
 ## 1. One folder per video: `exports/<contentId>/`
 | File | Required | Specification |
 |---|---|---|
-| `video.mp4` | yes | H.264 (High), yuv420p, AAC 48 kHz stereo, `-movflags +faststart`, constant 30 fps. **Shorts and Reels: 1080×1920, ≤ 3 min** (60 s or less preferred). **Long-form: 1920×1080.** Maximum 500 MB. **Captions burned in** (see the captions row) |
+| `video.mp4` | yes | H.264 (High), yuv420p, AAC 48 kHz (mono or stereo; YouTube accepts both, and narration-only Shorts may be mono), `-movflags +faststart`, constant 30 fps. **Shorts and Reels: 1080×1920, ≤ 3 min** (60 s or less preferred). **Long-form: 1920×1080.** Maximum 500 MB. **Captions burned in** (see the captions row) |
 | `manifest.json` | yes | Fields below |
 | `captions.srt` | recommended | UTF-8 SRT in the video's language. Our OAuth scopes (upload, read-only) can't add caption tracks to YouTube, so on-screen (burned-in) captions are the standard. The SRT is kept for the record and for later use |
 | `thumbnail.jpg` | long-form | 1280×720, under 2 MB, TML brand, no share prices or "buy" wording. Shorts use a frame from the video |
