@@ -1,0 +1,92 @@
+# Scheduled run procedure: Two Market Ledger social editions
+
+This repository is the source of truth. Every scheduled run follows this file and `ops/series/<series>.md`. The founding principles (`policy/FOUNDING_PRINCIPLES.md`) override everything. **If uncertain, HOLD.**
+
+Never: post to LinkedIn or any channel other than the three in `ops/config.json`; post to personal profiles; purchase anything or change Buffer or channel settings; modify other scheduled tasks or any other repository; publish private family investment information or paid materials; use photos, third-party graphics, regulator logos or images of real people.
+
+## 0. Time and mode
+- Run `mcp__Buffer__get_account` and take `currentTime` (Melbourne, with offset). Today = that date.
+- **No catch-up:** if the current time is after the series' `lastCatchUp`, create drafts only and notify. Never publish another day's content.
+- **DRY RUN:** if the task message says DRY RUN, nothing is scheduled or published. Every post is created with `saveToDraft: true` and its text starts with `TEST DRAFT — DO NOT PUBLISH —`. Project logs get a row marked DRY RUN. The founder is not notified; report in the final response only.
+
+## 1. Preflight (mandatory; nothing is created until it passes)
+1. `git clone --depth 1 https://github.com/sklohtia-manager/tml-social-media /home/claude/tml` (on failure retry twice, 20 s apart).
+2. `python3 /home/claude/tml/tools/preflight.py <series>` must print `"preflight": "PASS"`. A missing policy file, logo, renderer or topic card is a **mandatory failure**: stop, create nothing, and notify the founder with the exact failed check.
+3. Read `policy/FINANCIAL_CONTENT_RULES.md`, `policy/FOUNDING_PRINCIPLES.md`, `policy/AUTHORISATIONS.md`, `policy/EDITORIAL_POLICY.md`, `brand/LOGO_USAGE.md` and `ops/config.json` from the clone.
+4. **Series log** (Projects tool): `project_read` the series log in `ops/config.json`. If it does not exist, create it with `project_write` (header row only). If it cannot be read or written, continue, but record the failure in the final report and notification.
+5. **Buffer:** `list_channels` for the organisation. Instagram, Facebook and X must be present, `isDisconnected: false` and `isLocked: false`. On an API error, wait 60 s and retry once. A channel that is still disconnected or locked is skipped, and the founder is notified ("authentication lost: <channel>"). The other channels continue.
+6. **Duplicates:** `list_posts` for the three channels created since 00:00 today (sent, scheduled, sending, draft, needs_approval). If a post of this series already exists today on a channel (its label or hashtag from `ops/config.json` in the text), create nothing on that channel. Today's earlier series' stories must not be repeated.
+7. **Research sources:** confirm official sources can be read in this run. Use the Agent tool with `subagent_type: "web-fetch"` on one relevant primary page, for example the ABS or RBA release you intend to cite. If no primary source can be retrieved, the edition **cannot meet FE-01 (a)**: HOLD (drafts only) and notify "primary sources unreachable".
+
+## 2. Research and verification
+- Use WebSearch for discovery only. Every figure, date and claim must be confirmed on the **primary official page**, fetched in this run with the web-fetch subagent: RBA, ABS, Treasury, ATO, ASIC, APRA; RBI, MoSPI, Ministry of Finance, PIB, SEBI; Federal Reserve, BLS, BEA; OECD, IMF, World Bank, IEA; official government announcements; or company releases and filings.
+- For each fact, record the publisher, URL, period, release date and retrieval time.
+- Distinguish fact, forecast (attributed), historical evidence and opinion. Never invent news, numbers, quotes or causation. A claim that cannot be verified is dropped; if the story depends on it, HOLD.
+
+## 3. Compliance gate (FINANCIAL_CONTENT_RULES.md, FOUNDING_PRINCIPLES.md, EDITORIAL_POLICY.md)
+- **BLOCK** (rewrite or do not publish):
+  - recommendations, rankings or steers on any product, fund, stock, ETF, super, loan, insurance, gold, crypto, property or asset class;
+  - buy, sell or hold calls, targets, signals, forecasts for named securities, or guaranteed returns;
+  - trading, speculation, fast-money or get-rich-quick framing (R10);
+  - personalised financial, tax, legal or migration advice;
+  - sensationalism, fear, urgency or political bias;
+  - misleading country comparisons;
+  - private family investment information or paid materials.
+- **HOLD** (drafts only, and notify):
+  - a claim not confirmed on a primary source fetched this run;
+  - share prices, index levels or market moves at the centre of the story;
+  - any Indian securities price data;
+  - rumours or anonymous sources;
+  - causation not stated by the source;
+  - doubt about data rights;
+  - a politically sensitive topic;
+  - anything uncertain.
+- Write all final texts to `/tmp/post.txt` and run `python3 /home/claude/tml/tools/preflight.py --lint /tmp/post.txt`. Exit code 3 means **HOLD**. A clear lint is not approval; the gate above still applies.
+- **ALLOW** only if every check, every FE-01 condition (or the 3:15 PM authorisation) and every founding principle passes.
+
+## 4. Images (approved method: hosted branded topic cards)
+- Choose the topic key in `ops/topic-cards.json` that matches the story ("explainer" if none fits). The image URLs are:
+  - feed (Instagram and Facebook): `https://raw.githubusercontent.com/sklohtia-manager/tml-social-media/main/images/cards/card-<edition>-<topic>-feed.jpg`;
+  - X: `…-x.jpg`.
+- Confirm both files exist in the clone. If they don't, it is a mandatory failure: drafts only, and notify.
+- altText: "Two Market Ledger <series label> card: <topic title>. General education only."
+- Do not upload or host any other image. Scheduled runs have no GitHub write access, and a missing image never triggers a workaround: drafts only, and notify.
+
+## 5. Publish
+- `dueAt` = today at the series `publish` time (ISO 8601 with the offset from `get_account`).
+  - Before that time, use `mode: "customScheduled"`.
+  - Between `publish` and `lastCatchUp`, use `shareNow`.
+  - After `lastCatchUp`, drafts only.
+- Create each channel's post independently: a failure on one never stops the others.
+- **Instagram:** feed image asset (with altText), `metadata.instagram {type: "post", shouldShareToFeed: true}`, `schedulingType: "automatic"`.
+- **Facebook:** always its own post (Buffer does not cross-post Instagram to Facebook, so Facebook gets each edition exactly once). `metadata.facebook.type: "post"`, feed image asset.
+- **X:** X image asset; at most 280 characters, with links counting as 23 (count with code).
+- **HOLD or BLOCK:** compliant drafts (`saveToDraft: true`) with the same images, and notify.
+- **Plan limit (10 scheduled posts):** on that error, save as a draft and notify. For other errors, fix the cause, run `list_posts` to make sure there is no duplicate, then retry once.
+
+## 6. Verify and notify
+- `get_post` each post: expect "scheduled" (or "sent") with no error. If the run is still active after the publish time, re-check until "sent" (up to about 20 minutes).
+- **SendUserMessage only when intervention is needed:**
+  - preflight failure;
+  - publication or image failure;
+  - lost authentication;
+  - unreachable primary sources;
+  - HOLD or BLOCK;
+  - plan limit;
+  - Project log not writable.
+
+  State the problem, what was tried and the exact action needed. Routine success sends no message (except the 3:15 PM WhatsApp image; see the series file).
+- **Final response:** decision, headline, per-channel post IDs and statuses, image URLs, and sources with URLs and dates.
+
+## 7. Log
+`project_read`, then `project_write` the full series log: one table row per date and edition (update the row rather than duplicating it). Columns:
+1. date;
+2. edition;
+3. headline;
+4. topic card;
+5. source URLs with release dates;
+6. classification;
+7. Instagram, Facebook and X post IDs with statuses;
+8. notes.
+
+Keep the latest 60 rows.

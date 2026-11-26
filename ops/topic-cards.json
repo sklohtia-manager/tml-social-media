@@ -1,0 +1,19 @@
+{
+ "note": "Pre-rendered branded topic cards (no figures, so they never go stale). Used when a dynamic image cannot be hosted. Facts and sources always go in the post text.",
+ "topics": {
+  "inflation": ["Inflation and purchasing power", "When prices rise faster than incomes, the same money buys less."],
+  "interest-rates": ["Interest rates and central banks", "Rate decisions affect mortgages, savings and the cost of borrowing."],
+  "jobs-wages": ["Jobs and wages", "Employment and pay growth shape household budgets."],
+  "growth": ["Economic growth", "How fast the economy grows affects jobs, incomes and government budgets."],
+  "housing": ["Housing and rent", "Housing costs are one of the largest parts of most household budgets."],
+  "energy": ["Energy and fuel costs", "Fuel and power prices flow through to transport, food and bills."],
+  "currency": ["Currencies and remittances", "Exchange rates change what money is worth across borders."],
+  "trade": ["Trade and the global economy", "Developments overseas can reach household costs at home."],
+  "budget-tax": ["Budgets, tax and policy", "Government decisions change what households pay and receive."],
+  "cost-of-living": ["Cost of living", "Understanding where money goes is the first step in planning."],
+  "retirement": ["Retirement preparedness", "Long-term planning starts with understanding today's choices."],
+  "education-costs": ["Children's education costs", "Planning early helps families prepare for rising costs."],
+  "resilience": ["Financial resilience", "Emergency savings and planning help households absorb shocks."],
+  "explainer": ["Financial education explainer", "Understanding the terms is the first step to better decisions."]
+ }
+}

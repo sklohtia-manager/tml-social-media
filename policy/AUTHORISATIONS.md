@@ -1,0 +1,9 @@
+# Publishing authorisations (founder is the sole approver)
+
+1. **FE-01, 25 Nov 2026, 23:15 AEDT.** Automatic publishing of The Ledger Daily morning (9:30 AM) and evening (7:30 PM) editions to Facebook, X and Instagram via Buffer, only when every condition holds. The full text is in `FINANCIAL_CONTENT_RULES.md` (verbatim copy of the Claude Project version).
+2. **26 Nov 2026.** The series "Are You Financially Ready for Tomorrow?" is published automatically at 3:15 PM, without daily approval, when it passes the editorial and compliance checks. Sensitive, uncertain or potentially regulated content goes to Buffer drafts.
+3. **26 Nov 2026, founding principles.** See `FOUNDING_PRINCIPLES.md`.
+4. **26 Nov 2026, founder (verbatim):** "I accept the current three-task daily publishing schedule. … Morning news — 9:30 AM. Financial awareness and preparedness — 3:15 PM. Evening economic recap — 7:30 PM. Continue automatic publishing to Facebook, Instagram and X. Keep LinkedIn deferred until further notice. Do not purchase additional subscriptions. Continue supplying the afternoon vertical image for my WhatsApp status. … Ensure all news and statistics are verified before publication. Never publish HOLD content."
+5. **26 Nov 2026, founder (verbatim):** "Never publish: Financial or investment advice. Buy, sell or hold recommendations. Trading signals. Stock or ETF recommendations. Personalised financial plans. Quick-money or get-rich-quick content. Guaranteed returns. Unverified economic predictions presented as facts. Our private family investment plans or portfolio information. Exclusive paid research or educational materials." "Respect our existing no-catch-up publishing rule." "Do not automatically publish incomplete or unbranded content as a workaround without my approval."
+
+The founder can revoke any of these at any time. Revocation takes effect immediately.
