@@ -1,5 +1,7 @@
 # YouTube token on your Mac: step by step
 
+> **Status, 27 Nov 2026: done.** The owner completed the sign-in and confirmed the Two Market Ledger channel. The token is saved on the Mac (0600). Claude Code handles the transfer. **Don't ask the owner to repeat this** unless Google revokes access.
+
 You do this once. Nothing secret is shown on screen or sent to Claude. Expect 10 minutes.
 
 **Before you start:**
@@ -43,15 +45,13 @@ The script saves `youtube.json` (readable only by you) containing the confirmed 
 
 If it says a certificate error: run **Applications → Python 3.x → Install Certificates.command**, or use `/usr/bin/python3` instead of `python3`.
 
-## Step 5: move it to the VPS (after the dry-run worker is installed)
-Claude Code on your Mac can do this with your approval, or you can run:
+## Step 5: move it to the VPS (Claude Code, with owner approval)
+No copy goes through the shared `/tmp`. Install it straight from standard input, and refuse to overwrite an existing token:
 ```bash
-scp ~/tml-private/youtube.json <admin>@<vps>:/tmp/ && ssh <admin>@<vps> 'sudo install -o root -g tmlsocial -m 640 /tmp/youtube.json /etc/tml-social/youtube.json && rm /tmp/youtube.json'
+ssh root@<vps> 'test ! -e /etc/tml-social/youtube.json'
+ssh root@<vps> 'umask 077; install -o root -g tmlsocial -m 0640 /dev/stdin /etc/tml-social/youtube.json' < ~/tml-private/youtube.json
 ```
-Then delete the local copies:
-```bash
-rm ~/tml-private/youtube.json ~/Downloads/client_secret_*.json
-```
+Then compare SHA-256 values only (never the contents), and check `stat` shows root:tmlsocial 640. The local copy is deleted only after the owner has seen the health result in step 6.
 
 ## Step 6: check it (still dry run, nothing is published)
 On the VPS:

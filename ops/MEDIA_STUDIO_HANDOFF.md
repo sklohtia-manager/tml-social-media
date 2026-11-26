@@ -1,5 +1,7 @@
 # Media Studio → publishing workflow: standard export contract (v2, 27 Nov 2026)
 
+> **Status (Claude Code, 27 Nov):** Media Studio is at commit `1a74a91`, with 9 videos in `output/`. Its current per-episode manifests use different names (`id`, `duration_seconds`, `formats`, `editorial_status`), and some fields are missing (`asset`, `assetSha256`, `description`, `hashtags`, `publishAt`; `language` on some). **Codex adds an export step** that writes `exports/<contentId>/` in this contract. The files map directly: `vertical.mp4` → `video.mp4`, `subtitles.<lang>.srt` → `captions.srt`, `vertical-thumbnail.jpg` → `thumbnail.jpg`, `short-form-copy.<lang>.txt` → `description`. Claude writes no converter.
+
 - **Media Studio:** a separate local project on the owner's Mac (`~/Documents/Projects/TML-Media-Studio`), owned by **Codex**. It covers English and Hindi production. Claude does **not** recreate or duplicate any rendering, narration, translation or conversion.
 - **Claude:** owns the queue contract, the compliance checks, the VPS worker (YouTube) and the daily routines (Buffer).
 - **Privacy:** unpublished videos and media **never** go into the public `tml-social-media` repository. Exports move from the Mac to the VPS's private staging folder over SSH (`worker/tools/stage_video.sh`). The worker refuses any video committed to the repository.
@@ -37,6 +39,7 @@
 - **Language:** `en` or `hi`. It is sent to YouTube as the default language and audio language. Hindi titles and descriptions may be bilingual.
 - **Sources:** every figure, date or claim in the video comes from a primary official source, listed here. No figure means an empty list.
 - **Status:** `draft`, then `ready_for_review` (Media Studio), then `approved` (recorded by Claude after the owner approves the exact file), then `scheduled` or `published` (worker). Media Studio never writes the `approval` block itself.
+- **Hindi narration (owner requirement):** natural, fluent, human-sounding **male** voice, correct pronunciation of financial terms and numbers (for example ₹, lakh and crore), no robotic cadence. The owner judges this on the exact file.
 - **AI disclosure:** if the narration or footage is synthetic, `voice` says so, and the description includes "This video uses AI-generated narration." Hindi and English versions are each reviewed separately; translation is never auto-approved.
 
 ## 3. Flow

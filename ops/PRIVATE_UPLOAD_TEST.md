@@ -15,7 +15,7 @@
 3. **Claude Code (Mac):**
    - add the `approval` block (owner name and time, plus the four confirmations);
    - set `publishAt` about 15 minutes ahead;
-   - run `bash worker/tools/stage_video.sh <export folder> <admin>@<vps>`. This checks the SHA-256, language and format, then copies the folder privately to `/var/lib/tml-social/incoming/TML-TEST-20261128-01/`.
+   - run `bash worker/tools/stage_video.sh <export folder> root@<vps>`. This checks the SHA-256, language and format, then copies the folder privately to `/var/lib/tml-social/incoming/TML-TEST-20261128-01/`.
 4. **Claude Code (VPS), with owner approval:** set `/etc/tml-social/worker.env` to
    ```
    TMLPUB_DRY_RUN=0

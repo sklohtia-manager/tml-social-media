@@ -132,3 +132,11 @@ Audit existing social media jobs and today's failures, reconcile manual posts, i
 4. **Daily operations checklist:** `ops/DAILY_OPERATIONS_CHECKLIST.md`.
 5. **Legal-page log retention wording:** must state the actual verified retention (possibly "up to six weeks"). No unnecessary server changes just to match a wording.
 6. Articles, evergreen posts and corrections each need individual owner approval.
+
+
+## Status and owner decisions (27 November 2026, later)
+- **YouTube OAuth is done:** the owner signed in on the Mac and the Two Market Ledger channel is confirmed. **Never ask the owner to repeat it.** Claude Code handles the token transfer (stdin install, no `/tmp`), the VPS worker (installed in dry run, pinned `d118b4b`) and the private upload test.
+- **Schedule (Melbourne):** 9:30 AM The Ledger Morning; 3:15 PM Are You Financially Ready for Tomorrow?; 6:30 PM Hindi educational video (production target); 7:30 PM The Ledger Evening Recap. No duplicate scheduled tasks.
+- **Hindi videos:** natural, fluent, human-sounding male narration (Codex, TML Media Studio).
+- **Never publish** speculative headlines or unverified company announcements. Significant news is checked against primary sources.
+- **Owner action list:** `ops/OWNER_ACTIONS.md`. It lists only genuine outstanding decisions, and completed items are removed.
