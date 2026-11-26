@@ -140,3 +140,10 @@ Audit existing social media jobs and today's failures, reconcile manual posts, i
 - **Hindi videos:** natural, fluent, human-sounding male narration (Codex, TML Media Studio).
 - **Never publish** speculative headlines or unverified company announcements. Significant news is checked against primary sources.
 - **Owner action list:** `ops/OWNER_ACTIONS.md`. It lists only genuine outstanding decisions, and completed items are removed.
+
+
+## Operational completion and editorial freeze (27 November 2026)
+- **No new major development or large article batches.** The 14 articles, 7 evergreen posts and the Nvidia correction await individual owner review.
+- **Daily operations only:** the three existing schedules (no new or duplicate tasks); verified primary-source research (Australia, India, the US and other major economies); Hindi 6:30 PM production with Codex; and monitoring issue #17 for Claude Code's YouTube work.
+- **Daily operational report** (Evening run): successful posts, failed posts, pending videos, website health and genuine owner actions. See `ops/series/evening.md`.
+- **Central record:** `content/history.json` lists every published article, post and video, and is checked before anything is published.

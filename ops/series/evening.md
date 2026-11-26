@@ -26,12 +26,17 @@ For each development, say what happened and its potential impact on households, 
 - Check today's 9:30 AM and 3:15 PM posts on every channel, and report any with error status or missing.
 - In the log notes, note any major overnight release (Fed, US CPI or jobs) for the morning edition.
 
-**Daily publication summary (owner policy, 27 Nov 2026):** after verifying its own posts, the Evening run sends the owner one concise SendUserMessage covering today:
-- the editions due;
-- those published and verified, with post IDs (and links where Buffer provides them);
-- failed, blocked or HOLD editions, and missed ones;
-- manual or native posts (`via: "network"`);
-- tomorrow's schedule.
+**Daily operational report (owner policy, 27 Nov 2026; replaces the daily publication summary):** after verifying its own posts, the Evening run sends the owner **one** concise SendUserMessage, in this fixed order, with nothing marked done unless it was checked in this run:
+1. **Successful posts today:** each edition (9:30, 3:15, 7:30) by channel, with status "sent" and post IDs or links. Manual or native posts (`via: "network"`) are listed separately.
+2. **Failed, missed or held posts:** the edition, channel and reason (error, HOLD, MISSED, DELAYED), plus what was already done about it.
+3. **Pending videos:**
+   - Hindi 6:30 PM target: whether a video was published today (native or manual posts in Buffer history), otherwise "no Hindi video today";
+   - video items awaiting owner approval, from `content/history.json` and `queue/manual/`. Write "unknown from this run" where the routine can't see something (for example the VPS worker or Media Studio). Never guess.
+4. **Website health:** with the web-fetch subagent, fetch https://twomarketledger.com/ and, once published, `/legal/privacy`, `/legal/terms` and `/legal/publisher`. Report the status code or "unreachable from this run". Beta is not checked (it is password-protected).
+5. **Needs your attention:** only items that genuinely need the owner today: a failure that needs the owner, an approval with a deadline, or lost channel authentication. Otherwise write "Nothing needs you today." Don't repeat the standing list in `ops/OWNER_ACTIONS.md`; link to it once a week (Sunday).
+6. **Tomorrow:** the three editions and the planned themes (`ops/EDITORIAL_CALENDAR.md`).
+
+Keep it under about 15 lines. Never ask the owner to regenerate the YouTube token or repeat completed tasks.
 
 A draft or a successful API call is not reported as published: only status "sent" with no error counts.
 
