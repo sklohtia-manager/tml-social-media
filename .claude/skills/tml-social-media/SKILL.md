@@ -151,3 +151,11 @@ Audit existing social media jobs and today's failures, reconcile manual posts, i
 
 ## Official contact (27 November 2026)
 **contact@twomarketledger.com** (Hostinger business email, tested both ways on 27 Nov) is the official public contact for general enquiries, privacy requests, complaints and support. Use it in public pages, bios and policy text where a contact is needed. Never use the founder's personal or Gmail address publicly.
+
+
+## Social post template (owner instruction, 27 November 2026)
+1. **"Are you financially ready for tomorrow?" is not a default.** Use it only when the topic fits (for example a preparedness campaign), and **once** across the image and the caption. Never as an image header, footer or label.
+2. **Graphic:** keep the green-and-gold layout and the TML logo. The headline is the actual topic, never a generic "Financial education explainer". One clear takeaway on the image, plus a short definition, example or verified figure where helpful. Phone-readable text. A current statistic on the image shows its source and date on the image. Hypothetical examples are labelled.
+3. **Caption:** extra context, source links, factual and educational. Series hashtag for the 3:15 PM edition is now #TMLEducation (legacy #AreYouFinanciallyReady is still recognised for duplicate checks).
+4. **Live posts are not replaced or reposted without the owner reviewing the revised graphic and caption first.**
+Details: `ops/series/ready.md` ("Post template and signature rule"), `tools/render.py`, `tools/build_cards.py`.

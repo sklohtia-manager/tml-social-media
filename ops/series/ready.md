@@ -1,4 +1,4 @@
-# "Are You Financially Ready for Tomorrow?": 3:15 PM (founder authorisation, 26 Nov 2026)
+# 3:15 PM financial education edition (formerly titled "Are You Financially Ready for Tomorrow?"; founder authorisation 26 Nov 2026)
 
 A daily financial-education, brand-awareness and preparedness series. Each post explains why Two Market Ledger exists: helping everyday people understand how economic change affects their lives, families, savings and future, beyond salary, bills and property. It never recommends products or sells.
 
@@ -9,31 +9,30 @@ A daily financial-education, brand-awareness and preparedness series. Each post 
 | 1 | Financial freedom and long-term preparedness | resilience |
 | 2 | Inflation and purchasing power | inflation |
 | 3 | Cost of living and household finances | cost-of-living |
-| 4 | Thinking beyond property ownership | housing |
+| 4 | Thinking beyond property ownership | beyond-property |
 | 5 | Understanding international economies | trade |
-| 6 | Asset classes and diversification (concepts only) | explainer |
+| 6 | Asset classes and diversification (concepts only) | beyond-property (or a matching new card) |
 | 7 | Retirement and children's education | retirement or education-costs |
 | 8 | Employment and income uncertainty | jobs-wages |
 | 9 | Manufacturing, technology and emerging industries | growth |
-| 10 | Historical economic crises and their lessons | explainer |
+| 10 | Historical economic crises and their lessons | economic-history |
 | 11 | Building financial awareness using existing income | cost-of-living |
-| 12 | Income vs wealth | explainer |
+| 12 | Income vs wealth | income-wealth |
 
 "Financial freedom" means long-term preparedness built steadily, never quick wealth.
 
-**Flow:** what's happening → why it matters to ordinary people → how it could affect our future → are we prepared? (reflective, no fear) → why financial education and Two Market Ledger matter.
+**Flow:** what's happening → why it matters to ordinary people → how it could affect our future → a reflective question (no fear) → why financial education and Two Market Ledger matter.
 
 **Instagram**
 - Hook, then short paragraphs.
 - Name the source (no links).
-- Signature question.
 - "Education only. Not financial advice."
-- 5–12 hashtags, including #TwoMarketLedger #AreYouFinanciallyReady.
+- 5–12 hashtags, including #TwoMarketLedger and the series tag #TMLEducation.
 
 **Facebook**
 - 100–200 words.
 - Primary-source URL.
-- End with "Are you financially ready for tomorrow?" and "For information and education only. Not financial advice."
+- End with "For information and education only. Not financial advice."
 
 **X**
 - At most 280 characters: one sharp fact and one question.
@@ -41,9 +40,9 @@ A daily financial-education, brand-awareness and preparedness series. Each post 
 - At most 2 hashtags.
 
 **WhatsApp status (founder's personal sharing; never posted by us)**
-- Render a fresh 1080×1920 image of today's verified headline and figure: write a spec JSON with `edition: "ready"`, the headline, an optional figure (with its period), a short context line, the source line and `question: true`, then run `python3 tools/render.py spec.json /tmp/out`.
+- Render a fresh 1080×1920 image of today's topic: write a spec JSON with `edition: "ready"`, the actual topic as `headline`, a `takeaway`, optional `blocks` (short definitions) or a figure (with its period), and a `source` line that includes the publisher and date whenever a figure is shown. Add `question: true` only under the signature rule below. Then run `python3 tools/render.py spec.json /tmp/out`.
 - Inspect the image.
-- SendUserFile it (status proactive) with the caption "3:15 PM: <headline>" plus a 1–2 line WhatsApp caption ending with the signature question.
+- SendUserFile it (status proactive) with the caption "3:15 PM: <headline>" plus a 1–2 line WhatsApp caption.
 - Send it every day the content is ALLOW, including a missed edition saved as drafts (then add "(today's posts are drafts, not published)" to the caption). If the edition is HOLD, send nothing; the notification covers it.
 
 ## Audience-growth standards (owner priority, 27 Nov 2026)
@@ -60,3 +59,11 @@ A daily financial-education, brand-awareness and preparedness series. Each post 
 
 ## Educational fallback (owner instruction, 27 Nov 2026)
 If today's edition cannot be produced or verified, follow RUNBOOK §1B: use the next owner-approved item from `content/evergreen/ready/` (see `ops/EVERGREEN_BANK.md`), labelled "education edition", and notify the founder. Never present it as news. The WhatsApp image for a fallback day uses the item's title as the headline, with no figure.
+
+## Post template and signature rule (owner instruction, 27 Nov 2026; overrides anything above)
+- **Signature question.** "Are you financially ready for tomorrow?" is **not a default**. Use it only when it fits the topic, for example a financial preparedness campaign or a preparedness-themed post. When used, it appears **once** across the image and the caption combined, never in both and never twice. It is never used as an image header, footer or label.
+- **Graphic:** keep the green-and-gold layout and the TML logo. The headline is the **actual topic** (for example "Income vs net wealth"), never a generic "Financial education explainer". The graphic carries **one clear takeaway**, plus, where helpful, a short definition, example or verified figure. Text must be readable on a phone (`tools/render.py` enforces at least 30 px body text at 1080 px wide).
+- **Statistics on images:** a current statistic on the image must show its source and date on the image. The pre-rendered topic cards carry no statistics, so figures from scheduled runs go in the caption.
+- **Examples:** hypothetical examples are labelled ("Hypothetical example" or "Illustration") on the image and in the caption.
+- **Caption:** extra context, the definitions' or figures' source, and links. Factual and educational only.
+- **Topic card choice:** the card title must accurately describe the post. If no card fits, use the closest card whose title is still accurate (for example "Finances beyond property"), never an inaccurate one. Concept cards for the coming week's calendar topics are rendered and pushed in advance by an interactive session (`tools/build_cards.py` and `ops/topic-cards.json`).

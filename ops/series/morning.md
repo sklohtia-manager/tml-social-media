@@ -32,7 +32,7 @@ Cover what happened, why it matters (only causes the source states), the potenti
 
 **All channels**
 - Each platform's text is adapted, never identical.
-- The optional "Are you financially ready for tomorrow?" only when it is not fear- or urgency-driven.
+- "Are you financially ready for tomorrow?" only when the topic is genuinely about preparedness, once across image and caption, never as a default (owner rule, 27 Nov 2026).
 - Paraphrase; no quote over 15 words.
 - In the log notes, note any major release due later today.
 

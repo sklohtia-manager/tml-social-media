@@ -9,7 +9,7 @@ Files: `content/evergreen/ready/E01.json` … `E07.json`. Each has Facebook, Ins
 | E01 | Financial resilience starts with a buffer | resilience-v2 | none (concept) |
 | E02 | What inflation does to a fixed amount of money | inflation-v2 | arithmetic only: 3% a year assumed, $100 → $97.09 after 1 year, $74.41 after 10 |
 | E03 | Knowing where the money goes | cost-of-living-v2 | none |
-| E04 | Thinking beyond property | housing-v2 | none |
+| E04 | Thinking beyond property | beyond-property-v2 | none |
 | E05 | Why other economies matter at home | trade-v2 | none (general mechanism) |
 | E06 | Time is the quiet part of every plan | retirement-v2 | arithmetic only: $50 × 52 × 10 = $26,000; × 20 = $52,000, no growth assumed |
 | E07 | Income can change; preparation helps | jobs-wages-v2 | none |

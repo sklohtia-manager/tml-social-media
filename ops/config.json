@@ -27,10 +27,14 @@
       "run": "14:30",
       "publish": "15:15",
       "lastCatchUp": "16:00",
-      "label": "ARE YOU FINANCIALLY READY FOR TOMORROW?",
-      "hashtag": "#AreYouFinanciallyReady",
+      "label": "FINANCIAL EDUCATION",
+      "hashtag": "#TMLEducation",
       "projectLog": "claude/ready-for-tomorrow/log.md",
-      "authority": "Founder authorisation 26 Nov 2026 (policy/AUTHORISATIONS.md item 2)"
+      "authority": "Founder authorisation 26 Nov 2026 (policy/AUTHORISATIONS.md item 2)",
+      "legacyMarkers": [
+        "#AreYouFinanciallyReady",
+        "ARE YOU FINANCIALLY READY"
+      ]
     },
     "evening": {
       "run": "19:00",

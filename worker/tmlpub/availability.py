@@ -18,7 +18,7 @@ from .http import HttpError
 MEL = ZoneInfo(config.TIMEZONE)
 SERIES = {  # deadline (local), marker that identifies the edition in captions
     "morning": (dtime(9, 30), "#TheLedgerMorning", "THE LEDGER MORNING"),
-    "ready": (dtime(15, 15), "#AreYouFinanciallyReady", "ARE YOU FINANCIALLY READY"),
+    "ready": (dtime(15, 15), "#TMLEducation", "#AreYouFinanciallyReady"),  # new series tag; legacy tag until all old posts age out
     "evening": (dtime(19, 30), "#TheLedgerEvening", "THE LEDGER EVENING"),
 }
 CHECK_DELAY = timedelta(minutes=10)
