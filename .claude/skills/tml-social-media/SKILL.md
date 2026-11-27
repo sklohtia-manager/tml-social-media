@@ -154,7 +154,10 @@ Audit existing social media jobs and today's failures, reconcile manual posts, i
 
 
 ## Social post template (owner instruction, 27 November 2026)
-1. **"Are you financially ready for tomorrow?" is not a default.** Use it only when the topic fits (for example a preparedness campaign), and **once** across the image and the caption. Never as an image header, footer or label.
+1. **"Are you financially ready for tomorrow?" is an approved Two Market Ledger signature line, kept available as an optional line in every template** (captions, graphics, videos). Not a default, header, footer or label.
+   - Use it when the topic naturally connects to financial preparedness, resilience or planning ahead (for example the financial resilience post). **Once per piece**; in a post with an image, in the caption or on the image, never both.
+   - Place it near the end, ideally as the **second-last line of the body**, with a natural lead-in sentence and a short closing line that completes the thought; source, disclaimer and hashtags follow. In videos, speak it once near the end the same way.
+   - Everyday explainers such as "Income vs net wealth" don't use it; the topic's own takeaway closes the post.
 2. **Graphic:** keep the green-and-gold layout and the TML logo. The headline is the actual topic, never a generic "Financial education explainer". One clear takeaway on the image, plus a short definition, example or verified figure where helpful. Phone-readable text. A current statistic on the image shows its source and date on the image. Hypothetical examples are labelled.
 3. **Caption:** extra context, source links, factual and educational. Series hashtag for the 3:15 PM edition is now #TMLEducation (legacy #AreYouFinanciallyReady is still recognised for duplicate checks).
 4. **Live posts are not replaced or reposted without the owner reviewing the revised graphic and caption first.**

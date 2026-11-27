@@ -20,3 +20,6 @@ All seven pass `tools/preflight.py --lint`. They carry no current statistics, so
 - **Only for the 3:15 PM Ready for Tomorrow slot**, and only when that day's edition cannot be produced or verified. Morning and Evening are news; their fallback is a held draft plus an owner alert, never a substitute post.
 - Each item is used at most once in 30 days. The owner is always notified when one is used.
 - The bank is replenished so that at least 7 unused approved items are always available. The Sunday report shows how many remain.
+
+## Signature line (owner decision, 27 Nov 2026)
+The approved line "Are you financially ready for tomorrow?" is used once, near the end with a lead-in and a short closing, only where the topic fits: **E01** (financial resilience), **E06** (time and long-term plans) and **E07** (preparing for change). E02–E05 close on their own takeaway.

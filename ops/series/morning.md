@@ -32,7 +32,7 @@ Cover what happened, why it matters (only causes the source states), the potenti
 
 **All channels**
 - Each platform's text is adapted, never identical.
-- "Are you financially ready for tomorrow?" only when the topic is genuinely about preparedness, once across image and caption, never as a default (owner rule, 27 Nov 2026).
+- "Are you financially ready for tomorrow?" is an approved signature line, optional: use it only when the topic naturally connects to preparedness, resilience or planning ahead, once per piece, near the end as the second-last line with a lead-in and a short closing (see `ops/series/ready.md`, "Signature line"). News recaps normally close on their own takeaway.
 - Paraphrase; no quote over 15 words.
 - In the log notes, note any major release due later today.
 

@@ -40,6 +40,7 @@
 - **Sources:** every figure, date or claim in the video comes from a primary official source, listed here. No figure means an empty list.
 - **Status:** `draft`, then `ready_for_review` (Media Studio), then `approved` (recorded by Claude after the owner approves the exact file), then `scheduled` or `published` (worker). Media Studio never writes the `approval` block itself.
 - **Hindi narration (owner requirement):** natural, fluent, human-sounding **male** voice, correct pronunciation of financial terms and numbers (for example ₹, lakh and crore), no robotic cadence. The owner judges this on the exact file.
+- **Signature line (optional, approved):** "Are you financially ready for tomorrow?" may be spoken once, near the end, only when the topic fits preparedness, resilience or planning ahead: a natural lead-in sentence, the line as the second-last spoken line, then a short closing that completes the thought, before the closing brand line. Everyday explainers close on their own takeaway.
 - **AI disclosure:** if the narration or footage is synthetic, `voice` says so, and the description includes "This video uses AI-generated narration." Hindi and English versions are each reviewed separately; translation is never auto-approved.
 
 ## 3. Flow

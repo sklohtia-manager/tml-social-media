@@ -11,8 +11,9 @@ spec = {
   "points": ["...", "..."],                                                  # optional (evening, 2-4)
   "context": "One short sentence of context.",                              # optional
   "source": "Source: ABS, Consumer Price Index, Australia, October 2026 (released 25 Nov 2026)",
-  "question": false,                                                         # signature question: ONLY when the topic is
-                                                                             # preparedness (owner rule 27 Nov 2026); never a default
+  "question": false,                                                         # optional approved signature line: only when the topic
+                                                                             # fits preparedness/resilience/planning; once per piece
+                                                                             # (image OR caption, not both); never a default
   "kicker": "MONEY BASICS",                                                  # optional top label; defaults per edition
   "blocks": [{"term": "Income", "text": "Money you receive over time, such as your pay."}],   # optional definitions
   "takeaway": "One clear takeaway in plain words.",                         # optional, highlighted
@@ -21,8 +22,8 @@ spec = {
 }
 Owner template rules (27 Nov 2026): the headline is the actual topic (never a generic "explainer"); one clear takeaway on the
 graphic; text large enough for a phone (body 30 px or more at 1080 px wide); any current statistic on the image must carry its
-source and date on the image; hypothetical examples are labelled; the signature question appears at most once across image and
-caption and only when the topic fits.
+source and date on the image; hypothetical examples are labelled; the signature line ("Are you financially ready for tomorrow?") is an approved optional line:
+once per piece, only when the topic fits, and in the caption rather than the image unless the image is the only text.
 Writes <date>-<edition>-<slug>-feed.jpg (1080x1350), -x.jpg (1600x900) and, for the ready series, -story.jpg (1080x1920).
 Uses the approved logo brand/tml-logo-primary.png on a warm-white band only (brand/LOGO_USAGE.md).
 """
