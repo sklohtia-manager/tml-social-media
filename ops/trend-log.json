@@ -1,0 +1,58 @@
+{
+ "_about": "Daily trend and topic log (ops/TREND_CHECKLIST.md). One entry per check. Never estimate: unavailable data says so.",
+ "entries": [
+  {
+   "dateChecked": "2026-11-27",
+   "by": "Claude (cloud session)",
+   "sources": {
+    "youtubeStudioTrends": "NOT CHECKED: requires the owner's signed-in YouTube Studio; not reachable from the cloud session.",
+    "googleTrends": "NOT CHECKED: trends.google.com returned no response from the cloud environment (host not reachable).",
+    "tiktokCreativeCenter": "NOT CHECKED: ads.tiktok.com Creative Center returned no response from the cloud environment.",
+    "ownInsights": "CHECKED (Buffer only, 24–27 Nov, AU audience unknown): Instagram 6 posts, 16 views, reach 13, 0 reactions; Facebook 10 posts, 30 impressions, reach 6; X 5 posts, 17 impressions. YouTube Studio, Instagram and Facebook native insights: unavailable."
+   },
+   "regions": {
+    "australia": "Not separately checkable today (no trend source available). Dated releases verified on primary sources: ABS CPI 25 Nov 2026, ABS WPI 18 Nov 2026.",
+    "indiaHindi": "Not checked: no trend source available; no Indian primary release reviewed for this entry."
+   },
+   "candidates": [
+    {
+     "topic": "wages and buying power (ABS CPI 4.9% vs WPI 3.5%)",
+     "class": "news-interest",
+     "link": "https://www.abs.gov.au/media-centre/media-releases/cpi-rose-49-year-october-2026",
+     "region": "AU",
+     "publicationDate": "2026-11-25",
+     "observedMetric": "ABS release (not a performance metric)",
+     "note": "No breakout example verified."
+    },
+    {
+     "topic": "30% off vs 20% off: which final price is lower?",
+     "class": "news-interest",
+     "link": null,
+     "region": "AU",
+     "publicationDate": null,
+     "observedMetric": "None: calendar only (Black Friday 27 Nov, Cyber Monday 30 Nov 2026). Google Trends not checked.",
+     "note": "Seasonal; evergreen fallback if the week passes."
+    },
+    {
+     "topic": "AUD/INR (sending money, exchange rate basics)",
+     "class": "evergreen",
+     "link": null,
+     "region": "AU+IN",
+     "publicationDate": null,
+     "observedMetric": "None",
+     "note": "No breakout checked."
+    },
+    {
+     "topic": "Income vs net wealth",
+     "class": "evergreen",
+     "link": "https://www.abs.gov.au/ausstats/abs@.nsf/Lookup/by%20Subject/6523.0~2015-16~Main%20Features~Key%20Concepts~3",
+     "region": "AU",
+     "publicationDate": "2017-09-13",
+     "observedMetric": "None",
+     "note": "Already posted 27 Nov (original live; revised version pending)."
+    }
+   ],
+   "verifiedBreakoutExamples": []
+  }
+ ]
+}

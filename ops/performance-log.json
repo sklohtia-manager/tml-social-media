@@ -1,0 +1,42 @@
+{
+ "_about": "Performance log for the four-week growth trial. Record at 48 hours and 7 days after publication. Unavailable metrics are written as 'unavailable', never estimated. Compare each item with our own posts of the previous 14 days on the same channel; Hindi and English separately.",
+ "decisionRule": "A format is 'worth repeating' only if it beats the channel's own median in at least two of the four weeks AND reaches at least 25 views or impressions. A single outlier doesn't count. Always record the raw numbers beside any comparison.",
+ "fields": [
+  "id",
+  "channel",
+  "format",
+  "language",
+  "subjectKey",
+  "publishedAt",
+  "link",
+  "h48",
+  "d7",
+  "previous14dMedian",
+  "note"
+ ],
+ "baseline_2026-11-24_to_27": {
+  "instagram": {
+   "posts": 6,
+   "views": 16,
+   "reach": 13,
+   "reactions": 0,
+   "comments": 0
+  },
+  "facebook": {
+   "posts": 10,
+   "impressions": 30,
+   "reach": 6,
+   "reactions": 0,
+   "comments": 0,
+   "clicks": 0
+  },
+  "x": {
+   "posts": 5,
+   "impressions": 17,
+   "clicks": 0,
+   "reposts": 0
+  },
+  "source": "Buffer aggregated insights, metrics updated 27 Nov 2026 (about 03:07–06:15 UTC)"
+ },
+ "items": []
+}

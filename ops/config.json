@@ -21,7 +21,8 @@
       "label": "THE LEDGER MORNING",
       "hashtag": "#TheLedgerMorning",
       "projectLog": "claude/ledger-daily/log.md",
-      "authority": "FE-01"
+      "authority": "FE-01",
+      "duplicateWindowMinutes": 45
     },
     "ready": {
       "run": "14:30",
@@ -35,7 +36,8 @@
         "#AreYouFinanciallyReady",
         "ARE YOU FINANCIALLY READY"
       ],
-      "hashtagNote": "#TMLEducation is the standard education hashtag. #AreYouFinanciallyReady is reserved for relevant preparedness campaigns (owner decision, 27 Nov 2026)."
+      "hashtagNote": "#TMLEducation is the standard education hashtag. #AreYouFinanciallyReady is reserved for relevant preparedness campaigns (owner decision, 27 Nov 2026).",
+      "duplicateWindowMinutes": 45
     },
     "evening": {
       "run": "19:00",
@@ -44,7 +46,8 @@
       "label": "THE LEDGER EVENING RECAP",
       "hashtag": "#TheLedgerEvening",
       "projectLog": "claude/ledger-daily/log.md",
-      "authority": "FE-01"
+      "authority": "FE-01",
+      "duplicateWindowMinutes": 45
     }
   },
   "imageBaseUrl": "https://raw.githubusercontent.com/sklohtia-manager/tml-social-media/main/",

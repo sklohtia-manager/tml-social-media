@@ -167,3 +167,11 @@ Details: `ops/series/ready.md` ("Post template and signature rule"), `tools/rend
 - **#TMLEducation** is the standard education hashtag. **#AreYouFinanciallyReady** is reserved for relevant preparedness campaigns.
 - The signature line rule stands as recorded above.
 - The revised "Income vs net wealth" design is the model for future explainers (`ops/MODEL_EXPLAINER.md`). The live post is left in place; the revised version and the evergreen drafts stay pending the owner's approval.
+
+
+## Growth trial and trend routine (owner instruction, 27 November 2026)
+- A four-week growth trial is **proposed** (plan in the private repository). Nothing in it is scheduled, uploaded or published without the owner's approval; existing schedules are unchanged.
+- **Daily trend and topic checklist:** `ops/TREND_CHECKLIST.md` and `ops/trend-log.json` (YouTube Studio Trends, Google Trends, TikTok Creative Center, our own insights; Australia and India/Hindi separately; link, region, publication date, observed metric and date checked for any breakout; classes verified-breakout / news-interest / evergreen; say exactly what couldn't be checked).
+- **Performance:** record at 48 hours and 7 days in `ops/performance-log.json`; compare with our own posts of the previous 14 days; a format counts as worth repeating only by the stated rule.
+- **Duplicate guard** for editions uses the publish window and the series label, not the standard hashtag.
+- Hypothetical figures are labelled; current figures are verified on primary sources; no advice, trading or recommendations.

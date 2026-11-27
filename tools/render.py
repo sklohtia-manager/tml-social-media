@@ -17,6 +17,7 @@ spec = {
   "kicker": "MONEY BASICS",                                                  # optional top label; defaults per edition
   "blocks": [{"term": "Income", "text": "Money you receive over time, such as your pay."}],   # optional definitions
   "takeaway": "One clear takeaway in plain words.",                         # optional, highlighted
+  "hypothetical": true,                                                      # optional: figure is a labelled hypothetical (no source year needed)
   "example": {"label": "Hypothetical example", "text": "..."},              # optional; label must say hypothetical/illustration
   "layout": "band" | "hero" | "split"                                        # optional, varies design
 }
@@ -193,7 +194,9 @@ def main(spec_path, outdir):
                                      spec.get("blocks"), spec.get("takeaway"), spec.get("example")])
     if BANNED.search(text):
         raise SystemExit(f"BLOCKED: prohibited wording in image text ({BANNED.search(text).group(0)}).")
-    if spec.get("figure") and not re.search(r"(19|20)\d\d", spec.get("source", "")):
+    if spec.get("figure") and spec.get("hypothetical") and not re.search(r"hypothetical|illustrat", spec["figure"].get("label", ""), re.I):
+        raise SystemExit("A hypothetical figure must be labelled hypothetical or illustration in its label.")
+    if spec.get("figure") and not spec.get("hypothetical") and not re.search(r"(19|20)\d\d", spec.get("source", "")):
         raise SystemExit("A current statistic on the image needs its source and date on the image (spec.source with a year).")
     ex = spec.get("example")
     if ex and not re.search(r"hypothetical|illustrat", ex.get("label", ""), re.I):

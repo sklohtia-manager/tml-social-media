@@ -35,3 +35,19 @@
 - Every figure in a video must come from a primary official source, listed in its manifest.
 
 **Never:** stock or fund picks, price predictions, trading, "fast money", guaranteed returns, or political commentary. Government decisions are reported factually, with their source.
+
+
+---
+# Four-week growth trial (proposed, owner review pending; nothing scheduled)
+Trial plan and week-1 drafts are in the private repository (`docs/editorial-drafts/trial-week1/`). Week 1 (Mon 30 Nov – Sun 6 Dec) adds, without changing any existing time:
+
+| Day | Added item (Melbourne time) | Subject key |
+|---|---|---|
+| Mon 30 Nov 12:30 PM | Instagram carousel plus Facebook and X posts: "30% off vs 20% off: which final price is lower?" (hypothetical figures) | `discount-comparison` |
+| Tue 1 Dec 12:30 PM | English YouTube episode: wages and buying power | `wages-buying-power-episode` |
+| Tue 1 Dec 6:30 PM | Hindi Short A (paired with the episode); YouTube, Instagram Reel, TikTok | `wages-buying-power-hi` |
+| Wed 2 Dec 12:30 PM | Facebook and X: "Prices up 4.9%, wages up 3.5%" (ABS CPI 25 Nov and WPI 18 Nov) | `prices-vs-wages-abs` |
+| Thu 3 Dec 6:30 PM | Hindi Short B: Income vs net wealth (or AUD/INR if not in production) | `income-net-wealth-hi` / `audinr-hi` |
+| Sat 5 Dec 6:30 PM | Hindi Short C: AUD/INR (next open slot) or the finished rice-pack Short, if approved | `audinr-hi` / `unit-price-rice-hi` |
+
+Existing editions (9:30 AM, 3:15 PM, 7:30 PM) continue unchanged. On any day with video, at least one video is Hindi.
