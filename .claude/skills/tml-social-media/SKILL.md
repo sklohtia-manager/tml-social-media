@@ -172,6 +172,10 @@ Details: `ops/series/ready.md` ("Post template and signature rule"), `tools/rend
 ## Growth trial and trend routine (owner instruction, 27 November 2026)
 - A four-week growth trial is **proposed** (plan in the private repository). Nothing in it is scheduled, uploaded or published without the owner's approval; existing schedules are unchanged.
 - **Daily trend and topic checklist:** `ops/TREND_CHECKLIST.md` and `ops/trend-log.json` (YouTube Studio Trends, Google Trends, TikTok Creative Center, our own insights; Australia and India/Hindi separately; link, region, publication date, observed metric and date checked for any breakout; classes verified-breakout / news-interest / evergreen; say exactly what couldn't be checked).
-- **Performance:** record at 48 hours and 7 days in `ops/performance-log.json`; compare with our own posts of the previous 14 days; a format counts as worth repeating only by the stated rule.
+- **Performance:** record at 48 hours and 7 days in `ops/performance-log.json`; compare with our own posts of the previous 14 days; a format is recommended for repetition if it beats the channel's own median in at least two of the four weeks (no minimum view or impression cutoff; always show raw numbers).
 - **Duplicate guard** for editions uses the publish window and the series label, not the standard hashtag.
 - Hypothetical figures are labelled; current figures are verified on primary sources; no advice, trading or recommendations.
+
+## YouTube-first trial alignment (owner decisions, 27 November 2026)
+- One full English YouTube episode and three Hindi Shorts a week; the Shorts replace the daily Hindi target during the trial; every video day includes a Hindi video. Proposed release dates Tue 1, Thu 3, Sat 5 Dec (Melbourne). **Codex's confirmed YouTube calendar is the source of truth**; no trial social post is scheduled before it is confirmed and the owner approves the reconciled calendar and assets.
+- Social additions only support the YouTube releases. Unpublished MP4s stay private. Reels and TikToks are **manual**, from upload packs built by `worker/tools/upload_pack.py` for approved videos only.

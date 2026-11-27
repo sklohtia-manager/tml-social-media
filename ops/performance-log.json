@@ -1,6 +1,6 @@
 {
  "_about": "Performance log for the four-week growth trial. Record at 48 hours and 7 days after publication. Unavailable metrics are written as 'unavailable', never estimated. Compare each item with our own posts of the previous 14 days on the same channel; Hindi and English separately.",
- "decisionRule": "A format is 'worth repeating' only if it beats the channel's own median in at least two of the four weeks AND reaches at least 25 views or impressions. A single outlier doesn't count. Always record the raw numbers beside any comparison.",
+ "decisionRule": "A format is recommended for repetition if it beats the channel's own median in at least two of the four weeks. There is no minimum view or impression cutoff (removed by the owner, 27 Nov 2026). Because the audience is very small, always record the raw numbers beside every comparison.",
  "fields": [
   "id",
   "channel",
