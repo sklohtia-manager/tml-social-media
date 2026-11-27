@@ -5,7 +5,7 @@
 ## Research (automatic, every edition)
 - [ ] 9:00, 2:30 and 7:00: the routine starts, runs preflight (policies, logo, cards, renderer) and reads `content/history.json`, the calendar and the last 14 days of Buffer history.
 - [ ] Facts come only from primary official sources, read in the same run, with the release date and period recorded. Anything older than 24 hours is never called new.
-- [ ] Unverifiable or uncertain: **HOLD** as a draft and notify the owner.
+- [ ] Unverifiable or uncertain: drop **that item** and move down the content ladder (A news → B dated 24–72 h → C weekly summary → D educational explainer, `ops/PUBLISHING_POLICY.md`). Never hold an edition for lack of news.
 
 ## Content creation (automatic)
 - [ ] Captions per platform (Facebook, Instagram, X) with the hook, source, signature question and the line "Education only. Not financial advice."
@@ -30,8 +30,8 @@
 ## Failure handling
 | What happened | What the system does | What the owner does |
 |---|---|---|
-| A routine didn't run (for example, the usage limit) | The next run's cross-check marks it MISSED and notifies you. A news edition is never replayed late. At 3:15, an approved evergreen education fallback can be used | Nothing, unless you want to post manually |
-| Source unreachable or facts unverified | HOLD: Buffer draft plus notification | Review the draft, or leave it |
+| A routine didn't run (for example, the usage limit) | The next run's cross-check marks it MISSED and records it. A news edition is never replayed late. An authorised educational explainer can fill any slot that is still within its catch-up window | Nothing, unless you want to post manually |
+| Source unreachable or facts unverified | Blocked source skipped (not retried); the edition moves down the ladder and is still published and verified | Nothing |
 | Buffer channel disconnected | That channel is skipped; "authentication lost: <channel>" | Reconnect the channel in Buffer |
 | Worker or YouTube problem (token revoked, wrong channel, upload uncertain) | Item blocked plus alert; nothing is retried blindly; never published late | Read the alert; Claude Code checks the VPS |
 | A private test turns out public | Marked `needs_review` with an immediate alert | Open YouTube Studio and set it to private |

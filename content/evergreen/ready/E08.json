@@ -1,0 +1,27 @@
+{
+  "id": "TML-EVG-READY-E08",
+  "series": "ready",
+  "type": "evergreen-education",
+  "title": "Interest rates and the household budget",
+  "topicCard": "interest-rates",
+  "imageUrl": "https://raw.githubusercontent.com/sklohtia-manager/tml-social-media/main/images/cards/card-ready-interest-rates-v2-feed.jpg",
+  "imageUrlX": "https://raw.githubusercontent.com/sklohtia-manager/tml-social-media/main/images/cards/card-ready-interest-rates-v2-x.jpg",
+  "label": "Clearly identified as an education edition, never as news.",
+  "facts": "No current statistics; hypothetical arithmetic illustrations only, labelled as hypothetical.",
+  "captions": {
+    "facebook": "FINANCIAL EDUCATION · Education edition\n\nInterest rates and the household budget\n\nInterest rates are the price of borrowing money.\n\nWhen the rate on a variable-rate loan changes, the repayments on that loan can change too. Rate changes can also affect what banks pay on savings.\n\nHouseholds have different loans, savings and incomes, so a rate change does not affect everyone the same way.\n\nKnowing which of your loans have variable rates, and when a fixed term ends, is a basic part of understanding your budget.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #InterestRates #HouseholdBudget #FinancialLiteracy\n\nFor information and education only. Not financial advice.",
+    "instagram": "1. Interest rates are the price of borrowing money.\n\n2. When the rate on a variable-rate loan changes, the repayments on that loan can change too. Rate changes can also affect what banks pay on savings.\n\n3. Households have different loans, savings and incomes, so a rate change does not affect everyone the same way.\n\nKnowing which of your loans have variable rates, and when a fixed term ends, is a basic part of understanding your budget.\n\nSave this for later.\n\nLearn. Understand. Stay Informed.\n\nEducation only. Not financial advice.\n\n#TwoMarketLedger #TMLEducation #InterestRates #HouseholdBudget #FinancialLiteracy #FinancialEducation #Australia #India",
+    "x": "Education edition: Interest rates are the price of borrowing money. When the rate on a variable-rate loan changes, repayments can change too. Education only, not advice. #TMLEducation"
+  },
+  "editions": [
+    "ready",
+    "morning",
+    "evening"
+  ],
+  "approval": {
+    "owner": true,
+    "approvedBy": "owner (standing authorisation 28 Nov 2026: educational explainers publish automatically when factual, branding and compliance checks pass)",
+    "approvedAt": "2026-11-28T09:30:00+11:00",
+    "note": "Concept text, no current statistics. Arithmetic checked. Lint run 28 Nov 2026. Any edit invalidates this approval until re-checked."
+  }
+}

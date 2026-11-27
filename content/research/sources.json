@@ -1,0 +1,38 @@
+{
+  "version": "2026-11-28",
+  "rules": "Official sources first; corroborate with a reputable secondary source where appropriate. A blocked source is recorded and skipped for the rest of the run; never retried in the same run. No Indian securities price data (announcements only for BSE and NSE).",
+  "regions": {
+    "australia": [
+      {"id": "abs", "name": "Australian Bureau of Statistics", "url": "https://www.abs.gov.au/", "use": "CPI, labour force, wage price index, GDP/national accounts, household finance; release calendar", "tier": "primary"},
+      {"id": "rba", "name": "Reserve Bank of Australia", "url": "https://www.rba.gov.au/", "use": "cash rate decisions, minutes, statistical tables, speeches, exchange rates", "tier": "primary"},
+      {"id": "treasury", "name": "Australian Treasury", "url": "https://treasury.gov.au/", "use": "budget, tax, policy announcements, ministers' releases", "tier": "primary"},
+      {"id": "asx", "name": "ASX", "url": "https://www.asx.com.au/", "use": "company announcements, market notices (no price levels as centrepiece)", "tier": "primary"},
+      {"id": "asic", "name": "ASIC", "url": "https://asic.gov.au/", "use": "consumer warnings, regulatory actions, MoneySmart education", "tier": "primary"}
+    ],
+    "india": [
+      {"id": "rbi", "name": "Reserve Bank of India", "url": "https://www.rbi.org.in/", "use": "policy rate, press releases, speeches (pages may bot-check; skip if blocked)", "tier": "primary"},
+      {"id": "sebi", "name": "SEBI", "url": "https://www.sebi.gov.in/", "use": "circulars, investor-education notices", "tier": "primary"},
+      {"id": "mof", "name": "Ministry of Finance / PIB", "url": "https://pib.gov.in/", "use": "budget, tax and policy releases", "tier": "primary"},
+      {"id": "mospi", "name": "MoSPI", "url": "https://mospi.gov.in/", "use": "CPI, GDP, IIP releases", "tier": "primary"},
+      {"id": "bse-nse", "name": "BSE and NSE", "url": "https://www.bseindia.com/", "use": "corporate announcements and notices only; no price or index data", "tier": "primary", "alt": "https://www.nseindia.com/"}
+    ],
+    "united_states_and_global": [
+      {"id": "fed", "name": "Federal Reserve", "url": "https://www.federalreserve.gov/", "use": "FOMC statements, minutes, press releases", "tier": "primary"},
+      {"id": "bea", "name": "US Bureau of Economic Analysis", "url": "https://www.bea.gov/", "use": "GDP estimates, PCE, trade; release schedule", "tier": "primary"},
+      {"id": "bls", "name": "US Bureau of Labor Statistics", "url": "https://www.bls.gov/", "use": "CPI, employment situation", "tier": "primary"},
+      {"id": "imf", "name": "IMF", "url": "https://www.imf.org/", "use": "World Economic Outlook, country reports", "tier": "primary"},
+      {"id": "worldbank", "name": "World Bank", "url": "https://www.worldbank.org/", "use": "Global Economic Prospects, data", "tier": "primary"},
+      {"id": "oecd", "name": "OECD", "url": "https://www.oecd.org/", "use": "Economic Outlook, CPI and employment data", "tier": "primary"}
+    ],
+    "secondary_corroboration_only": [
+      {"id": "reuters", "name": "Reuters", "url": "https://www.reuters.com/business/"},
+      {"id": "ap", "name": "Associated Press", "url": "https://apnews.com/business"},
+      {"id": "abc", "name": "ABC News Australia (business)", "url": "https://www.abc.net.au/news/business"},
+      {"id": "ft", "name": "Financial Times", "url": "https://www.ft.com/"},
+      {"id": "mint", "name": "Mint / The Hindu BusinessLine (India)", "url": "https://www.livemint.com/"}
+    ]
+  },
+  "knownAccessNotes": [
+    {"date": "2026-11-28", "note": "RBI speech PDF returned a bot check in the scheduled run; skipped, not retried. The interactive cloud session's network allowlist did not include bea.gov (page content was corroborated through the BEA search result instead); scheduled runs read bea.gov successfully on 28 Nov."}
+  ]
+}

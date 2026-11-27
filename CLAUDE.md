@@ -6,3 +6,6 @@ Then follow `ops/RUNBOOK.md` and the series file. The founding principles (`poli
 
 ## Architecture clarification (owner, 28 Nov 2026)
 TML has two services: the public website (twomarketledger.com: media, news, authorised market feeds, education, calculators; no registration for public content) and private My Ledger, intended eventually for all registered users (not only the founder family), offering organisation tools, not advice. Public registration stays disabled until authentication, isolation, privacy and security are tested. Social posts and videos must not describe My Ledger as live or open for sign-up, or make privacy claims beyond what is implemented. Full record: private repo docs/handover/ARCHITECTURE_CLARIFICATION_2026-11-28.md.
+
+## Publishing policy (owner, 28 Nov 2026)
+Read `ops/PUBLISHING_POLICY.md` first: it is the single authoritative daily publishing policy (content ladder, no HOLD for lack of news, explainers authorised for automatic publishing, low-credit workflow, verified completion).

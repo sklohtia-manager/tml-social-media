@@ -14,9 +14,14 @@
     "x": "Education edition: Jobs change, hours change and industries change. Few incomes are guaranteed for a lifetime. Education only, not advice. #TMLEducation"
   },
   "approval": {
-    "owner": false,
-    "approvedBy": null,
-    "approvedAt": null,
-    "note": "Owner approval required before any use. Template 27 Nov 2026: the approved signature line is used once, near the end, because the topic fits preparedness/planning ahead. Edit after approval invalidates it."
-  }
+    "owner": true,
+    "approvedBy": "owner (standing authorisation 28 Nov 2026: educational explainers publish automatically when factual, branding and compliance checks pass)",
+    "approvedAt": "2026-11-28T09:30:00+11:00",
+    "note": "Text unchanged since the 27 Nov preflight lint. Usable in any edition (swap the label line and card edition; see ops/templates/explainer.md). Any edit invalidates this approval until the checks are re-run."
+  },
+  "editions": [
+    "ready",
+    "morning",
+    "evening"
+  ]
 }

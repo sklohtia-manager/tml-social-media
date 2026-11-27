@@ -1,0 +1,27 @@
+{
+  "id": "TML-EVG-READY-E10",
+  "series": "ready",
+  "type": "evergreen-education",
+  "title": "Why economic history is worth knowing",
+  "topicCard": "economic-history",
+  "imageUrl": "https://raw.githubusercontent.com/sklohtia-manager/tml-social-media/main/images/cards/card-ready-economic-history-v2-feed.jpg",
+  "imageUrlX": "https://raw.githubusercontent.com/sklohtia-manager/tml-social-media/main/images/cards/card-ready-economic-history-v2-x.jpg",
+  "label": "Clearly identified as an education edition, never as news.",
+  "facts": "No current statistics; hypothetical arithmetic illustrations only, labelled as hypothetical.",
+  "captions": {
+    "facebook": "FINANCIAL EDUCATION · Education edition\n\nWhy economic history is worth knowing\n\nEconomies have gone through booms and slowdowns many times.\n\nStudying them shows that conditions change and that no phase lasts forever.\n\nCentral banks and statistical agencies publish the official records of what actually happened.\n\nHistory does not predict the next event. It gives context for today's news.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #EconomicHistory #FinancialLiteracy #FinancialLiteracy\n\nFor information and education only. Not financial advice.",
+    "instagram": "1. Economies have gone through booms and slowdowns many times.\n\n2. Studying them shows that conditions change and that no phase lasts forever.\n\n3. Central banks and statistical agencies publish the official records of what actually happened.\n\nHistory does not predict the next event. It gives context for today's news.\n\nSave this for later.\n\nLearn. Understand. Stay Informed.\n\nEducation only. Not financial advice.\n\n#TwoMarketLedger #TMLEducation #EconomicHistory #FinancialLiteracy #FinancialLiteracy #FinancialEducation #Australia #India",
+    "x": "Education edition: Economies have gone through booms and slowdowns many times. History does not predict what comes next; it gives context for today's news. Education only, not advice. #TMLEducation"
+  },
+  "editions": [
+    "ready",
+    "morning",
+    "evening"
+  ],
+  "approval": {
+    "owner": true,
+    "approvedBy": "owner (standing authorisation 28 Nov 2026: educational explainers publish automatically when factual, branding and compliance checks pass)",
+    "approvedAt": "2026-11-28T09:30:00+11:00",
+    "note": "Concept text, no current statistics. Arithmetic checked. Lint run 28 Nov 2026. Any edit invalidates this approval until re-checked."
+  }
+}

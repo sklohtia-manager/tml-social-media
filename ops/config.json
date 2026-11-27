@@ -55,9 +55,10 @@
   "imageModeNote": "Scheduled runs cannot push to GitHub, so hosted post images use the pre-rendered branded topic cards in images/cards/. Run-specific facts go in the post text. The 3:15 PM WhatsApp status image is rendered fresh each day and sent to the founder directly.",
   "evergreenBank": {
     "ready": "content/evergreen/ready",
+    "allEditions": true,
     "minimumApproved": 7,
     "reuseDays": 30,
-    "newsSeriesFallback": "none (HOLD and notify)"
+    "newsSeriesFallback": "ladder: tier A news, B dated 24-72h, C weekly summary, D educational explainer (ops/PUBLISHING_POLICY.md); never HOLD for lack of news"
   },
   "officialContact": "contact@twomarketledger.com"
 }

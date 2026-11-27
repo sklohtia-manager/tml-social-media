@@ -11,7 +11,7 @@
 - AUD/INR/USD and remittances;
 - retirement.
 
-Pick the single most important verified story, preferring neutral macro news. If nothing fresh can be verified, publish a labelled "EDUCATIONAL EXPLAINER" (topic card "explainer").
+Pick the single most important verified story, preferring neutral macro news (tier A). If nothing fresh verifies within the research budget, move **automatically** down `ops/PUBLISHING_POLICY.md` §1: tier B (a verified development from the previous 24–72 hours, dated, "In case you missed it"), tier C (weekly economic developments), then tier D (a labelled "EDUCATIONAL EXPLAINER" using `ops/templates/explainer.md`, with the topic card that fits the topic). Never hold the edition for lack of news; never present B, C or D as news.
 
 Cover what happened, why it matters (only causes the source states), the potential economic and household impact, and what is uncertain. Write a HEADLINE.
 

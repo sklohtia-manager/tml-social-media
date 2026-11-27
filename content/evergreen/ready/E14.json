@@ -1,0 +1,27 @@
+{
+  "id": "TML-EVG-READY-E14",
+  "series": "ready",
+  "type": "evergreen-education",
+  "title": "Gross pay, tax and take-home pay",
+  "topicCard": "budget-tax",
+  "imageUrl": "https://raw.githubusercontent.com/sklohtia-manager/tml-social-media/main/images/cards/card-ready-budget-tax-v2-feed.jpg",
+  "imageUrlX": "https://raw.githubusercontent.com/sklohtia-manager/tml-social-media/main/images/cards/card-ready-budget-tax-v2-x.jpg",
+  "label": "Clearly identified as an education edition, never as news.",
+  "facts": "No current statistics; hypothetical arithmetic illustrations only, labelled as hypothetical.",
+  "captions": {
+    "facebook": "FINANCIAL EDUCATION · Education edition\n\nGross pay, tax and take-home pay\n\nGross pay is the pay agreed with an employer before tax. Take-home (net) pay is what reaches the bank account after tax and other deductions.\n\nA household budget is built on take-home pay.\n\nHypothetical example: if $1,000 of gross pay leaves $800 after tax, the household has $800 to plan with.\n\nTax rules differ by country and change over time. The official source is the tax authority, such as the ATO in Australia or the Income Tax Department in India.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #TakeHomePay #Tax #FinancialLiteracy\n\nFor information and education only. Not financial advice.",
+    "instagram": "1. Gross pay is the pay agreed with an employer before tax. Take-home (net) pay is what reaches the bank account after tax and other deductions.\n\n2. A household budget is built on take-home pay.\n\n3. Hypothetical example: if $1,000 of gross pay leaves $800 after tax, the household has $800 to plan with.\n\nTax rules differ by country and change over time. The official source is the tax authority, such as the ATO in Australia or the Income Tax Department in India.\n\nSave this for later.\n\nLearn. Understand. Stay Informed.\n\nEducation only. Not financial advice.\n\n#TwoMarketLedger #TMLEducation #TakeHomePay #Tax #FinancialLiteracy #FinancialEducation #Australia #India",
+    "x": "Education edition: Gross pay is before tax; take-home pay is after tax and deductions. A budget is built on take-home pay. Hypothetical: $1,000 gross, $800 take-home. Education only, not advice. #TMLEducation"
+  },
+  "editions": [
+    "ready",
+    "morning",
+    "evening"
+  ],
+  "approval": {
+    "owner": true,
+    "approvedBy": "owner (standing authorisation 28 Nov 2026: educational explainers publish automatically when factual, branding and compliance checks pass)",
+    "approvedAt": "2026-11-28T09:30:00+11:00",
+    "note": "Concept text, no current statistics. Arithmetic checked. Lint run 28 Nov 2026. Any edit invalidates this approval until re-checked."
+  }
+}

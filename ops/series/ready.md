@@ -43,7 +43,7 @@ A daily financial-education, brand-awareness and preparedness series. Each post 
 - Render a fresh 1080×1920 image of today's topic: write a spec JSON with `edition: "ready"`, the actual topic as `headline`, a `takeaway`, optional `blocks` (short definitions) or a figure (with its period), and a `source` line that includes the publisher and date whenever a figure is shown. Add `question: true` only under the signature rule below. Then run `python3 tools/render.py spec.json /tmp/out`.
 - Inspect the image.
 - SendUserFile it (status proactive) with the caption "3:15 PM: <headline>" plus a 1–2 line WhatsApp caption.
-- Send it every day the content is ALLOW, including a missed edition saved as drafts (then add "(today's posts are drafts, not published)" to the caption). If the edition is HOLD, send nothing; the notification covers it.
+- Send it every day the content is ALLOW, including a missed edition saved as drafts (then add "(today's posts are drafts, not published)" to the caption). If nothing can be published, send nothing; the notification covers it.
 
 ## Audience-growth standards (owner priority, 27 Nov 2026)
 - **Hook first:** start every caption with one factual, specific line that says why it matters to a household, such as "Your $100 now buys about $95 of last year's shopping." No clickbait, questions that mislead, or ALL CAPS.
@@ -58,7 +58,7 @@ A daily financial-education, brand-awareness and preparedness series. Each post 
 - **Referrals:** once the public website is live and approved, add the relevant website page link on Facebook and X.
 
 ## Educational fallback (owner instruction, 27 Nov 2026)
-If today's edition cannot be produced or verified, follow RUNBOOK §1B: use the next owner-approved item from `content/evergreen/ready/` (see `ops/EVERGREEN_BANK.md`), labelled "education edition", and notify the founder. Never present it as news. The WhatsApp image for a fallback day uses the item's title as the headline, with no figure.
+If today's edition cannot be produced or verified, move down `ops/PUBLISHING_POLICY.md` §1 and publish the next owner-authorised evergreen item from `content/evergreen/` (see `ops/EVERGREEN_BANK.md`), labelled "education edition". No notification is needed for a routine fallback; it is recorded in the log. Never present it as news. The WhatsApp image for a fallback day uses the item's title as the headline, with no figure.
 
 ## Post template and signature rule (owner instruction, 27 Nov 2026; overrides anything above)
 - **Signature line (approved, owner decision 27 Nov 2026).** "Are you financially ready for tomorrow?" is an **approved Two Market Ledger signature line** and stays **available as an optional line in every template** (captions, graphics and videos). It is not a default and not a header, footer or label.

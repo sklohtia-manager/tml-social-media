@@ -1,8 +1,8 @@
 # The Ledger Evening Recap: 7:30 PM (FE-01)
 
 **Scope:** the 2–4 most significant verified economic, business and government developments of today (Australia, India, United States, global; especially Australian and Indian business-day releases).
-- Drop any item that cannot be verified.
-- If fewer than 2 verify, publish a single-story recap or a labelled "EDUCATIONAL EXPLAINER".
+- Drop any item that cannot be verified (the item, not the edition).
+- If fewer than 2 verify, publish a single-story recap; if none verifies, move down `ops/PUBLISHING_POLICY.md` §1 (tier B dated, tier C weekly summary, tier D labelled "EDUCATIONAL EXPLAINER" via `ops/templates/explainer.md`). Never hold the edition for lack of news.
 - Do not repeat this morning's story unless there has been a material development.
 
 For each development, say what happened and its potential impact on households, workers, professionals and businesses, and note the uncertainty. Write a HEADLINE (e.g. "Today in 3 developments: …"). Choose the topic card that fits the lead item.
@@ -28,7 +28,7 @@ For each development, say what happened and its potential impact on households, 
 
 **Daily operational report (owner policy, 27 Nov 2026; replaces the daily publication summary):** after verifying its own posts, the Evening run sends the owner **one** concise SendUserMessage, in this fixed order, with nothing marked done unless it was checked in this run:
 1. **Successful posts today:** each edition (9:30, 3:15, 7:30) by channel, with status "sent" and post IDs or links. Manual or native posts (`via: "network"`) are listed separately.
-2. **Failed, missed or held posts:** the edition, channel and reason (error, HOLD, MISSED, DELAYED), plus what was already done about it.
+2. **Failed or missed posts:** the edition, channel and reason (error, MISSED, DELAYED), plus what was already done about it.
 3. **Pending videos:**
    - Hindi 6:30 PM target: whether a video was published today (native or manual posts in Buffer history), otherwise "no Hindi video today";
    - video items awaiting owner approval, from `content/history.json` and `queue/manual/`. Write "unknown from this run" where the routine can't see something (for example the VPS worker or Media Studio). Never guess.
