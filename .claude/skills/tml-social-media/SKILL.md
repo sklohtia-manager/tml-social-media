@@ -162,3 +162,8 @@ Audit existing social media jobs and today's failures, reconcile manual posts, i
 3. **Caption:** extra context, source links, factual and educational. Series hashtag for the 3:15 PM edition is now #TMLEducation (legacy #AreYouFinanciallyReady is still recognised for duplicate checks).
 4. **Live posts are not replaced or reposted without the owner reviewing the revised graphic and caption first.**
 Details: `ops/series/ready.md` ("Post template and signature rule"), `tools/render.py`, `tools/build_cards.py`.
+
+## Hashtags and model design (owner decisions, 27 November 2026)
+- **#TMLEducation** is the standard education hashtag. **#AreYouFinanciallyReady** is reserved for relevant preparedness campaigns.
+- The signature line rule stands as recorded above.
+- The revised "Income vs net wealth" design is the model for future explainers (`ops/MODEL_EXPLAINER.md`). The live post is left in place; the revised version and the evergreen drafts stay pending the owner's approval.

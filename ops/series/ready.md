@@ -27,7 +27,7 @@ A daily financial-education, brand-awareness and preparedness series. Each post 
 - Hook, then short paragraphs.
 - Name the source (no links).
 - "Education only. Not financial advice."
-- 5–12 hashtags, including #TwoMarketLedger and the series tag #TMLEducation.
+- 5–12 hashtags, including #TwoMarketLedger and the standard education hashtag #TMLEducation. Add #AreYouFinanciallyReady only on a relevant preparedness-campaign post.
 
 **Facebook**
 - 100–200 words.
@@ -72,3 +72,5 @@ If today's edition cannot be produced or verified, follow RUNBOOK §1B: use the 
 - **Examples:** hypothetical examples are labelled ("Hypothetical example" or "Illustration") on the image and in the caption.
 - **Caption:** extra context, the definitions' or figures' source, and links. Factual and educational only.
 - **Topic card choice:** the card title must accurately describe the post. If no card fits, use the closest card whose title is still accurate (for example "Finances beyond property"), never an inaccurate one. Concept cards for the coming week's calendar topics are rendered and pushed in advance by an interactive session (`tools/build_cards.py` and `ops/topic-cards.json`).
+- **Hashtags (owner decision, 27 Nov 2026):** **#TMLEducation** is the standard education hashtag on every education post. **#AreYouFinanciallyReady** is reserved for relevant preparedness campaigns (for example the financial resilience post), not used by default.
+- **Model design:** the revised "Income vs net wealth" graphic is the model for future explainers (`ops/MODEL_EXPLAINER.md`): actual-topic headline, short definitions, one highlighted takeaway, source and date on the image, green-and-gold layout with the TML logo.
