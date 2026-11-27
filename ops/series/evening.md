@@ -10,17 +10,16 @@ For each development, say what happened and its potential impact on households, 
 **Instagram**
 - Hook line, then numbered short points.
 - Name the sources (no links).
-- "Education only. Not financial advice."
 - 5–12 hashtags, including #TwoMarketLedger #TheLedgerEvening.
 
 **Facebook**
 - 100–200 words (count with code).
 - Primary-source URLs.
-- Close with "For information and education only. Not financial advice."
+- Close with a source line; no automatic disclaimer (PUBLISHING_POLICY §6A).
 
 **X**
 - At most 280 characters, links counting as 23.
-- "Sources: <publishers>" and "Education only, not advice."
+- "Sources: <publishers>" and the link if it fits.
 
 **Also**
 - Check today's 9:30 AM and 3:15 PM posts on every channel, and report any with error status or missing.
@@ -48,7 +47,7 @@ A draft or a successful API call is not reported as published: only status "sent
   - Facebook: a slightly longer plain-language explainer with the source link;
   - X: one fact, one line of context and the source link.
 - **Hashtags:** 5–8 relevant ones on Instagram, mixing broad (#FinancialLiteracy) and specific (#AustralianEconomy, #RBA, #Inflation); 3–5 on Facebook; at most 2 on X. Never trending-bait.
-- **Close** with the educational line "Learn. Understand. Stay Informed." and the disclosure.
+- **Close** with the line "Learn. Understand. Stay Informed." where it fits; no automatic disclaimer.
 - **Consistency:** publish at the approved times every day. A late post is never better than a held one.
 - **Referrals:** once the public website is live and approved, add the relevant website page link on Facebook and X.
 

@@ -9,15 +9,15 @@
   "label": "Clearly identified as an education edition, never as news.",
   "facts": "No statistics; arithmetic illustrations only, with assumptions stated.",
   "captions": {
-    "facebook": "FINANCIAL EDUCATION · Education edition\n\nWhat inflation does to a fixed amount of money\n\nIllustration: if prices rise 3% a year, $100 buys about $97 of today's shopping after one year and about $74 after ten.\n\nThat 3% is an assumption for the arithmetic, not a forecast.\n\nMoney that sits still does not lose its number, but it can lose what it buys.\n\nUnderstanding this helps households read their pay rises, savings and price changes in real terms.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #FinancialLiteracy\n\nFor information and education only. Not financial advice.",
-    "instagram": "Illustration: if prices rise 3% a year, $100 buys about $97 of today's shopping after one year and about $74 after ten.\n\n1. That 3% is an assumption for the arithmetic, not a forecast.\n\n2. Money that sits still does not lose its number, but it can lose what it buys.\n\n3. Understanding this helps households read their pay rises, savings and price changes in real terms.\n\nSave this for later.\n\nLearn. Understand. Stay Informed.\n\nEducation only. Not financial advice.\n\n#TwoMarketLedger #TMLEducation #FinancialLiteracy #FinancialEducation #MoneyBasics #Australia #India",
-    "x": "Education edition: Illustration: if prices rise 3% a year, $100 buys about $97 of today's shopping after one year and about $74 after ten. Education only, not advice. #TMLEducation"
+    "facebook": "FINANCIAL EDUCATION · Education edition\n\nWhat inflation does to a fixed amount of money\n\nIllustration: if prices rise 3% a year, $100 buys about $97 of today's shopping after one year and about $74 after ten.\n\nThat 3% is an assumption for the arithmetic, not a forecast.\n\nMoney that sits still does not lose its number, but it can lose what it buys.\n\nUnderstanding this helps households read their pay rises, savings and price changes in real terms.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #FinancialLiteracy",
+    "instagram": "Illustration: if prices rise 3% a year, $100 buys about $97 of today's shopping after one year and about $74 after ten.\n\n1. That 3% is an assumption for the arithmetic, not a forecast.\n\n2. Money that sits still does not lose its number, but it can lose what it buys.\n\n3. Understanding this helps households read their pay rises, savings and price changes in real terms.\n\nSave this for later.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #FinancialLiteracy #FinancialEducation #MoneyBasics #Australia #India",
+    "x": "Education edition: Illustration: if prices rise 3% a year, $100 buys about $97 of today's shopping after one year and about $74 after ten. #TMLEducation"
   },
   "approval": {
     "owner": true,
     "approvedBy": "owner (standing authorisation 28 Nov 2026: educational explainers publish automatically when factual, branding and compliance checks pass)",
     "approvedAt": "2026-11-28T09:30:00+11:00",
-    "note": "Text unchanged since the 27 Nov preflight lint. Usable in any edition (swap the label line and card edition; see ops/templates/explainer.md). Any edit invalidates this approval until the checks are re-run."
+    "note": "Text unchanged since the 27 Nov preflight lint. Usable in any edition (swap the label line and card edition; see ops/templates/explainer.md). Any edit invalidates this approval until the checks are re-run. Disclaimer lines removed 28 Nov 2026 under the owner's professional-language directive (text otherwise unchanged)."
   },
   "editions": [
     "ready",

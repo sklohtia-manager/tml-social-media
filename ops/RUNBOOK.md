@@ -36,13 +36,13 @@ Never: post to LinkedIn or any channel other than the three in `ops/config.json`
 
 ## 4. Images
 - Choose the topic key in `ops/topic-cards.json` whose title accurately describes the post (there is no generic "explainer" card: the legacy `card-*-explainer-*` files are retired and must not be used). Three variants per topic (`""` forest, `-v2` charcoal, `-v3` warm white); use the variant not used longest; never the same topic+variant twice in 7 days in any series.
-- URLs: `https://raw.githubusercontent.com/sklohtia-manager/tml-social-media/main/images/cards/card-<edition>-<topic><variant>-feed.jpg` (Instagram, Facebook) and `…-x.jpg` (X), where `<edition>` is `morning`, `ready` or `evening`. Confirm both files exist in the clone. altText: "Two Market Ledger <series label> card: <topic title>. General education only."
+- URLs: `https://raw.githubusercontent.com/sklohtia-manager/tml-social-media/main/images/cards/card-<edition>-<topic><variant>-feed.jpg` (Instagram, Facebook) and `…-x.jpg` (X), where `<edition>` is `morning`, `ready` or `evening`. Confirm both files exist in the clone. altText: "Two Market Ledger <series label> card: <topic title>."
 - Do not upload or render other images (scheduled runs cannot push to GitHub). A missing card: choose the next closest accurate topic; only if none fits, notify.
 
 ## 5. Publish
 - Instagram: feed image (with altText), `metadata.instagram {type:"post", shouldShareToFeed:true}`, `schedulingType:"automatic"`. Facebook: its own post, `metadata.facebook.type:"post"`, feed image. X: X image; **at most 280 characters counting the real length of any link** (Buffer rejected a 304-character post; count with code, leave the link only if the whole text fits).
 - Create each channel independently; one failure never stops the others.
-- Post text per `ops/series/<series>.md`, `ops/templates/explainer.md` and the post template rules in `ops/series/ready.md` (signature line only where it fits; `#TMLEducation` standard).
+- Post text per `ops/series/<series>.md`, `ops/templates/news.md`, `ops/templates/explainer.md` and PUBLISHING_POLICY §6A (professional language; **no automatic disclaimers or "not today's news" wording**; content label first; original date mentioned naturally; signature line only where it fits; `#TMLEducation` standard).
 - Plan limit (10 scheduled posts): one `shareNow` instead of scheduling; otherwise notify.
 
 ## 6. Verify, recover, notify

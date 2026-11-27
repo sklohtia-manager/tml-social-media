@@ -6,7 +6,7 @@ Use this as the pattern for future explainers. The live 27 Nov post stays as pub
 - Small kicker (for example MONEY BASICS), then the actual topic as the headline.
 - Short definition blocks (term in gold, one plain sentence beneath).
 - One highlighted takeaway with a gold bar.
-- Source and date on the image whenever a definition or figure comes from a publication, then the disclaimer. Hypothetical examples are labelled.
+- Compact source and date on the image whenever a definition or figure comes from a publication; no disclaimer line (PUBLISHING_POLICY §6A). Hypothetical examples are labelled.
 - Green-and-gold layout and the TML logo, unchanged. Body text 30 px or more.
 
 **Reference spec**

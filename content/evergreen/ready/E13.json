@@ -9,9 +9,9 @@
   "label": "Clearly identified as an education edition, never as news.",
   "facts": "No current statistics; hypothetical arithmetic illustrations only, labelled as hypothetical.",
   "captions": {
-    "facebook": "FINANCIAL EDUCATION · Education edition\n\nSpreading out education costs\n\nEducation costs include fees, books, travel and living costs, and they usually arrive in stages over several years.\n\nListing them year by year shows when each cost falls.\n\nHypothetical example: $8,000 a year for 4 years is $32,000 in total, before any change in prices.\n\nPrices change over time, so a list of expected costs is worth revisiting from time to time.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #EducationCosts #FinancialLiteracy #FinancialLiteracy\n\nFor information and education only. Not financial advice.",
-    "instagram": "1. Education costs include fees, books, travel and living costs, and they usually arrive in stages over several years.\n\n2. Listing them year by year shows when each cost falls.\n\n3. Hypothetical example: $8,000 a year for 4 years is $32,000 in total, before any change in prices.\n\nPrices change over time, so a list of expected costs is worth revisiting from time to time.\n\nSave this for later.\n\nLearn. Understand. Stay Informed.\n\nEducation only. Not financial advice.\n\n#TwoMarketLedger #TMLEducation #EducationCosts #FinancialLiteracy #FinancialLiteracy #FinancialEducation #Australia #India",
-    "x": "Education edition: Education costs arrive in stages over years. Hypothetical example: $8,000 a year for 4 years is $32,000 before price changes. Education only, not advice. #TMLEducation"
+    "facebook": "FINANCIAL EDUCATION · Education edition\n\nSpreading out education costs\n\nEducation costs include fees, books, travel and living costs, and they usually arrive in stages over several years.\n\nListing them year by year shows when each cost falls.\n\nHypothetical example: $8,000 a year for 4 years is $32,000 in total, before any change in prices.\n\nPrices change over time, so a list of expected costs is worth revisiting from time to time.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #EducationCosts #FinancialLiteracy #FinancialLiteracy",
+    "instagram": "1. Education costs include fees, books, travel and living costs, and they usually arrive in stages over several years.\n\n2. Listing them year by year shows when each cost falls.\n\n3. Hypothetical example: $8,000 a year for 4 years is $32,000 in total, before any change in prices.\n\nPrices change over time, so a list of expected costs is worth revisiting from time to time.\n\nSave this for later.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #EducationCosts #FinancialLiteracy #FinancialLiteracy #FinancialEducation #Australia #India",
+    "x": "Education edition: Education costs arrive in stages over years. Hypothetical example: $8,000 a year for 4 years is $32,000 before price changes. #TMLEducation"
   },
   "editions": [
     "ready",
@@ -22,6 +22,6 @@
     "owner": true,
     "approvedBy": "owner (standing authorisation 28 Nov 2026: educational explainers publish automatically when factual, branding and compliance checks pass)",
     "approvedAt": "2026-11-28T09:30:00+11:00",
-    "note": "Concept text, no current statistics. Arithmetic checked. Lint run 28 Nov 2026. Any edit invalidates this approval until re-checked."
+    "note": "Concept text, no current statistics. Arithmetic checked. Lint run 28 Nov 2026. Any edit invalidates this approval until re-checked. Disclaimer lines removed 28 Nov 2026 under the owner's professional-language directive (text otherwise unchanged)."
   }
 }

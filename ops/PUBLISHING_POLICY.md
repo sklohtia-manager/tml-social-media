@@ -1,4 +1,4 @@
-# Two Market Ledger: authoritative publishing and editorial policy (v3, 28 November 2026)
+# Two Market Ledger: authoritative publishing and editorial policy (v3.1, 28 November 2026)
 
 **Owner directives, 28 Nov 2026 (daily publishing; global news coverage).** This is the single policy for the three daily editions (9:30 AM Morning, 3:15 PM Ready/Education, 7:30 PM Evening; Australia/Melbourne, every day including weekends and public holidays) and for every platform and workflow that researches or publishes news or education. Where any other file conflicts with it, **this file wins**; the founding principles and the compliance rules in `policy/FINANCIAL_CONTENT_RULES.md` (as amended by the 28 Nov directives) still apply in full. An edition is complete only when it is scheduled or published to Instagram, Facebook and X **and its status is verified**.
 
@@ -16,7 +16,7 @@ Each item in the research record carries one of these as its `category`.
 | A | Latest verified news from anywhere relevant: a credible report or official release from the last 24 hours (Morning: since the previous Evening edition). **If there is no major Australian item, use international news.** | "News"; only tier A may say new, latest or today |
 | B | Recent verified development from the previous 24–72 hours (or a recent verified economic development), clearly dated | Date in the first line; "In case you missed it"; never "breaking" or "today" |
 | C | Market summary or weekly economic and business developments, each item dated | "This week" |
-| D | Clearly labelled evergreen educational explainer (reserve `content/evergreen/`, 14 items) | "EDUCATIONAL EXPLAINER" / "Education edition" |
+| D | Clearly labelled evergreen educational explainer (reserve `content/evergreen/`, 14 items) | "Education" label (explainer) |
 
 Take the highest tier that has one verified item and stop researching. **A lack of domestic announcements is never a reason to cancel or hold an edition.** One item failing verification drops that item, not the edition. **HOLD (drafts only, owner notified) is reserved for genuine verification, safety, compliance, authorisation or technical issues that cannot be resolved with approved fallback content.** Never repeat the same story in the same day unless materially updated; no educational subject repeats within 21 days.
 
@@ -43,7 +43,16 @@ Where the evidence supports it, add one or two sentences on the relevance to Aus
 - Political neutrality; neutral headlines; no sensationalism, fear, urgency or speculation presented as fact.
 - **Public content is factual, informational and educational: no personalised investment plans, no buy/sell/hold calls, no recommendations or rankings of products, funds, stocks, ETFs, super, loans, insurance, gold or crypto, no price targets or forecasts for named securities, no trading, fast-money or get-rich-quick framing.** Reporting an attributed market or company development is news; steering a reader is advice.
 - Markets and prices: attributed news statements about a market, commodity or currency movement are allowed ("Brent crude rose, Reuters reported, after…"). No price tables, tickers, live quotes, charts or screenshots, and no Indian securities price data displays (SEBI/data-rights rule R03). Causation is stated only as the source states it.
-- Education disclosure on every post; closing "Learn. Understand. Stay Informed."; signature line only where it fits.
+- Closing line "Learn. Understand. Stay Informed." is optional on explainers; signature line only where it fits. **No automatic disclaimer** (see §6A).
+
+## 6A. Professional editorial language and disclosures (owner directive, 28 Nov 2026; permanent)
+- Write like a responsible mainstream financial news publication: strong, informative headlines; simple factual explanations; relevant dates and verified figures; concise source attribution; global developments and their relevance to everyday life; neutral, confident language. Reporting is presented as ordinary factual reporting, never as something inappropriate.
+- **Do not automatically add** to ordinary news posts, educational graphics, captions, articles or videos: "Not today's news", "Background, not breaking news", "General education only", "Not financial advice", "Sources and dates are in the post text", or other defensive or apologetic wording. This includes the old label text "(background, not today's news)" and the footer disclaimer on graphics.
+- **Earlier developments:** mention the original date naturally ("The US Bureau of Economic Analysis said on 25 November that…"). No need to say it is not today's news; **never present an older development as breaking or new** (only tier A may say new, latest or today).
+- **Content labels** (first line of captions, graphic kicker): News, Markets, Global Economy, Technology, Energy, Education, Insights (add Australia or India where useful).
+- **Where disclosures stay:** (1) standing platform disclosures in the profile/About text and on the website (`brand/PLATFORM_DISCLOSURES.md`); (2) a specific note only where legally required or genuinely necessary for that content: "Hypothetical example", "our calculation", a forecast attributed to its author, a clear general-information line on a post that discusses tax, super, retirement or loans in a way a reader could mistake for personal advice, sponsored or AI-generated material if ever relevant. A profile disclaimer never authorises financial advice.
+- **Unchanged:** every fact is still verified before publishing; no investment recommendations, buy/sell instructions, personalised advice or misleading predictions; internal compliance checks (lint, evidence standard, data rights) stay in force. This simplifies public presentation only.
+- **Graphics:** headline that carries the news; one or two verified figures; one or two sentences of explanation; our own simple chart where useful; logo and brand colours unchanged; compact source line; no unused space and no disclaimer line (`tools/render.py` supports `figures`, `chart`, `context`, `source`, `kicker`). Pre-rendered topic cards (no figures) are the fallback when a run cannot host a custom graphic.
 
 ## 7. Authorisation, verification and recovery
 - Educational explainers: authorised for automatic publishing when every factual, branding and compliance check passes. News tiers A–C: authorised under the 28 Nov 2026 directives and `policy/AUTHORISATIONS.md` when the evidence standard in §3 and the compliance rules in §6 are met.

@@ -25,18 +25,17 @@ A daily financial-education, brand-awareness and preparedness series. Each post 
 
 **Instagram**
 - Hook, then short paragraphs.
-- Name the source (no links).
-- "Education only. Not financial advice."
+- Name the source (no links). Start with the content label (News, Markets, Global Economy, Technology, Energy, Education or Insights).
 - 5–12 hashtags, including #TwoMarketLedger and the standard education hashtag #TMLEducation. Add #AreYouFinanciallyReady only on a relevant preparedness-campaign post.
 
 **Facebook**
 - 100–200 words.
 - Primary-source URL.
-- End with "For information and education only. Not financial advice."
+- End with the source line; no automatic disclaimer (PUBLISHING_POLICY §6A).
 
 **X**
 - At most 280 characters: one sharp fact and one question.
-- "Source: <publisher>", "Education only, not advice." and the link.
+- "Source: <publisher>" and the link.
 - At most 2 hashtags.
 
 **WhatsApp status (founder's personal sharing; never posted by us)**
@@ -53,7 +52,7 @@ A daily financial-education, brand-awareness and preparedness series. Each post 
   - Facebook: a slightly longer plain-language explainer with the source link;
   - X: one fact, one line of context and the source link.
 - **Hashtags:** 5–8 relevant ones on Instagram, mixing broad (#FinancialLiteracy) and specific (#AustralianEconomy, #RBA, #Inflation); 3–5 on Facebook; at most 2 on X. Never trending-bait.
-- **Close** with the educational line "Learn. Understand. Stay Informed." and the disclosure.
+- **Close** with the line "Learn. Understand. Stay Informed." where it fits; no automatic disclaimer.
 - **Consistency:** publish at the approved times every day. A late post is never better than a held one.
 - **Referrals:** once the public website is live and approved, add the relevant website page link on Facebook and X.
 

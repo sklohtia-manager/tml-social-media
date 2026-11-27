@@ -9,9 +9,9 @@
   "label": "Clearly identified as an education edition, never as news.",
   "facts": "No current statistics; hypothetical arithmetic illustrations only, labelled as hypothetical.",
   "captions": {
-    "facebook": "FINANCIAL EDUCATION · Education edition\n\nWhat exchange rates do to a cross-border budget\n\nAn exchange rate is the price of one currency in another.\n\nIf a household earns in one currency and spends in another, the same amount can buy more or less when the rate moves.\n\nHypothetical example: at 50 rupees per Australian dollar, A$200 is 10,000 rupees; at 55 rupees it is 11,000 rupees.\n\nExchange rates move for many reasons and cannot be predicted reliably. What matters for a budget is knowing the rate you actually received.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #ExchangeRates #AUDINR #FinancialLiteracy\n\nFor information and education only. Not financial advice.",
-    "instagram": "1. An exchange rate is the price of one currency in another.\n\n2. If a household earns in one currency and spends in another, the same amount can buy more or less when the rate moves.\n\n3. Hypothetical example: at 50 rupees per Australian dollar, A$200 is 10,000 rupees; at 55 rupees it is 11,000 rupees.\n\nExchange rates move for many reasons and cannot be predicted reliably. What matters for a budget is knowing the rate you actually received.\n\nSave this for later.\n\nLearn. Understand. Stay Informed.\n\nEducation only. Not financial advice.\n\n#TwoMarketLedger #TMLEducation #ExchangeRates #AUDINR #FinancialLiteracy #FinancialEducation #Australia #India",
-    "x": "Education edition: An exchange rate is the price of one currency in another. Hypothetical example: at 50 rupees per A$, A$200 is 10,000 rupees; at 55 it is 11,000. Education only, not advice. #TMLEducation"
+    "facebook": "FINANCIAL EDUCATION · Education edition\n\nWhat exchange rates do to a cross-border budget\n\nAn exchange rate is the price of one currency in another.\n\nIf a household earns in one currency and spends in another, the same amount can buy more or less when the rate moves.\n\nHypothetical example: at 50 rupees per Australian dollar, A$200 is 10,000 rupees; at 55 rupees it is 11,000 rupees.\n\nExchange rates move for many reasons and cannot be predicted reliably. What matters for a budget is knowing the rate you actually received.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #ExchangeRates #AUDINR #FinancialLiteracy",
+    "instagram": "1. An exchange rate is the price of one currency in another.\n\n2. If a household earns in one currency and spends in another, the same amount can buy more or less when the rate moves.\n\n3. Hypothetical example: at 50 rupees per Australian dollar, A$200 is 10,000 rupees; at 55 rupees it is 11,000 rupees.\n\nExchange rates move for many reasons and cannot be predicted reliably. What matters for a budget is knowing the rate you actually received.\n\nSave this for later.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #ExchangeRates #AUDINR #FinancialLiteracy #FinancialEducation #Australia #India",
+    "x": "Education edition: An exchange rate is the price of one currency in another. Hypothetical example: at 50 rupees per A$, A$200 is 10,000 rupees; at 55 it is 11,000. #TMLEducation"
   },
   "editions": [
     "ready",
@@ -22,6 +22,6 @@
     "owner": true,
     "approvedBy": "owner (standing authorisation 28 Nov 2026: educational explainers publish automatically when factual, branding and compliance checks pass)",
     "approvedAt": "2026-11-28T09:30:00+11:00",
-    "note": "Concept text, no current statistics. Arithmetic checked. Lint run 28 Nov 2026. Any edit invalidates this approval until re-checked."
+    "note": "Concept text, no current statistics. Arithmetic checked. Lint run 28 Nov 2026. Any edit invalidates this approval until re-checked. Disclaimer lines removed 28 Nov 2026 under the owner's professional-language directive (text otherwise unchanged)."
   }
 }

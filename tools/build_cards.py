@@ -28,7 +28,7 @@ def main(only=None):
         for edition in ("morning", "ready", "evening"):
             for suffix, theme in VARIANTS.items():
                 spec = {"edition": edition, "date": "card", "dateLabel": "", "slug": topic, "headline": title, "takeaway": line,
-                        "theme": theme, "source": "Sources and dates are in the post text."}
+                        "theme": theme}
                 if kicker and edition == "ready":
                     spec["kicker"] = kicker
                 with tempfile.TemporaryDirectory() as tmp:

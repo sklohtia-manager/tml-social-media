@@ -9,9 +9,9 @@
   "label": "Clearly identified as an education edition, never as news.",
   "facts": "No current statistics; hypothetical arithmetic illustrations only, labelled as hypothetical.",
   "captions": {
-    "facebook": "FINANCIAL EDUCATION · Education edition\n\nReading an energy bill\n\nElectricity and gas bills combine the units used, the price per unit and fixed charges.\n\nLooking at each part shows what comes from price and what comes from use.\n\nHypothetical example: 600 units at 30 cents a unit is $180, before any fixed charges.\n\nReading the parts of a bill is the first step in understanding why it changed from one period to the next.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #EnergyBills #CostOfLiving #FinancialLiteracy\n\nFor information and education only. Not financial advice.",
-    "instagram": "1. Electricity and gas bills combine the units used, the price per unit and fixed charges.\n\n2. Looking at each part shows what comes from price and what comes from use.\n\n3. Hypothetical example: 600 units at 30 cents a unit is $180, before any fixed charges.\n\nReading the parts of a bill is the first step in understanding why it changed from one period to the next.\n\nSave this for later.\n\nLearn. Understand. Stay Informed.\n\nEducation only. Not financial advice.\n\n#TwoMarketLedger #TMLEducation #EnergyBills #CostOfLiving #FinancialLiteracy #FinancialEducation #Australia #India",
-    "x": "Education edition: An energy bill combines units used, price per unit and fixed charges. Hypothetical example: 600 units at 30 cents is $180 before fixed charges. Education only, not advice. #TMLEducation"
+    "facebook": "FINANCIAL EDUCATION · Education edition\n\nReading an energy bill\n\nElectricity and gas bills combine the units used, the price per unit and fixed charges.\n\nLooking at each part shows what comes from price and what comes from use.\n\nHypothetical example: 600 units at 30 cents a unit is $180, before any fixed charges.\n\nReading the parts of a bill is the first step in understanding why it changed from one period to the next.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #EnergyBills #CostOfLiving #FinancialLiteracy",
+    "instagram": "1. Electricity and gas bills combine the units used, the price per unit and fixed charges.\n\n2. Looking at each part shows what comes from price and what comes from use.\n\n3. Hypothetical example: 600 units at 30 cents a unit is $180, before any fixed charges.\n\nReading the parts of a bill is the first step in understanding why it changed from one period to the next.\n\nSave this for later.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #EnergyBills #CostOfLiving #FinancialLiteracy #FinancialEducation #Australia #India",
+    "x": "Education edition: An energy bill combines units used, price per unit and fixed charges. Hypothetical example: 600 units at 30 cents is $180 before fixed charges. #TMLEducation"
   },
   "editions": [
     "ready",
@@ -22,6 +22,6 @@
     "owner": true,
     "approvedBy": "owner (standing authorisation 28 Nov 2026: educational explainers publish automatically when factual, branding and compliance checks pass)",
     "approvedAt": "2026-11-28T09:30:00+11:00",
-    "note": "Concept text, no current statistics. Arithmetic checked. Lint run 28 Nov 2026. Any edit invalidates this approval until re-checked."
+    "note": "Concept text, no current statistics. Arithmetic checked. Lint run 28 Nov 2026. Any edit invalidates this approval until re-checked. Disclaimer lines removed 28 Nov 2026 under the owner's professional-language directive (text otherwise unchanged)."
   }
 }

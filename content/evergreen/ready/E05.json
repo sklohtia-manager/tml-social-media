@@ -9,15 +9,15 @@
   "label": "Clearly identified as an education edition, never as news.",
   "facts": "No statistics; arithmetic illustrations only, with assumptions stated.",
   "captions": {
-    "facebook": "FINANCIAL EDUCATION · Education edition\n\nWhy other economies matter at home\n\nPrices at your local shop are shaped by events far away: shipping costs, exchange rates, harvests and trade rules.\n\nAustralia and India both trade heavily with the rest of the world, so global changes reach household budgets.\n\nA falling currency can make imports more expensive; a rising one can do the opposite.\n\nFollowing official sources such as central banks and statistics agencies helps separate facts from headlines.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #FinancialLiteracy\n\nFor information and education only. Not financial advice.",
-    "instagram": "Prices at your local shop are shaped by events far away: shipping costs, exchange rates, harvests and trade rules.\n\n1. Australia and India both trade heavily with the rest of the world, so global changes reach household budgets.\n\n2. A falling currency can make imports more expensive; a rising one can do the opposite.\n\n3. Following official sources such as central banks and statistics agencies helps separate facts from headlines.\n\nSave this for later.\n\nLearn. Understand. Stay Informed.\n\nEducation only. Not financial advice.\n\n#TwoMarketLedger #TMLEducation #FinancialLiteracy #FinancialEducation #MoneyBasics #Australia #India",
-    "x": "Education edition: Prices at your local shop are shaped by events far away: shipping costs, exchange rates, harvests and trade rules. Education only, not advice. #TMLEducation"
+    "facebook": "FINANCIAL EDUCATION · Education edition\n\nWhy other economies matter at home\n\nPrices at your local shop are shaped by events far away: shipping costs, exchange rates, harvests and trade rules.\n\nAustralia and India both trade heavily with the rest of the world, so global changes reach household budgets.\n\nA falling currency can make imports more expensive; a rising one can do the opposite.\n\nFollowing official sources such as central banks and statistics agencies helps separate facts from headlines.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #FinancialLiteracy",
+    "instagram": "Prices at your local shop are shaped by events far away: shipping costs, exchange rates, harvests and trade rules.\n\n1. Australia and India both trade heavily with the rest of the world, so global changes reach household budgets.\n\n2. A falling currency can make imports more expensive; a rising one can do the opposite.\n\n3. Following official sources such as central banks and statistics agencies helps separate facts from headlines.\n\nSave this for later.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #FinancialLiteracy #FinancialEducation #MoneyBasics #Australia #India",
+    "x": "Education edition: Prices at your local shop are shaped by events far away: shipping costs, exchange rates, harvests and trade rules. #TMLEducation"
   },
   "approval": {
     "owner": true,
     "approvedBy": "owner (standing authorisation 28 Nov 2026: educational explainers publish automatically when factual, branding and compliance checks pass)",
     "approvedAt": "2026-11-28T09:30:00+11:00",
-    "note": "Text unchanged since the 27 Nov preflight lint. Usable in any edition (swap the label line and card edition; see ops/templates/explainer.md). Any edit invalidates this approval until the checks are re-run."
+    "note": "Text unchanged since the 27 Nov preflight lint. Usable in any edition (swap the label line and card edition; see ops/templates/explainer.md). Any edit invalidates this approval until the checks are re-run. Disclaimer lines removed 28 Nov 2026 under the owner's professional-language directive (text otherwise unchanged)."
   },
   "editions": [
     "ready",

@@ -9,3 +9,6 @@ TML has two services: the public website (twomarketledger.com: media, news, auth
 
 ## Publishing policy (owner, 28 Nov 2026)
 Read `ops/PUBLISHING_POLICY.md` first: it is the single authoritative daily publishing policy (content ladder, no HOLD for lack of news, explainers authorised for automatic publishing, low-credit workflow, verified completion).
+
+## Professional language and branding (owner, 28 Nov 2026, permanent)
+No automatic disclaimers on ordinary content; standing disclosures in profiles/About and on the website; mainstream-publication voice; content labels; richer graphics. Compliance and verification unchanged. See `ops/PUBLISHING_POLICY.md` §6A and `brand/PLATFORM_DISCLOSURES.md`.

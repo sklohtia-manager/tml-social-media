@@ -19,8 +19,12 @@ spec = {
   "takeaway": "One clear takeaway in plain words.",                         # optional, highlighted
   "hypothetical": true,                                                      # optional: figure is a labelled hypothetical (no source year needed)
   "example": {"label": "Hypothetical example", "text": "..."},              # optional; label must say hypothetical/illustration
-  "layout": "band" | "hero" | "split"                                        # optional, varies design
+  "layout": "band" | "hero" | "split",                                       # optional, varies design
+  "figures": [{"value": "4.3%", "label": "US real GDP, annual rate, Jul-Sep 2026"}, ...],   # optional: up to 2 verified figures side by side
+  "chart": {"title": "...", "unit": "%", "items": [{"label": "Q2", "value": 2.2}, {"label": "Q3", "value": 4.3}]}   # optional: our own simple bar chart from verified numbers (2-6 bars)
 }
+Owner directive 28 Nov 2026 (professional language): no automatic disclaimer line on ordinary posts or graphics. The source line is compact and
+appears only when spec.source is given. Use the kicker as the content label (News, Markets, Global Economy, Technology, Energy, Education, Insights).
 Owner template rules (27 Nov 2026): the headline is the actual topic (never a generic "explainer"); one clear takeaway on the
 graphic; text large enough for a phone (body 30 px or more at 1080 px wide); any current statistic on the image must carry its
 source and date on the image; hypothetical examples are labelled; the signature line ("Are you financially ready for tomorrow?") is an approved optional line:
@@ -39,7 +43,6 @@ ROOT = Path(__file__).resolve().parent.parent
 FOREST, CHARCOAL, GOLD, WARM = "#153D2E", "#202622", "#B89A55", "#F8F7F2"
 LABELS = {"morning": "THE LEDGER MORNING", "evening": "THE LEDGER EVENING RECAP",
           "ready": "FINANCIAL EDUCATION"}
-DISCLOSURE = "General education only. Not financial advice."
 SIGNATURE = "Are you financially ready for tomorrow?"
 BANNED = re.compile(r"\b(buy now|sell now|don't miss out|once[- ]in[- ]a[- ]lifetime|guaranteed|sure[- ]shot|multibagger|"
                     r"penny stock|get[- ]rich|double your money|fast money|quick money|easy money|intraday|day trading|"
@@ -107,7 +110,14 @@ def render(spec, size, kind, shift=0):
     text_w = W - 2 * pad
     # Series or topic label (never the signature question)
     d.text((pad, top), spec.get("kicker") or LABELS[spec["edition"]], font=font("Inter-SemiBold.otf", 30 if kind != "x" else 28), fill=accent)
-    date_label = spec.get("dateLabel", spec["date"] if spec["edition"] != "ready" else None)
+    pretty = None
+    try:
+        import datetime as _dt
+        _d = _dt.date.fromisoformat(spec["date"])
+        pretty = f"{_d.day} {_d.strftime('%b %Y')}"
+    except Exception:  # noqa: BLE001
+        pass
+    date_label = spec.get("dateLabel", (pretty or spec["date"]) if spec["edition"] != "ready" else None)
     if date_label:
         d.text((pad, top + 46), date_label, font=font("Inter-Regular.otf", 26), fill=soft)
     y = top + (120 if date_label else 90)
@@ -128,6 +138,46 @@ def render(spec, size, kind, shift=0):
                 d.text((pad, y), line, font=lab_font, fill=soft)
                 y += int(lab_font.size * 1.3)
             y += 25
+    figs = spec.get("figures") or []
+    if figs and not spec.get("figure"):
+        colw = (text_w - 30) // min(len(figs), 2)
+        row_top, row_bottom = y, y
+        for n, f in enumerate(figs[:2]):
+            x = pad + n * (colw + 30)
+            yy = row_top
+            v_font = font("InterDisplay-Bold.otf", 96 if kind != "x" else 80)
+            d.text((x, yy), f["value"], font=v_font, fill=accent)
+            yy += int(v_font.size * 1.1)
+            l_font, l_lines = fit(d, f["label"], "Inter-Regular.otf", 28, 22, colw, 3)
+            for line in l_lines:
+                d.text((x, yy), line, font=l_font, fill=soft)
+                yy += int(l_font.size * 1.3)
+            row_bottom = max(row_bottom, yy)
+        y = row_bottom + 24
+    chart = spec.get("chart")
+    if chart and kind != "x":
+        items = chart["items"][:6]
+        unit = chart.get("unit", "")
+        ch_h, bar_gap = 260, 18
+        if chart.get("title"):
+            t_font = font("Inter-SemiBold.otf", 28)
+            d.text((pad, y), chart["title"], font=t_font, fill=soft)
+            y += 42
+        peak = max(abs(i["value"]) for i in items) or 1
+        n = len(items)
+        bw = (text_w - bar_gap * (n - 1)) // n
+        base = y + ch_h
+        for k, it in enumerate(items):
+            x = pad + k * (bw + bar_gap)
+            h = max(6, int((ch_h - 70) * abs(it["value"]) / peak))
+            d.rectangle([x, base - h - 40, x + bw, base - 40], fill=accent if k == n - 1 else soft)
+            val = f"{it['value']:g}{unit}"
+            vf = font("Inter-SemiBold.otf", 30)
+            d.text((x + (bw - d.textlength(val, font=vf)) // 2, base - h - 78), val, font=vf, fill=ink)
+            lf = font("Inter-Regular.otf", 26)
+            lab = it["label"]
+            d.text((x + (bw - d.textlength(lab, font=lf)) // 2, base - 32), lab, font=lf, fill=soft)
+        y = base + 24
     for i, point in enumerate(spec.get("points", [])[:4], 1):
         p_font, p_lines = fit(d, point, "Inter-Regular.otf", 34 if kind != "x" else 30, 22, text_w - 60, 3)
         d.text((pad, y), f"{i}", font=font("Inter-Bold.otf", 36), fill=accent)
@@ -162,7 +212,7 @@ def render(spec, size, kind, shift=0):
             d.text((pad, y), line, font=e_font, fill=soft)
             y += int(e_font.size * 1.3)
         y += 20
-    if spec.get("context") and kind != "x":
+    if spec.get("context"):
         c_font, c_lines = fit(d, spec["context"], "Inter-Regular.otf", 32, 22, text_w, 3)
         for line in c_lines:
             d.text((pad, y), line, font=c_font, fill=soft)
@@ -173,37 +223,38 @@ def render(spec, size, kind, shift=0):
         for line in wrap(d, SIGNATURE, q_font, text_w):
             d.text((pad, y), line, font=q_font, fill=accent)
             y += int(q_font.size * 1.3)
-    # Source and disclosure just above the band
-    s_font, s_lines = fit(d, spec["source"], "Inter-Regular.otf", 24, 16, text_w, 2)
-    small = font("Inter-Regular.otf", 22)
-    sy = H - band_h - 30 - 22 - len(s_lines) * 30 - (300 - band_h if kind == "story" else 0)
+    # Compact source line just above the band (only when a source is given; no automatic disclaimer)
+    if spec.get("source"):
+        s_font, s_lines = fit(d, spec["source"], "Inter-Regular.otf", 24, 16, text_w, 2)
+    else:
+        s_lines = []
+    story_extra = (300 - band_h if kind == "story" else 0)
+    sy = H - band_h - 30 - (len(s_lines) * 30 if s_lines else 0) - story_extra
     if y > sy - 10:
         raise ValueError(f"{kind}: content overflows into the source line; shorten the text.")
     for line in s_lines:
         d.text((pad, sy), line, font=s_font, fill=soft)
         sy += 30
-    d.text((pad, sy + 4), DISCLOSURE, font=small, fill=soft)
     img.content_end = y
-    img.source_top = H - band_h - 30 - 22 - len(s_lines) * 30 - (300 - band_h if kind == "story" else 0)
+    img.source_top = H - band_h - 30 - len(s_lines) * 30 - story_extra
     return img
 
 
 def main(spec_path, outdir):
     spec = json.loads(Path(spec_path).read_text())
     text = " ".join(str(v) for v in [spec.get("headline"), spec.get("context"), spec.get("figure"), spec.get("points"), spec.get("source"),
-                                     spec.get("blocks"), spec.get("takeaway"), spec.get("example")])
+                                     spec.get("blocks"), spec.get("takeaway"), spec.get("example"), spec.get("figures"), spec.get("chart")])
     if BANNED.search(text):
         raise SystemExit(f"BLOCKED: prohibited wording in image text ({BANNED.search(text).group(0)}).")
     if spec.get("figure") and spec.get("hypothetical") and not re.search(r"hypothetical|illustrat", spec["figure"].get("label", ""), re.I):
         raise SystemExit("A hypothetical figure must be labelled hypothetical or illustration in its label.")
-    if spec.get("figure") and not spec.get("hypothetical") and not re.search(r"(19|20)\d\d", spec.get("source", "")):
+    if (spec.get("figure") or spec.get("figures") or spec.get("chart")) and not spec.get("hypothetical") and not re.search(r"(19|20)\d\d", spec.get("source", "")):
         raise SystemExit("A current statistic on the image needs its source and date on the image (spec.source with a year).")
     ex = spec.get("example")
     if ex and not re.search(r"hypothetical|illustrat", ex.get("label", ""), re.I):
         raise SystemExit("Examples on the image must be labelled hypothetical or illustration.")
     if re.search(r"explainer", spec.get("headline", ""), re.I) and "financial education" in spec.get("headline", "").lower():
         raise SystemExit("Use the actual topic as the headline, not a generic 'explainer' title.")
-    spec.setdefault("source", "Sources and dates are in the post text.")
     for key in ("edition", "date", "slug", "headline"):
         if not spec.get(key):
             raise SystemExit(f"Missing {key}")

@@ -9,9 +9,9 @@
   "label": "Clearly identified as an education edition, never as news.",
   "facts": "No current statistics; hypothetical arithmetic illustrations only, labelled as hypothetical.",
   "captions": {
-    "facebook": "FINANCIAL EDUCATION · Education edition\n\nHousing costs in a household budget\n\nHousing costs include rent or loan repayments, council or property charges and maintenance.\n\nFor many households they are the largest single item in the budget.\n\nHypothetical example: on a monthly income of $5,000, rent of $1,500 takes 30% of income ($1,500 divided by $5,000).\n\nWorking out each major cost as a share of income makes it easier to compare months and years. A share is a measure, not a rule.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #HousingCosts #HouseholdBudget #FinancialLiteracy\n\nFor information and education only. Not financial advice.",
-    "instagram": "1. Housing costs include rent or loan repayments, council or property charges and maintenance.\n\n2. For many households they are the largest single item in the budget.\n\n3. Hypothetical example: on a monthly income of $5,000, rent of $1,500 takes 30% of income ($1,500 divided by $5,000).\n\nWorking out each major cost as a share of income makes it easier to compare months and years. A share is a measure, not a rule.\n\nSave this for later.\n\nLearn. Understand. Stay Informed.\n\nEducation only. Not financial advice.\n\n#TwoMarketLedger #TMLEducation #HousingCosts #HouseholdBudget #FinancialLiteracy #FinancialEducation #Australia #India",
-    "x": "Education edition: Housing costs are the largest item for many households. Hypothetical example: $1,500 rent on $5,000 monthly income is 30% of income. Education only, not advice. #TMLEducation"
+    "facebook": "FINANCIAL EDUCATION · Education edition\n\nHousing costs in a household budget\n\nHousing costs include rent or loan repayments, council or property charges and maintenance.\n\nFor many households they are the largest single item in the budget.\n\nHypothetical example: on a monthly income of $5,000, rent of $1,500 takes 30% of income ($1,500 divided by $5,000).\n\nWorking out each major cost as a share of income makes it easier to compare months and years. A share is a measure, not a rule.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #HousingCosts #HouseholdBudget #FinancialLiteracy",
+    "instagram": "1. Housing costs include rent or loan repayments, council or property charges and maintenance.\n\n2. For many households they are the largest single item in the budget.\n\n3. Hypothetical example: on a monthly income of $5,000, rent of $1,500 takes 30% of income ($1,500 divided by $5,000).\n\nWorking out each major cost as a share of income makes it easier to compare months and years. A share is a measure, not a rule.\n\nSave this for later.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #HousingCosts #HouseholdBudget #FinancialLiteracy #FinancialEducation #Australia #India",
+    "x": "Education edition: Housing costs are the largest item for many households. Hypothetical example: $1,500 rent on $5,000 monthly income is 30% of income. #TMLEducation"
   },
   "editions": [
     "ready",
@@ -22,6 +22,6 @@
     "owner": true,
     "approvedBy": "owner (standing authorisation 28 Nov 2026: educational explainers publish automatically when factual, branding and compliance checks pass)",
     "approvedAt": "2026-11-28T09:30:00+11:00",
-    "note": "Concept text, no current statistics. Arithmetic checked. Lint run 28 Nov 2026. Any edit invalidates this approval until re-checked."
+    "note": "Concept text, no current statistics. Arithmetic checked. Lint run 28 Nov 2026. Any edit invalidates this approval until re-checked. Disclaimer lines removed 28 Nov 2026 under the owner's professional-language directive (text otherwise unchanged)."
   }
 }

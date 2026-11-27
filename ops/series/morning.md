@@ -8,18 +8,17 @@ Cover what happened, why it matters (only causes the source states; a short rele
 
 **Instagram**
 - Hook line, then short paragraphs.
-- Name the source (no links).
-- "Education only. Not financial advice."
+- Name the source (no links). Start with the content label (News, Markets, Global Economy, Technology, Energy, Education or Insights).
 - 5–12 hashtags, including #TwoMarketLedger #TheLedgerMorning.
 
 **Facebook**
 - 100–200 words (count with code), plain language, practical relevance.
 - Primary-source URL.
-- Close with "For information and education only. Not financial advice."
+- Close with a source line; no automatic disclaimer (PUBLISHING_POLICY §6A).
 
 **X**
 - At most 280 characters, links counting as 23 (count with code).
-- "Source: <publisher>", "Education only, not advice." and the link if it fits.
+- "Source: <publisher>" and the link if it fits.
 
 **All channels**
 - Each platform's text is adapted, never identical.
@@ -35,6 +34,6 @@ Cover what happened, why it matters (only causes the source states; a short rele
   - Facebook: a slightly longer plain-language explainer with the source link;
   - X: one fact, one line of context and the source link.
 - **Hashtags:** 5–8 relevant ones on Instagram, mixing broad (#FinancialLiteracy) and specific (#AustralianEconomy, #RBA, #Inflation); 3–5 on Facebook; at most 2 on X. Never trending-bait.
-- **Close** with the educational line "Learn. Understand. Stay Informed." and the disclosure.
+- **Close** with the line "Learn. Understand. Stay Informed." where it fits; no automatic disclaimer.
 - **Consistency:** publish at the approved times every day. A late post is never better than a held one.
 - **Referrals:** once the public website is live and approved, add the relevant website page link on Facebook and X.

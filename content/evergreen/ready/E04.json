@@ -9,15 +9,15 @@
   "label": "Clearly identified as an education edition, never as news.",
   "facts": "No statistics; arithmetic illustrations only, with assumptions stated.",
   "captions": {
-    "facebook": "FINANCIAL EDUCATION · Education edition\n\nThinking beyond property\n\nFor many families, the home is the largest financial decision they make, and sometimes the only plan.\n\nProperty is one part of a household's finances, alongside income, savings, debt, insurance and retirement.\n\nEach has different risks, costs and time horizons. Understanding all of them gives a fuller picture.\n\nThis is education about the concepts, not a view on whether to buy, sell or invest in anything.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #FinancialLiteracy\n\nFor information and education only. Not financial advice.",
-    "instagram": "For many families, the home is the largest financial decision they make, and sometimes the only plan.\n\n1. Property is one part of a household's finances, alongside income, savings, debt, insurance and retirement.\n\n2. Each has different risks, costs and time horizons. Understanding all of them gives a fuller picture.\n\n3. This is education about the concepts, not a view on whether to buy, sell or invest in anything.\n\nSave this for later.\n\nLearn. Understand. Stay Informed.\n\nEducation only. Not financial advice.\n\n#TwoMarketLedger #TMLEducation #FinancialLiteracy #FinancialEducation #MoneyBasics #Australia #India",
-    "x": "Education edition: For many families, the home is the largest financial decision they make, and sometimes the only plan. Education only, not advice. #TMLEducation"
+    "facebook": "FINANCIAL EDUCATION · Education edition\n\nThinking beyond property\n\nFor many families, the home is the largest financial decision they make, and sometimes the only plan.\n\nProperty is one part of a household's finances, alongside income, savings, debt, insurance and retirement.\n\nEach has different risks, costs and time horizons. Understanding all of them gives a fuller picture.\n\nThis is education about the concepts, not a view on whether to buy, sell or invest in anything.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #FinancialLiteracy",
+    "instagram": "For many families, the home is the largest financial decision they make, and sometimes the only plan.\n\n1. Property is one part of a household's finances, alongside income, savings, debt, insurance and retirement.\n\n2. Each has different risks, costs and time horizons. Understanding all of them gives a fuller picture.\n\n3. This is education about the concepts, not a view on whether to buy, sell or invest in anything.\n\nSave this for later.\n\nLearn. Understand. Stay Informed.\n\n#TwoMarketLedger #TMLEducation #FinancialLiteracy #FinancialEducation #MoneyBasics #Australia #India",
+    "x": "Education edition: For many families, the home is the largest financial decision they make, and sometimes the only plan. #TMLEducation"
   },
   "approval": {
     "owner": true,
     "approvedBy": "owner (standing authorisation 28 Nov 2026: educational explainers publish automatically when factual, branding and compliance checks pass)",
     "approvedAt": "2026-11-28T09:30:00+11:00",
-    "note": "Text unchanged since the 27 Nov preflight lint. Usable in any edition (swap the label line and card edition; see ops/templates/explainer.md). Any edit invalidates this approval until the checks are re-run."
+    "note": "Text unchanged since the 27 Nov preflight lint. Usable in any edition (swap the label line and card edition; see ops/templates/explainer.md). Any edit invalidates this approval until the checks are re-run. Disclaimer lines removed 28 Nov 2026 under the owner's professional-language directive (text otherwise unchanged)."
   },
   "editions": [
     "ready",
