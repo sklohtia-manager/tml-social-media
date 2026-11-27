@@ -1,38 +1,308 @@
 {
-  "version": "2026-11-28",
-  "rules": "Official sources first; corroborate with a reputable secondary source where appropriate. A blocked source is recorded and skipped for the rest of the run; never retried in the same run. No Indian securities price data (announcements only for BSE and NSE).",
+  "version": "2026-11-28-v2",
+  "rules": "Global scope (PUBLISHING_POLICY §0-3). Official sources preferred for statistics and policy decisions but not mandatory for every story; one credible attributed news report suffices for routine facts; disputed, politically sensitive, consequential or uncertain claims need independent corroboration. Never anonymous social accounts, unverified blogs, sensational headlines or AI summaries. No paywall or bot-protection bypass. A blocked source is recorded and skipped for the run, never retried. Indian securities price data is never displayed.",
   "regions": {
     "australia": [
-      {"id": "abs", "name": "Australian Bureau of Statistics", "url": "https://www.abs.gov.au/", "use": "CPI, labour force, wage price index, GDP/national accounts, household finance; release calendar", "tier": "primary"},
-      {"id": "rba", "name": "Reserve Bank of Australia", "url": "https://www.rba.gov.au/", "use": "cash rate decisions, minutes, statistical tables, speeches, exchange rates", "tier": "primary"},
-      {"id": "treasury", "name": "Australian Treasury", "url": "https://treasury.gov.au/", "use": "budget, tax, policy announcements, ministers' releases", "tier": "primary"},
-      {"id": "asx", "name": "ASX", "url": "https://www.asx.com.au/", "use": "company announcements, market notices (no price levels as centrepiece)", "tier": "primary"},
-      {"id": "asic", "name": "ASIC", "url": "https://asic.gov.au/", "use": "consumer warnings, regulatory actions, MoneySmart education", "tier": "primary"}
+      {
+        "id": "abs",
+        "name": "Australian Bureau of Statistics",
+        "url": "https://www.abs.gov.au/",
+        "use": "CPI, labour force, wage price index, GDP/national accounts, household finance; release calendar",
+        "tier": "primary"
+      },
+      {
+        "id": "rba",
+        "name": "Reserve Bank of Australia",
+        "url": "https://www.rba.gov.au/",
+        "use": "cash rate decisions, minutes, statistical tables, speeches, exchange rates",
+        "tier": "primary"
+      },
+      {
+        "id": "treasury",
+        "name": "Australian Treasury",
+        "url": "https://treasury.gov.au/",
+        "use": "budget, tax, policy announcements, ministers' releases",
+        "tier": "primary"
+      },
+      {
+        "id": "asx",
+        "name": "ASX",
+        "url": "https://www.asx.com.au/",
+        "use": "company announcements, market notices (no price levels as centrepiece)",
+        "tier": "primary"
+      },
+      {
+        "id": "asic",
+        "name": "ASIC",
+        "url": "https://asic.gov.au/",
+        "use": "consumer warnings, regulatory actions, MoneySmart education",
+        "tier": "primary"
+      }
     ],
     "india": [
-      {"id": "rbi", "name": "Reserve Bank of India", "url": "https://www.rbi.org.in/", "use": "policy rate, press releases, speeches (pages may bot-check; skip if blocked)", "tier": "primary"},
-      {"id": "sebi", "name": "SEBI", "url": "https://www.sebi.gov.in/", "use": "circulars, investor-education notices", "tier": "primary"},
-      {"id": "mof", "name": "Ministry of Finance / PIB", "url": "https://pib.gov.in/", "use": "budget, tax and policy releases", "tier": "primary"},
-      {"id": "mospi", "name": "MoSPI", "url": "https://mospi.gov.in/", "use": "CPI, GDP, IIP releases", "tier": "primary"},
-      {"id": "bse-nse", "name": "BSE and NSE", "url": "https://www.bseindia.com/", "use": "corporate announcements and notices only; no price or index data", "tier": "primary", "alt": "https://www.nseindia.com/"}
+      {
+        "id": "rbi",
+        "name": "Reserve Bank of India",
+        "url": "https://www.rbi.org.in/",
+        "use": "policy rate, press releases, speeches (pages may bot-check; skip if blocked)",
+        "tier": "primary"
+      },
+      {
+        "id": "sebi",
+        "name": "SEBI",
+        "url": "https://www.sebi.gov.in/",
+        "use": "circulars, investor-education notices",
+        "tier": "primary"
+      },
+      {
+        "id": "mof",
+        "name": "Ministry of Finance / PIB",
+        "url": "https://pib.gov.in/",
+        "use": "budget, tax and policy releases",
+        "tier": "primary"
+      },
+      {
+        "id": "mospi",
+        "name": "MoSPI",
+        "url": "https://mospi.gov.in/",
+        "use": "CPI, GDP, IIP releases",
+        "tier": "primary"
+      },
+      {
+        "id": "bse-nse",
+        "name": "BSE and NSE",
+        "url": "https://www.bseindia.com/",
+        "use": "corporate announcements and notices only; no price or index data",
+        "tier": "primary",
+        "alt": "https://www.nseindia.com/"
+      }
     ],
     "united_states_and_global": [
-      {"id": "fed", "name": "Federal Reserve", "url": "https://www.federalreserve.gov/", "use": "FOMC statements, minutes, press releases", "tier": "primary"},
-      {"id": "bea", "name": "US Bureau of Economic Analysis", "url": "https://www.bea.gov/", "use": "GDP estimates, PCE, trade; release schedule", "tier": "primary"},
-      {"id": "bls", "name": "US Bureau of Labor Statistics", "url": "https://www.bls.gov/", "use": "CPI, employment situation", "tier": "primary"},
-      {"id": "imf", "name": "IMF", "url": "https://www.imf.org/", "use": "World Economic Outlook, country reports", "tier": "primary"},
-      {"id": "worldbank", "name": "World Bank", "url": "https://www.worldbank.org/", "use": "Global Economic Prospects, data", "tier": "primary"},
-      {"id": "oecd", "name": "OECD", "url": "https://www.oecd.org/", "use": "Economic Outlook, CPI and employment data", "tier": "primary"}
+      {
+        "id": "fed",
+        "name": "Federal Reserve",
+        "url": "https://www.federalreserve.gov/",
+        "use": "FOMC statements, minutes, press releases",
+        "tier": "primary"
+      },
+      {
+        "id": "bea",
+        "name": "US Bureau of Economic Analysis",
+        "url": "https://www.bea.gov/",
+        "use": "GDP estimates, PCE, trade; release schedule",
+        "tier": "primary"
+      },
+      {
+        "id": "bls",
+        "name": "US Bureau of Labor Statistics",
+        "url": "https://www.bls.gov/",
+        "use": "CPI, employment situation",
+        "tier": "primary"
+      },
+      {
+        "id": "imf",
+        "name": "IMF",
+        "url": "https://www.imf.org/",
+        "use": "World Economic Outlook, country reports",
+        "tier": "primary"
+      },
+      {
+        "id": "worldbank",
+        "name": "World Bank",
+        "url": "https://www.worldbank.org/",
+        "use": "Global Economic Prospects, data",
+        "tier": "primary"
+      },
+      {
+        "id": "oecd",
+        "name": "OECD",
+        "url": "https://www.oecd.org/",
+        "use": "Economic Outlook, CPI and employment data",
+        "tier": "primary"
+      }
     ],
     "secondary_corroboration_only": [
-      {"id": "reuters", "name": "Reuters", "url": "https://www.reuters.com/business/"},
-      {"id": "ap", "name": "Associated Press", "url": "https://apnews.com/business"},
-      {"id": "abc", "name": "ABC News Australia (business)", "url": "https://www.abc.net.au/news/business"},
-      {"id": "ft", "name": "Financial Times", "url": "https://www.ft.com/"},
-      {"id": "mint", "name": "Mint / The Hindu BusinessLine (India)", "url": "https://www.livemint.com/"}
+      {
+        "id": "reuters",
+        "name": "Reuters",
+        "url": "https://www.reuters.com/business/"
+      },
+      {
+        "id": "ap",
+        "name": "Associated Press",
+        "url": "https://apnews.com/business"
+      },
+      {
+        "id": "abc",
+        "name": "ABC News Australia (business)",
+        "url": "https://www.abc.net.au/news/business"
+      },
+      {
+        "id": "ft",
+        "name": "Financial Times",
+        "url": "https://www.ft.com/"
+      },
+      {
+        "id": "mint",
+        "name": "Mint / The Hindu BusinessLine (India)",
+        "url": "https://www.livemint.com/"
+      }
+    ],
+    "specialist_and_primary": [
+      {
+        "id": "iea",
+        "name": "IEA",
+        "url": "https://www.iea.org/"
+      },
+      {
+        "id": "eia",
+        "name": "US EIA",
+        "url": "https://www.eia.gov/"
+      },
+      {
+        "id": "opec",
+        "name": "OPEC",
+        "url": "https://www.opec.org/"
+      },
+      {
+        "id": "ir-pages",
+        "name": "Company investor-relations pages and stock-exchange announcements",
+        "url": "(per company / exchange)"
+      },
+      {
+        "id": "status",
+        "name": "Official technology service-status pages",
+        "url": "(per provider)"
+      }
+    ],
+    "credible_journalism": [
+      {
+        "id": "reuters",
+        "name": "Reuters",
+        "url": "https://www.reuters.com/business/"
+      },
+      {
+        "id": "ap",
+        "name": "Associated Press",
+        "url": "https://apnews.com/hub/business"
+      },
+      {
+        "id": "bloomberg",
+        "name": "Bloomberg",
+        "url": "https://www.bloomberg.com/markets"
+      },
+      {
+        "id": "bbc",
+        "name": "BBC",
+        "url": "https://www.bbc.com/news/business",
+        "rss": "https://feeds.bbci.co.uk/news/business/rss.xml"
+      },
+      {
+        "id": "ft",
+        "name": "Financial Times",
+        "url": "https://www.ft.com/"
+      },
+      {
+        "id": "cnbc",
+        "name": "CNBC",
+        "url": "https://www.cnbc.com/world/",
+        "rss": "https://www.cnbc.com/id/100003114/device/rss/rss.html"
+      },
+      {
+        "id": "abc",
+        "name": "ABC News Australia (business)",
+        "url": "https://www.abc.net.au/news/business"
+      },
+      {
+        "id": "afr",
+        "name": "Australian Financial Review",
+        "url": "https://www.afr.com/"
+      },
+      {
+        "id": "sbs",
+        "name": "SBS News",
+        "url": "https://www.sbs.com.au/news"
+      },
+      {
+        "id": "nikkei",
+        "name": "Nikkei Asia",
+        "url": "https://asia.nikkei.com/Business"
+      },
+      {
+        "id": "aljazeera",
+        "name": "Al Jazeera",
+        "url": "https://www.aljazeera.com/economy/",
+        "rss": "https://www.aljazeera.com/xml/rss/all.xml"
+      },
+      {
+        "id": "et",
+        "name": "Economic Times",
+        "url": "https://economictimes.indiatimes.com/"
+      },
+      {
+        "id": "bs",
+        "name": "Business Standard",
+        "url": "https://www.business-standard.com/"
+      },
+      {
+        "id": "mint",
+        "name": "Mint",
+        "url": "https://www.livemint.com/"
+      },
+      {
+        "id": "moneycontrol",
+        "name": "Moneycontrol",
+        "url": "https://www.moneycontrol.com/news/business/"
+      }
     ]
   },
   "knownAccessNotes": [
-    {"date": "2026-11-28", "note": "RBI speech PDF returned a bot check in the scheduled run; skipped, not retried. The interactive cloud session's network allowlist did not include bea.gov (page content was corroborated through the BEA search result instead); scheduled runs read bea.gov successfully on 28 Nov."}
-  ]
+    {
+      "date": "2026-11-28",
+      "note": "RBI speech PDF returned a bot check in the scheduled run; skipped, not retried. The interactive cloud session's network allowlist did not include bea.gov (page content was corroborated through the BEA search result instead); scheduled runs read bea.gov successfully on 28 Nov."
+    }
+  ],
+  "regionsCovered": [
+    "Australia and New Zealand",
+    "India and South Asia",
+    "United States and Canada",
+    "United Kingdom and Europe",
+    "Middle East",
+    "Russia and surrounding regions",
+    "China, Japan and South Korea",
+    "Southeast Asia",
+    "Other economically significant regions"
+  ],
+  "categories": [
+    "Inflation and cost of living",
+    "Interest rates and central banks",
+    "Oil, petrol, diesel, gas and electricity prices",
+    "International energy supplies",
+    "Wars and geopolitics with economic consequences",
+    "Sanctions and tariffs",
+    "Shipping and supply chains",
+    "Technology and AI",
+    "Major technology company announcements",
+    "Global technology outages",
+    "Cybersecurity incidents",
+    "Employment, wages and job losses",
+    "Banking and financial services",
+    "Global stock markets",
+    "Gold, commodities and currencies",
+    "Food prices and agriculture",
+    "Property and housing affordability",
+    "Government economic policy",
+    "Corporate announcements, earnings and restructuring",
+    "International trade and growth",
+    "Significant consumer and business developments"
+  ],
+  "dailyStartingSet": [
+    "bbc",
+    "aljazeera",
+    "abc",
+    "cnbc",
+    "mint",
+    "reuters (if readable)"
+  ],
+  "reachability": "Untested from scheduled runs on 28 Nov 2026 (the interactive session's web search returned stale aggregator results and its network allowlist is narrow). The first routine runs record ok/blocked per source in the research record `access` column; blocked sources are dropped from that day's set and listed in knownAccessNotes by an interactive session."
 }

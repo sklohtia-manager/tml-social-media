@@ -4,7 +4,7 @@ Use for any edition when no fresher tier is verified, or for the 3:15 PM educati
 
 ## Choosing the content
 1. First choice: the next unused owner-authorised item in `content/evergreen/ready/` (E01 onward; not used in the last 30 days per the log and Buffer history; no subject repeated within 21 days). Use its captions unchanged except the label line below.
-2. Otherwise write a fresh explainer on the day's calendar theme (`ops/EDITORIAL_CALENDAR.md`). Facts only if verified on a primary page this run (or read from the research file with their release date); otherwise concept text with no statistics. Hypothetical arithmetic is labelled "Hypothetical example" and checked in code. A derived number is labelled "our calculation", never attributed to the source.
+2. Otherwise write a fresh explainer on the day's calendar theme (`ops/EDITORIAL_CALENDAR.md`). Facts only if verified per `ops/PUBLISHING_POLICY.md` §3 this run (or read from the research file with their release date); otherwise concept text with no statistics. Hypothetical arithmetic is labelled "Hypothetical example" and checked in code. A derived number is labelled "our calculation", never attributed to the source.
 
 ## Label and edition swap
 | Edition | Label line (first line of Facebook; start of X) | Card edition | Hashtags |
@@ -23,7 +23,7 @@ Cards exist for every topic in `ops/topic-cards.json` and every edition (three v
 
 ## Checks before publishing (all must pass; if one fails, fix or choose another item, do not hold)
 - [ ] Labelled as an explainer/education edition; no "today", "breaking", "latest".
-- [ ] Every figure verified on a primary page (with release date) or labelled hypothetical/our calculation; arithmetic recomputed in code.
+- [ ] Every figure verified (official source for statistics, otherwise a credible attributed source; release date shown) or labelled hypothetical/our calculation; arithmetic recomputed in code.
 - [ ] No advice, recommendation, ranking, product steer, prediction presented as fact, or trading/fast-money framing; lint clear.
 - [ ] Branding: green-and-gold topic card with the TML logo; accurate card title; alt text; disclosure; "Learn. Understand. Stay Informed."
 - [ ] X ≤ 280 characters; Facebook and Instagram captions differ.

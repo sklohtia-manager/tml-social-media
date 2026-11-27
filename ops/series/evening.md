@@ -1,6 +1,6 @@
 # The Ledger Evening Recap: 7:30 PM (FE-01)
 
-**Scope:** the 2–4 most significant verified economic, business and government developments of today (Australia, India, United States, global; especially Australian and Indian business-day releases).
+**Scope (global; owner directive 28 Nov 2026):** the 2–4 most significant verified economic, business, technology and geopolitical-with-economic-consequence developments of the day from anywhere (all regions and topics in `ops/PUBLISHING_POLICY.md` §0–1), with particular relevance to Australian and Indian audiences; positive and negative stories. A credible attributed report is enough for routine facts; disputed or sensitive claims need independent corroboration. No major Australian item is never a reason to hold.
 - Drop any item that cannot be verified (the item, not the edition).
 - If fewer than 2 verify, publish a single-story recap; if none verifies, move down `ops/PUBLISHING_POLICY.md` §1 (tier B dated, tier C weekly summary, tier D labelled "EDUCATIONAL EXPLAINER" via `ops/templates/explainer.md`). Never hold the edition for lack of news.
 - Do not repeat this morning's story unless there has been a material development.

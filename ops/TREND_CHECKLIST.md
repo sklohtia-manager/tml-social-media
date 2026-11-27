@@ -22,5 +22,5 @@ Write exactly what couldn't be checked and why, for example "Google Trends: unre
 
 ## Then
 1. Compare candidates with `content/history.json` (no repeat; the 21-day rule for educational subjects) and the calendar (`ops/EDITORIAL_CALENDAR.md`).
-2. Verify every figure on a primary source before drafting (RUNBOOK §2).
+2. Verify every figure per the evidence standard (`ops/PUBLISHING_POLICY.md` §3: official source for statistics and policy; one credible attributed report for routine facts; independent corroboration for disputed or sensitive claims) before drafting, reusing the shared research record (`content/research/README.md`). The same record serves YouTube topic research and TikTok scripts; do not repeat the research per platform.
 3. Tag the subject and class in the calendar. A trend never overrides the compliance gate: no advice, trading, speculation or fast-money framing, even when it's popular.

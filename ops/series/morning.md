@@ -1,19 +1,10 @@
 # The Ledger Morning: 9:30 AM (FE-01)
 
-**Scope:** previous-day events, overnight international developments and fresh morning announcements (Australia, India, United States, global). Prioritise economic, business and government news that affects everyday life:
-- rates and inflation;
-- cost of living;
-- jobs and wages;
-- tax and budget;
-- rent and housing;
-- energy;
-- trade and growth;
-- AUD/INR/USD and remittances;
-- retirement.
+**Scope (global; owner directive 28 Nov 2026):** overnight and previous-day developments anywhere that matter to ordinary people, with particular relevance to Australian and Indian audiences: Australia/NZ, India/South Asia, the US and Canada, the UK and Europe, the Middle East, Russia and neighbours, China/Japan/Korea, Southeast Asia and other significant regions. Approved topics are in `ops/PUBLISHING_POLICY.md` §1 (inflation and cost of living, rates and central banks, oil/fuel/gas/electricity, energy supply, geopolitics with economic consequences, sanctions and tariffs, shipping, technology and AI, outages and cybersecurity, jobs and wages, banking, global markets, gold/commodities/currencies, food, property, government policy, corporate earnings and restructuring, trade and growth, consumer and business developments). Cover positive and negative stories. Not restricted to government announcements: a credible attributed report is enough for routine facts; disputed or sensitive claims need corroboration.
 
 Pick the single most important verified story, preferring neutral macro news (tier A). If nothing fresh verifies within the research budget, move **automatically** down `ops/PUBLISHING_POLICY.md` §1: tier B (a verified development from the previous 24–72 hours, dated, "In case you missed it"), tier C (weekly economic developments), then tier D (a labelled "EDUCATIONAL EXPLAINER" using `ops/templates/explainer.md`, with the topic card that fits the topic). Never hold the edition for lack of news; never present B, C or D as news.
 
-Cover what happened, why it matters (only causes the source states), the potential economic and household impact, and what is uncertain. Write a HEADLINE.
+Cover what happened, why it matters (only causes the source states; a short relevance line for Australia, India or households where the evidence supports it, confirmed vs possible effects, no invented local link) and what is uncertain. Write a HEADLINE. Name and link the original source; original wording only.
 
 **Instagram**
 - Hook line, then short paragraphs.
